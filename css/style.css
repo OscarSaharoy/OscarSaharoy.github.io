@@ -5,11 +5,11 @@ h1, h2 {
 h1 {
   font-weight: 600;
   color: #24292e;
-  text-indent: -2em;
+  text-indent: 2em;
 }
 
 h2 {
   font-style: italic;
   color: #7b7e81;
-  text-indent: -5em;
+  text-indent: 5em;
 }
