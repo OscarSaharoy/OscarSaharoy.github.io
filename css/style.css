@@ -25,9 +25,7 @@ h2 {
   background-color: #24292e;
 }
 
-.banner p {
-  font-weight: 600;
+.banner h1 {
   color: #ffffff;
-  text-indent: 1em;
   padding: 0.5em 0;
 }
