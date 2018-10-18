@@ -1,4 +1,4 @@
-h1, h2 {
+h1, h2, p {
   font-family: "Segoe UI";
 }
 
@@ -13,4 +13,16 @@ h2 {
   font-weight: 100;
   color: #7b7e81;
   text-indent: 3em;
+}
+
+.banner {
+  width: 100%;
+  background-color: #24292e;
+}
+
+.banner p {
+  font-weight: 600;
+  color: #ffffff;
+  text-indent: 1em;
+  margin: 0.5em 0;
 }
