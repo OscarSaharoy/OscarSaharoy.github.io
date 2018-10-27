@@ -2,154 +2,250 @@
 
 <html>
 
-	<head>
-		<style type="text/css">
-		
-		* {
-			margin: 0 0;
-			padding: 0 0;
-		}
-		
-		html {
-			font-size: 40px;
-			font-family: "Helvetica Neue";
-		}
-		
-		.banner, .footer {
-			background-color: black;
-		}
-		
-		.banner {
-			box-shadow: 0 0 0.4rem;
-			position: fixed;
-			top: 0;
-			width: 100%;
-		}
-		
-		.filler {
-			height: 2rem;
-		}
-		
-		.footer {
-			display: grid;
-			grid-template: 3rem / 1fr;
-			justify-items: center;
-			align-items: center;
-		}
-		
-		.nav-links {
-			margin: 0 auto;
-			display: grid;
-			grid-template: 2rem / repeat(4, 1fr);
-			justify-items: center;
-			align-items: center;
-			justify-content: center;
-		}
-		
-		.nav-links a {
-			font-weight: 200;
-			color: white;
-		}
-		
-		.footer p {
-			margin: 0.3rem 0;
-			font-size: 0.7rem;
-			font-weight: 300;
-			color: white;
-		}
-		
-		.main {
-			height: 100%;
-		}
-		
-		.main h2 {
-			font-size: 1.25rem;
-			font-weight: 300;
-			color: black;
-			padding-bottom: 0.5rem;
-			border-bottom: 0.1rem solid black;
-			margin: 1rem 2rem;
-		}
-		
-		.main p {
-			margin: 1rem 2rem;
-			font-size: 0.8rem;
-			font-weight: 300;
-		}
-		
-		.main img {
-			width: 100%;
-		}
-		
-		.socials {
-			margin: 1rem 2rem;
-			display: grid;
-			grid-template: 2rem / repeat(5,2rem);
-			justify-items: center;
-			grid-auto-flow: column;
-			grid-column-gap: 0.5rem;
-		}
-		
-		.socials img {
-			height: 2rem;
-			width: 2rem;
-		}
-		
-		</style>
-	</head>
+<head>
+	<title> oasis creativ e </title>
 	
-	<body>
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 	
-		<div class="banner">
+	<style type="text/css">
+	
+	* {
+		margin: 0 0;
+		padding: 0 0;
+	}
+	
+	html {
+		font-size: 16px;
+		font-family: "Open Sans", sans-serif;
+	}
+	
+	.banner {
+		background-color: #33ccee;
+	}
+	
+	.banner {
+		box-shadow: 0 0 1rem -0.3rem;
+		position: fixed;
+		top: 0;
+		width: 100%;
+	}
+	
+	.filler {
+		height: 2rem;
+	}
+	
+	.nav-links {
+		margin: 0 auto;
+		display: grid;
+		grid-template: 2rem / repeat(4, 1fr);
+		justify-items: center;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		max-width: 45rem;
+	}
+	
+	.nav-links a {
+		text-decoration: none;
+	}
+	
+	.nav-links p {
+		color: white;
+		font-weight: 300;
+	}
+	
+	.main {
+		width: 100%;
+		max-width: 45rem;
+		display: grid;
+		grid-template: 1fr / 1fr;
+		margin: 0 auto;
+	}
+	
+	.main h1 {
+		font-family: 'Josefin Sans', sans-serif;
+		font-weight: 800;
+		font-size: 2.5rem;
+		margin: 1rem auto;
+		padding-bottom: 0.5rem;
+		padding-right: 2rem;
+		padding-left: 2rem;
+		border-bottom: 0.1rem solid black;
+		height: 2.6rem;
+	}
+	
+	.main h2 {
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 200;
+		font-size: 1.4rem;
+		margin: 1rem 1rem;
+		text-decoration: underline;
+		text-decoration-color: #33ccee;
+	}
+	
+	.main a {
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 200;
+		font-size: 1rem;
+		margin: 0.5rem auto;
+		text-decoration: underline;
+		text-decoration-color: #33ccee;
+		color: #33ccee;
+	}
+	
+	.main p {
+		margin: 0rem 1.5rem 1rem;
+		font-size: 0.9rem;
+	}
+	
+	.main img {
+		width: 100%;
+	}
+	
+	.portfolio {
+		width: 90%;
+		display: grid;
+		grid-template: 1fr / 1fr 1fr;
+		grid-gap: 1rem;
+		margin: 0.5rem auto;
+	}
+	
+	.project {
+		border-left: 0.1rem solid black;
+	}
+	
+	.project p {
+		font-family: "Josefin Sans";
+		font-weight: 800;
+		margin: 0.5rem 0.5rem;
+	}
+	
+	.project img {
+		height: 9rem;
+		width: auto;
+		display: block;
+		margin: 0 auto;
+	}
+	
+	footer {
+		background-color: #33ccee;
+		display: grid;
+		grid-template: 1fr / 1fr;
+		justify-items: center;
+		padding: 1rem 1rem;
+	}
+	
+	footer h2 {
+		color: white;
+		font-family: "Josefin Sans";
+		font-size: 1.3rem;
+		font-weight: 600;
+	}
+	
+	footer p {
+		color: white;
+		font-size: 0.8rem;
+		font-weight: 200;
+		margin: 0 0;
+	}
+	
+	.socials {
+		margin-bottom: 1rem;
+		display: grid;
+		grid-template: 2rem / repeat(3, 2rem);
+		justify-items: center;
+		grid-auto-flow: column;
+		column-gap: 2rem;
+	}
+	
+	.socials img {
+		display: block;
+		height: 2rem;
+		width: 2rem;
+	}
+	
+	</style>
+</head>
+
+<body>
+
+<div class="banner">
+	<div class="nav-links">
 		
-			<div class="nav-links">
-		
-			<a href="#"> home </a>
-			<a href="#"> projects </a>
-			<a href="#"> about </a>
-			<a href="#contact"> contact </a>
-			
-			</div>
-		
+		<a href="#home"> <p> home </p> </a>
+		<a href="#portfolio"> <p> portfolio </p> </a>
+		<a href="#about"> <p> about </p> </a>
+		<a href="#contact"> <p> contact </p> </a>
+
+	</div>
+</div>
+
+<div class="filler" id="home"> </div>
+
+<div class="main">
+
+	<h1 id="portfolio"> oasis creative </h1>
+
+	<h2> portfolio </h2>
+
+	<div class="portfolio">
+	
+		<div class="project">
+		<img src="https://c1.staticflickr.com/2/1844/43233007975_afbdb7e06c_k.jpg/">
+		<p> rowing club branding </p>
 		</div>
 		
-		<div class="main">
-		
-			<div class="filler"> </div>
-		
-			<h2> bespoke and reliable web design. </h2>
-			
-			<p> fully scalable and responsive sites delivered from conception to completion, with ongoing support into the future of your business. </p>
-			
-			<img src="https://aamboceanservice.blob.core.windows.net/oceanservice-prod/facts/sea.jpg">
-			
-			<h2> robust, reliable code. </h2>
-			
-			<p> years of industry experience contribute to html and css that can be understood and changed for years to come. </p>
-			
-			<h2> complete control and configurability. </h2>
-			
-			<p> custom css templates allow your website to stand out from a sea of uniformity. </p>
-			
-			<h2 id="contact"> contact </h2>
-			
-			<p> osaharoy@gmail.com <br> 07803503970 <br> github.com/OscarSaharoy </p>
-			
-			<div class="socials"> 
-				<a href="#"> <img src="https://diylogodesigns.com/wp-content/uploads/2016/05/instagram-Logo-PNG-Transparent-Background-download.png"> </a>
-				<a href="#"> <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"> </a>
-				<a href="#"> <img src="https://png.icons8.com/color/1600/gmail.png"> </a>
-				<a href="#"> <img src="https://www.freeiconspng.com/uploads/flickr-logo-png-17.png"> </a>
-				<a href="#"> <img src="https://mbtskoudsalg.com/images250_/linkedin-logo-png-transparent-background-8.png"> </a>
-			</div>
-			
+		<div class="project">
+		<img src="https://c1.staticflickr.com/2/1858/42301728720_3915ff93d4_k.jpg/">
+		<p> computer programmer logo </p>
 		</div>
 		
-		
-		<div class="footer">
-			<p> site design oscar saharoy 2018 </p>
+		<div class="project">
+		<img src="https://c1.staticflickr.com/2/1874/43394477314_b77f595c1e_k.jpg/">
+		<p> low poly guy fawkes </p>
 		</div>
+		
+		<div class="project">
+		<img src="https://c1.staticflickr.com/2/1813/43090964405_2de21b77f2_k.jpg/">
+		<p> initials logo </p>
+		</div>
+
+	</div>
 	
-	</body>
+	<a id="about"> show more </a>
+	
+	<h2> about us </h2>
+	
+	<p> oasis creative is a london based design house providing services from graphic and branding to complete website contruction at an affordable price. feel free to browse our portfolio and contact us to see what we can do for you. </p>
+
+</div>
+
+<footer id="contact">
+
+<div class="socials">
+
+	<a href="https://www.instagram.com/oscar_saharoy/"> 
+		<img src="https://raw.githubusercontent.com/OscarSaharoy/OscarSaharoy.github.io/master/assets/insta.png"> 
+	</a>
+	
+	<a href="https://github.com/OscarSaharoy/">
+		<img src="https://raw.githubusercontent.com/OscarSaharoy/OscarSaharoy.github.io/master/assets/github.png">
+	</a>
+	
+	<a href="https://www.flickr.com/photos/166271027@N06/">
+		<img src="https://raw.githubusercontent.com/OscarSaharoy/OscarSaharoy.github.io/master/assets/flickr.png">
+	</a>
+
+</div>
+
+<h2> contact </h2>
+<p> osaharoy@gmail.com </p>
+<p> 07803503970 </p>
+<p> site design oscar saharoy 2018 </p>
+
+</footer>
+
+</body>
 
 </html>
