@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 <!DOCTYPE html>
 
 <html>
@@ -7,221 +8,11 @@
 	
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+
+	<link rel="stylesheet" href="style.css">
 	
-	<style type="text/css">
-	
-	* {
-		margin: 0 0;
-		padding: 0 0;
-	}
-	
-	html {
-		font-size: 3vh;
-		font-family: "Open Sans", sans-serif;
-	}
-	
-	.banner {
-		background-color: #33ccee;
-	}
-	
-	.banner {
-		box-shadow: 0 0 1rem -0.3rem;
-		position: fixed;
-		top: 0;
-		width: 100%;
-		z-index: 1;
-	}
-	
-	.filler {
-		height: 2rem;
-	}
-	
-	.nav-links {
-		margin: 0 auto;
-		display: grid;
-		grid-template: 2rem / repeat(4, 1fr);
-		justify-items: center;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		max-width: 45rem;
-	}
-	
-	.nav-links a {
-		text-decoration: none;
-	}
-	
-	.nav-links p {
-		color: white;
-		font-weight: 300;
-	}
-	
-	.main {
-		width: 100%;
-		max-width: 45rem;
-		display: grid;
-		grid-template: 1fr / 1fr;
-		margin: 0 auto;
-	}
-	
-	.main h1 {
-		font-family: 'Josefin Sans', sans-serif;
-		font-weight: 800;
-		font-size: 2.5rem;
-		margin: 1.5rem auto;
-		padding-bottom: 0.5rem;
-		padding-right: 2rem;
-		padding-left: 2rem;
-		border-bottom: 0.1rem solid black;
-		height: 2.6rem;
-	}
-	
-	.main h2 {
-		font-family: 'Open Sans', sans-serif;
-		font-weight: 200;
-		font-size: 1.4rem;
-		margin: 1rem 1rem;
-		text-decoration: underline;
-		text-decoration-color: #33ccee;
-	}
-	
-	.main a {
-		font-family: 'Open Sans', sans-serif;
-		font-weight: 200;
-		font-size: 1rem;
-		margin: 0.5rem auto;
-		text-decoration: underline;
-		text-decoration-color: #33ccee;
-		color: #33ccee;
-	}
-	
-	.main p {
-		margin: 0rem 1.5rem 2rem;
-		font-size: 0.9rem;
-	}
-	
-	.main img {
-		width: 100%;
-	}
-	
-	
-	.portfolio {
-		width: 90%;
-		display: grid;
-		grid-template: 1fr / 1fr 1fr;
-		grid-gap: 1rem;
-		margin: 0.5rem auto;
-	}
-	
-	.project {
-		border-left: 0.1rem solid black;
-	}
-	
-	.project p {
-		font-family: "Josefin Sans";
-		font-weight: 800;
-		margin: 0.5rem 0.5rem;
-	}
-	
-	.project img {
-		height: 9rem;
-		width: auto;
-		display: block;
-		margin: 0 auto;
-	}
-	
-	
-	.services {
-		width: 90%;
-		display: grid;
-		grid-template-rows: 1fr;
-		grid-gap: 1rem;
-		margin: 1rem auto;
-	}
-	
-	.service {
-		border-left: 0.3rem solid black;
-		position: relative;
-		top: 0;
-		height: 5rem;
-		transition: border 0.5s;
-	}
-	
-	.service:hover {
-		border-left: 0.3rem solid #33ccee;
-	}
-	
-	.img-holder {
-		overflow: hidden;
-		height: 5rem;
-	}
-	
-	.service img {
-		width: 100%;
-		display: block;
-		margin: auto 0;
-	}
-	
-	.service p {
-		font-family: "Josefin Sans";
-		font-weight: 600;
-		font-size: 1.3rem;
-		color: white;
-		background-color: #33ccee;
-		width: 50%;
-		padding: 0rem 0.5rem;
-		margin: 0 0;
-		position: absolute;
-		top: 3rem;
-		left: 1rem;
-	}
-	
-	.fill {
-		height: 5rem;
-		width: 100%;
-		background-color: green;
-		color: green;
-	}
-	
-	
-	footer {
-		background-color: #33ccee;
-		display: grid;
-		grid-template: 1fr / 1fr;
-		justify-items: center;
-		padding: 1rem 1rem;
-	}
-	
-	footer h2 {
-		color: white;
-		font-family: "Josefin Sans";
-		font-size: 1.3rem;
-		font-weight: 600;
-	}
-	
-	footer p {
-		color: white;
-		font-size: 0.8rem;
-		font-weight: 200;
-		margin: 0 0;
-	}
-	
-	.socials {
-		margin-bottom: 1rem;
-		display: grid;
-		grid-template: 2rem / repeat(3, 2rem);
-		justify-items: center;
-		grid-auto-flow: column;
-		column-gap: 2rem;
-	}
-	
-	.socials img {
-		display: block;
-		height: 2rem;
-		width: 2rem;
-	}
-	
-	</style>
+	<link rel="icon" href="palm.ico">
+    
 </head>
 
 <body>
@@ -229,7 +20,7 @@
 <div class="banner">
 	<div class="nav-links">
 		
-		<a href="#home"> <p> home </p> </a>
+		<a href="oasis.html"> <p> home </p> </a>
 		<a href="#portfolio"> <p> portfolio </p> </a>
 		<a href="#about"> <p> about </p> </a>
 		<a href="#contact"> <p> contact </p> </a>
@@ -246,40 +37,50 @@
 	<h2> services </h2>
 	
 	<div class="services">
-	
-		<div class="service">	
+
+		<div class="service">
+                        <a href="branding.html">
 			<div class="img-holder">
-			<img src="https://raw.githubusercontent.com/OscarSaharoy/OscarSaharoy.github.io/master/assets/fingerprint.jpg"/>
-			</div>
+			<img src="fingerprint.jpg"/>
 			<p> branding </p>
+			</div>
+			</a>
 		</div>
 		
-		<div class="service">	
+		<div class="service">
+                        <a href="advertising.html">
 			<div class="img-holder">
-			<img src="https://raw.githubusercontent.com/OscarSaharoy/OscarSaharoy.github.io/master/assets/adverts.jpg"/>
-			</div>
+			<img src="adverts.jpg"/>
 			<p> advertising </p>
+			</div>
+			</a>
 		</div>
 		
-		<div class="service">	
+		<div class="service">
+                        <a href="social.html">
 			<div class="img-holder">
-			<img src="https://raw.githubusercontent.com/OscarSaharoy/OscarSaharoy.github.io/master/assets/social.jpg"/>
-			</div>
+			<img src="social.jpg"/>
 			<p> social media marketing </p>
+			</div>
+			</a>
 		</div>
 		
-		<div class="service">	
+		<div class="service">
+                        <a href ="website.html">
 			<div class="img-holder">
-			<img src="https://raw.githubusercontent.com/OscarSaharoy/OscarSaharoy.github.io/master/assets/website.jpg"/>
-			</div>
+			<img src="website.jpg"/>
 			<p> website design </p>
+			</div>
+			</a>
 		</div>
 		
-		<div class="service">	
+		<div class="service">
+                        <a href="image.html">
 			<div class="img-holder">
-			<img src="https://raw.githubusercontent.com/OscarSaharoy/OscarSaharoy.github.io/master/assets/brushes.jpg"/>
-			</div>
+			<img src="brushes.jpg"/>
 			<p> image editing & retouching </p>
+			</div>
+			</a>
 		</div>
 	
 	</div>
@@ -295,15 +96,15 @@
 <div class="socials">
 
 	<a href="https://www.instagram.com/oscar_saharoy/"> 
-		<img src="https://raw.githubusercontent.com/OscarSaharoy/OscarSaharoy.github.io/master/assets/insta.png"> 
+		<img src="insta.png"> 
 	</a>
 	
 	<a href="https://github.com/OscarSaharoy/">
-		<img src="https://raw.githubusercontent.com/OscarSaharoy/OscarSaharoy.github.io/master/assets/github.png">
+		<img src="github.png">
 	</a>
 	
 	<a href="https://www.flickr.com/photos/166271027@N06/">
-		<img src="https://raw.githubusercontent.com/OscarSaharoy/OscarSaharoy.github.io/master/assets/flickr.png">
+		<img src="flickr.png">
 	</a>
 
 </div>
@@ -311,7 +112,7 @@
 <h2> contact </h2>
 <p> osaharoy@gmail.com </p>
 <p> 07803503970 </p>
-<p> site design oasis creative 2018 </p>
+<p> site design oscar saharoy 2018 </p>
 
 </footer>
 
