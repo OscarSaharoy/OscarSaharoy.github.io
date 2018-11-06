@@ -155,7 +155,7 @@ html {
 footer {
         background-color: #33ccee;
         display: grid;
-        grid-template: 100% / 1fr;
+        grid-template: 1fr / 100%;
         justify-items: center;
         padding: 1rem 1rem;
 }
