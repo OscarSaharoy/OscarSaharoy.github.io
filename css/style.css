@@ -16,31 +16,84 @@ html {
         position: fixed;
         top: 0;
         width: 100%;
-        height: 4.5rem;
-        z-index: 1;
+        height: 4rem;
+        z-index: 2;
 }
 
 .banner .logo {
         height: 5rem;
         width: auto;
-        margin: 0.5rem 0rem;
         position: absolute;
+        top: -0.6rem;
+        left: 0.6rem;
 }
 
-.banner .hamburger {
-        font-size: 3rem;
-        font-weight: 700;
+.hamburger {
         display: block;
-        text-decoration: none;
-        color: white;
         background-color: #33ccee;
-        padding: 0.7rem 1rem;
-        position: absolute;
+        position: fixed;
         right: 1rem;
+        z-index: 4;
+}
+
+.hamburger img {
+        height: 6rem;
+        width: auto;
+}
+
+#menu {
+        width: 20rem;
+        height: 100%;
+        position: fixed;
+        z-index: 3;
+
+        background-color: white;
+        box-shadow: 0 0 0rem 4000px rgba(0,0,0,0);
+
+        right: -20.5rem;
+        transition: right 0.35s, box-shadow 0.35s;
+        transition-timing-function: ease-in-out;
+}
+
+#menu .links {
+        display: grid;
+        grid-template: 1fr / 1fr;
+        grid-auto-flow: row;
+        justify-content: center;
+}
+
+#menu .title {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin: 1rem 8rem 1rem 2rem;
+        font-family: "Josefin Sans";
+        border-bottom: 0.1rem solid black;
+        padding: 0.5rem 2rem;
+}
+
+#menu a {
+        font-size: 2rem;
+        padding: 0.5rem 2rem;
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        border-left: 0rem solid transparent;
+        color: black;
+        font-weight: 200;
+        transition: padding-left 0.5s, border-left 0.5s;
+}
+
+#menu a:hover {
+        text-decoration-color: transparent;
+        border-left: 0.25rem solid #33ccee;
+        padding-left: 2.25rem;
+}
+
+#menu .filler {
+        height: 0.5rem;
 }
 
 .filler {
-        height: 5.5rem;
+        height: 4rem;
 }
 
 .logo {
@@ -155,7 +208,7 @@ html {
 footer {
         background-color: #33ccee;
         display: grid;
-        grid-template: 1fr / 100%;
+        grid-template: 1fr / 1fr;
         justify-items: center;
         padding: 1rem 1rem;
 }
