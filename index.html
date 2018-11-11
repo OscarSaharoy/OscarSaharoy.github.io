@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html id="whole">
 
 <head>
 	<title> oasis creative </title>
@@ -20,11 +20,36 @@
 
 	<img class="logo" src="assets/oasis-logo-long.png">
 
-	<a href="#" class="hamburger"> ☰ </a>
-		
 </div>
 
-<div class="filler" id="home"> </div>
+
+<a href="javascript:void(0)">
+<div class="hamburger" onclick="toggleMenu()">
+	<img id="menuIcon" src="assets/hamburger.png">
+</div>
+</a>
+
+<div id="menu">
+
+	<script src="scripts/menu.js"> </script>
+
+	<div class="links">
+
+		<p class="title"> Menu </p>
+	
+		<a href="#"> item1 </a>
+		<a href="#"> item2 </a>
+		<a href="#"> item3 </a>
+		<a href="#"> item4 </a>
+		<a href="#"> item5 </a>
+		<a href="#"> item6 </a>
+
+	</div>
+
+</div>
+
+
+<div class="filler"> </div>
 
 <img class='logo' src="assets/oasis-logo.png">
 
@@ -35,7 +60,7 @@
 	<div class="services">
 
 		<div class="service">
-			<a href="branding.html">
+            <a href="branding.html">
 			<div class="img-holder">
 				<img src="assets/handprint.jpg"/>
 				<p> branding </p>
@@ -44,7 +69,7 @@
 		</div>
 		
 		<div class="service">
-			<a href="advertising.html">
+            <a href="advertising.html">
 			<div class="img-holder">
 				<img src="assets/adverts.jpg"/>
 				<p> advertising </p>
@@ -53,7 +78,7 @@
 		</div>
 		
 		<div class="service">
-			<a href="social.html">
+            <a href="social.html">
 			<div class="img-holder">
 				<img src="assets/social.jpg"/>
 				<p> social media marketing </p>
@@ -62,7 +87,7 @@
 		</div>
 		
 		<div class="service">
-			<a href ="website.html">
+            <a href ="website.html">
 			<div class="img-holder">
 				<img src="assets/website.jpg"/>
 				<p> website design </p>
@@ -71,7 +96,7 @@
 		</div>
 		
 		<div class="service">
-			<a href="image.html">
+            <a href="image.html">
 			<div class="img-holder">
 				<img src="assets/brushes.jpg"/>
 				<p> image editing & retouching </p>
