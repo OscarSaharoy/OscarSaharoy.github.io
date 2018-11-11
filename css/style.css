@@ -232,6 +232,7 @@ footer p {
         display: grid;
         grid-template: 2rem / repeat(3, 2rem);
         justify-items: center;
+        justify-content: center;
         grid-auto-flow: column;
         column-gap: 2rem;
 }
