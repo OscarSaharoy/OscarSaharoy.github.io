@@ -149,6 +149,7 @@ html {
         width: 40rem;
         max-width: 80%;
         margin: 0 auto;
+        margin-bottom: 2rem;
 }
 
 .main h1 {
