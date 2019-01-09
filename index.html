@@ -3,14 +3,16 @@
 <html id="whole">
 
 <head>
-	<title> oasis creative </title>
+	<title> Oscar Saharoy </title>
 	
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 	<link rel="stylesheet" href="css/style.css">
 	
-	<link rel="icon" href="assets/palm.ico">
+	<link rel="icon" href="assets/favicon.ico">
     
 </head>
 
@@ -18,7 +20,13 @@
 
 <div class="banner">
 
-	<img class="logo" src="assets/oasis-logo-long.png">
+	<a href="index.html" class='transparent'>
+	<img class="logo" src="assets/OSlong.png">
+	</a>
+	
+	<a href="#top"> <p> Projects </p> </a>
+	<a href="#about"> <p> About </p> </a>
+	<a href="#contact"> <p> Contact </p> </a>
 
 </div>
 
@@ -37,93 +45,91 @@
 
 		<p class="title"> Menu </p>
 	
-		<a href="#"> item1 </a>
-		<a href="#"> item2 </a>
-		<a href="#"> item3 </a>
-		<a href="#"> item4 </a>
-		<a href="#"> item5 </a>
-		<a href="#"> item6 </a>
+		<a href="#top" oncLick='toggleMenu()'> Projects </a>
+		<a href="#about" oncLick='toggleMenu()'> About </a>
+		<a href="#contact" oncLick='toggleMenu()'> Contact </a>
 
 	</div>
 
 </div>
 
 
-<div class="filler"> </div>
-
-<img class='logo' src="assets/oasis-logo.png">
+<div class="filler" id='top'> </div>
 
 <div class="main">
-	
-	<h2> services </h2>
-	
-	<div class="services">
 
-		<div class="service">
-            <a href="branding.html">
-			<div class="img-holder">
-				<img src="assets/handprint.jpg"/>
-				<p> branding </p>
-			</div>
-			</a>
+	<img class='logo' src="assets\OSyinyang.jpg">
+
+	<div class="projects">
+
+		<a href='#'>
+		<div class='project'>
+			<img src='assets/YEG.jpg'>
+			<h2 class='caption'> YEG Music </h2>
 		</div>
-		
-		<div class="service">
-            <a href="advertising.html">
-			<div class="img-holder">
-				<img src="assets/adverts.jpg"/>
-				<p> advertising </p>
-			</div>
-			</a>
+		</a>
+
+		<a href='#'>
+		<div class='project'>
+			<img src='assets/animals1.jpg'>
+			<h2 class='caption'> Animals </h2>
 		</div>
-		
-		<div class="service">
-            <a href="social.html">
-			<div class="img-holder">
-				<img src="assets/social.jpg"/>
-				<p> social media marketing </p>
-			</div>
-			</a>
+		</a>
+
+		<a href='#'>
+		<div class='project'>
+			<img src='assets/drainaid.jpg'>
+			<h2 class='caption'> Drain Aid </h2>
 		</div>
-		
-		<div class="service">
-            <a href ="website.html">
-			<div class="img-holder">
-				<img src="assets/website.jpg"/>
-				<p> website design </p>
-			</div>
-			</a>
+		</a>
+
+		<a href='#'>
+		<div class='project'>
+			<img src='assets/bladewing_foundry.jpg'>
+			<h2 class='caption'> Bladewing Foundry </h2>
 		</div>
-		
-		<div class="service">
-            <a href="image.html">
-			<div class="img-holder">
-				<img src="assets/brushes.jpg"/>
-				<p> image editing & retouching </p>
-			</div>
-			</a>
+		</a>
+
+		<a href='#'>
+		<div class='project'>
+			<img src='assets/impossiblecreations_short.jpg'>
+			<h2 class='caption'> Impossible Creations </h2>
 		</div>
-	
+		</a>
+
+		<script language="JavaScript" type="text/javascript" src='scripts/hover.js'> </script>
+
 	</div>
-	
-	<h2> about us </h2>
-	
-	<p> oasis creative is a london based design house providing services from graphics 
-	and branding to complete website contruction at an affordable price. 
-	feel free to browse our portfolio and contact us to see what we can do for you. </p>
 
 </div>
 
-<footer id="contact">
+
+<div class='about' id='about'>
+
+	<div class='center'>
+
+		<h2> about </h2>
+
+		<p> I'm Oscar, I'm a graphic design student from London. </p>
+		<p> I love designing, branding and making anything creative, so please reach out if you'd like help with something! </p>
+		<p> I can also do things a little cheaper than other people might be able to... </p>
+		<p> Email me at osaharoy@gmail.com :) </p>
+
+	</div>
+
+</div>
+
+
+<footer>
 
 <div class="socials">
-
-	<a href="https://www.instagram.com/oscar_saharoy/"> 
-		<img src="assets/insta.png"> 
-	</a>
 	
 	<a href="https://github.com/OscarSaharoy/">
 		<img src="assets/github.png">
+	</a>
+
+	<a href="https://www.instagram.com/oscar_saharoy/"> 
+		<img src="assets/insta.png"> 
 	</a>
 	
 	<a href="https://www.flickr.com/photos/166271027@N06/">
@@ -132,10 +138,13 @@
 
 </div>
 
-<h2> contact </h2>
+<h2 id='contact'> contact </h2>
+<p> all inquiries welcome: </p>
 <p> osaharoy@gmail.com </p>
 <p> 07803503970 </p>
-<p> site design oasis creative 2018 </p>
+<p> site design oscar saharoy 2018 </p>
+
+<div class='filler'> </div>
 
 </footer>
 

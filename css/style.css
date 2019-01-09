@@ -10,8 +10,9 @@ html {
         font-family: "Open Sans", sans-serif;
 }
 
+
 .banner {
-        background-color: white;
+        background-color: black;
         box-shadow: 0 0 1rem -0.3rem;
         position: fixed;
         top: 0;
@@ -21,29 +22,66 @@ html {
 }
 
 .banner .logo {
-        height: 5rem;
+        height: 3rem;
+        margin: 0.5rem 1rem;
         width: auto;
-        position: absolute;
-        top: -0.6rem;
-        left: 0.6rem;
+        float: left;
+        grid-column: 1;
+}
+
+.banner .transparent {
+        background-color: transparent;
+}
+
+.banner a {
+        display: inline-block;
+        text-decoration: none;
+}
+
+.banner a:hover {
+        text-decoration: underline;
+        text-decoration-color: #30b3ac;
+}
+
+.banner p {
+        font-weight: 400;
+        color: white;
+        font-size: 1.5rem;
+        color: white;
+        margin: 0 2rem;
+        position: relative;
+        top: -1.3rem;
+        display: none;
 }
 
 .hamburger {
         display: block;
-        background-color: #33ccee;
+        background-color: #30b3ac;
         position: fixed;
         right: 1rem;
         z-index: 4;
 }
 
+
+@media only screen and (min-width: 768px) {
+        .banner p {
+                display: block;
+        }
+
+        .hamburger {
+                display: none;
+        }
+}
+
+
 .hamburger img {
-        height: 6rem;
+        height: 5rem;
         width: auto;
 }
 
 #menu {
         width: 20rem;
-        height: 100%;
+        fheight: 100%;
         position: fixed;
         z-index: 3;
 
@@ -60,6 +98,7 @@ html {
         grid-template: 1fr / 1fr;
         grid-auto-flow: row;
         justify-content: center;
+        margin-bottom: 2rem;
 }
 
 #menu .title {
@@ -84,7 +123,7 @@ html {
 
 #menu a:hover {
         text-decoration-color: transparent;
-        border-left: 0.25rem solid #33ccee;
+        border-left: 0.25rem solid #30b3ac;
         padding-left: 2.25rem;
 }
 
@@ -92,22 +131,23 @@ html {
         height: 0.5rem;
 }
 
+
 .filler {
         height: 4rem;
 }
 
-.logo {
-        display: block;
-        width: 100%;
-        max-width: 60rem;
-        margin: 0 auto;
-}
 
 .main {
-        width: 100%;
-        max-width: 45rem;
         display: grid;
         grid-template: 1fr / 1fr;
+        margin: 2rem 2rem;
+}
+
+.main .logo {
+        display: block;
+        height: auto;
+        width: 40rem;
+        max-width: 80%;
         margin: 0 auto;
 }
 
@@ -125,11 +165,11 @@ html {
 
 .main h2 {
         font-family: 'Open Sans', sans-serif;
-        font-weight: 200;
-        font-size: 1.8rem;
+        font-weight: 100;
+        font-size: 2.5rem;
         margin: 1rem 0rem;
         text-decoration: underline;
-        text-decoration-color: #33ccee;
+        text-decoration-color: #30b3ac;
 }
 
 .main a {
@@ -138,8 +178,8 @@ html {
         font-size: 1rem;
         margin: 0.5rem auto;
         text-decoration: underline;
-        text-decoration-color: #33ccee;
-        color: #33ccee;
+        text-decoration-color: #30b3ac;
+        color: #30b3ac;
 }
 
 .main p {
@@ -152,61 +192,104 @@ html {
 }
 
 
-.services {
-        width: 100%;
+.projects {
         display: grid;
-        grid-template-rows: 1fr;
+        grid-template: 1fr / repeat(2, 1fr);
         grid-gap: 1rem;
-        margin: 1rem auto;
+        align-items: center;
 }
 
-.service {
-        border-left: 0.3rem solid black;
-        position: relative;
-        top: 0;
+@media only screen and (min-width: 768px) {
+        .projects {
+                grid-template: 1fr / repeat(3, 1fr);
+        }
+
 }
 
-.img-holder {
+@media only screen and (min-width: 1200px) {
+        .projects {
+                grid-template: 1fr / repeat(4, 1fr);
+        }
+
+}
+
+@media only screen and (min-width: 2000px) {
+        .projects {
+                grid-template: 1fr / repeat(5, 1fr);
+        }
+
+}
+
+.projects .project {
         overflow: hidden;
-        height: 5rem;
-        transition: height 0.4s;
-        transition-timing-function: cubic-bezier(.58,.12,.47,1);
+        height: auto;
+        display: inline-block;
 }
 
-.img-holder:hover {
-        height: 8rem;
-}
-
-.service img {
+.projects img {
         width: 100%;
+        height: auto;
         display: block;
-        margin: auto 0;
-        background-color: #33ccee;
 }
 
-.service p {
-        font-family: "Josefin Sans";
+.projects a {
+        margin: 0;
+        text-decoration: none;
+        color: black;
+}
+
+.projects h2 {
+        margin: 0;
+        margin-top: -2rem;
         font-weight: 600;
-        font-size: 1.3rem;
-        color: white;
-        background-color: black;
-        padding: 0rem 0.5rem;
-        margin: 0 0;
-        position: absolute;
-        bottom: 0rem;
-        left: 1rem;
+        font-size: 2rem;
+        font-family: "Josefin Sans";
+        text-decoration: none;
+        position: relative;
+        top: 6rem;
+        transition: top 0.4s ease;
+        background-color: rgba(48,179,172,0.5);
+        display: inline-block;
 }
 
-.fill {
-        height: 5rem;
-        width: 100%;
-        background-color: green;
-        color: green;
+.projects p {
+        margin: 0;
+        margin-left: 1rem;
+        font-size: 1.5rem;
+}
+
+
+.about {
+        background-color: rgba(48,179,172,0.2);
+}
+
+.about .center {
+        width: 60rem;
+        max-width: 80%;
+        margin: 0 auto;
+        padding: 2rem 0;
+}
+
+.about h2 {
+        color: black;
+        font-family: "Josefin Sans";
+        font-size: 3rem;
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: #30b3ac;
+}
+
+.about p {
+        color: black;
+        font-family: "Open Sans";
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 1rem 1rem;
 }
 
 
 footer {
-        background-color: #33ccee;
+        background-color: black;
         display: grid;
         grid-template: 1fr / 1fr;
         justify-items: center;
@@ -216,13 +299,15 @@ footer {
 footer h2 {
         color: white;
         font-family: "Josefin Sans";
-        font-size: 1.3rem;
+        font-size: 2rem;
         font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: #30b3ac;
 }
 
 footer p {
         color: white;
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-weight: 200;
         margin: 0 auto; 
 }
@@ -231,7 +316,7 @@ footer p {
         width: 100%;
         margin-bottom: 1rem;
         display: grid;
-        grid-template: 2rem / repeat(3, 2rem);
+        grid-template: 3rem / repeat(3, 3rem);
         justify-items: center;
         justify-content: center;
         grid-auto-flow: column;
@@ -240,6 +325,12 @@ footer p {
 
 .socials img {
         display: block;
-        height: 2rem;
-        width: 2rem;
+        height: 3rem;
+        width: 3rem;
+        background-color: white;
+        transition: background-color 0.3s;
+}
+
+.socials img:hover {
+        background-color: #30b3ac;
 }
