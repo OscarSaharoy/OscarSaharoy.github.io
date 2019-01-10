@@ -10,7 +10,6 @@ html {
         font-family: "Open Sans", sans-serif;
 }
 
-
 .banner {
         background-color: black;
         box-shadow: 0 0 1rem -0.3rem;
@@ -81,7 +80,6 @@ html {
 
 #menu {
         width: 20rem;
-        fheight: 100%;
         position: fixed;
         z-index: 3;
 
@@ -136,20 +134,43 @@ html {
         height: 4rem;
 }
 
+.marker {
+        position: relative;
+        top: -7rem;
+}
+
+
+#background-container {
+        width: 100%;
+        height: 1000px;
+        background: url(../assets/background.jpg) no-repeat center center fixed;
+        background-size: cover;
+
+        display: grid;
+        grid-template: 20% 1fr 20% / 10% 1fr 10%;
+        align-items: center;
+        justify-items: center;
+
+        box-shadow: inset 0 0 3rem -1rem rgba(0,0,0,0.3);
+}
+
+#background-container .logo {
+        grid-column: 2;
+        grid-row: 2;
+
+        display: block;
+        width:100%;
+        height: 100%;
+        object-fit: contain;
+        background-color: transparent;
+}
+
 
 .main {
         display: grid;
         grid-template: 1fr / 1fr;
         margin: 2rem 2rem;
-}
-
-.main .logo {
-        display: block;
-        height: auto;
-        width: 40rem;
-        max-width: 80%;
-        margin: 0 auto;
-        margin-bottom: 2rem;
+        background-color: white;
 }
 
 .main h1 {
@@ -165,10 +186,10 @@ html {
 }
 
 .main h2 {
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 100;
-        font-size: 2.5rem;
-        margin: 1rem 0rem;
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 600;
+        font-size: 3rem;
+        margin: 2rem 2rem;
         text-decoration: underline;
         text-decoration-color: #30b3ac;
 }
@@ -249,7 +270,7 @@ html {
         position: relative;
         top: 6rem;
         transition: top 0.4s ease;
-        background-color: rgba(48,179,172,0.5);
+        background-color: rgba(48,179,172,0.2);
         display: inline-block;
 }
 
