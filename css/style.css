@@ -159,9 +159,8 @@ html {
 
 #background-container {
         width: 100%;
-        height: 1000px;
-        lbackground: url(../assets/background.jpg) no-repeat center center fixed;
-        background-size: cover;
+        height: 2000px;
+        transition: height 0.5s;
 
         display: grid;
         grid-template: 20% 1fr 20% / 10% 1fr 10%;
@@ -169,6 +168,7 @@ html {
         justify-items: center;
 
         box-shadow: inset 0 0 3rem -1rem rgba(0,0,0,0.3);
+
 }
 
 #background-container .logo {
