@@ -294,7 +294,7 @@ html {
         position: relative;
         top: 6rem;
         transition: top 0.4s ease;
-        background-color: rgba(48,179,172,0.2);
+        background-color: #d6f0ee;
         display: inline-block;
 }
 
@@ -306,7 +306,7 @@ html {
 
 
 .about {
-        background-color: rgba(48,179,172,0.2);
+        background-color: #d6f0ee;
 }
 
 .about .center {
