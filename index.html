@@ -8,7 +8,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 	<link rel="stylesheet" href="css/style.css">
 	
@@ -16,7 +16,11 @@
     
 </head>
 
-<body>
+
+<body onload="set_size()" onresize="set_size()">
+
+<script src='scripts/background_size.js'> </script>
+
 
 <div class="banner">
 
@@ -24,7 +28,7 @@
 	<img class="logo" src="assets/OSlong.png">
 	</a>
 	
-	<a href="#top"> <p> Projects </p> </a>
+	<a href="#projects"> <p> Projects </p> </a>
 	<a href="#about"> <p> About </p> </a>
 	<a href="#contact"> <p> Contact </p> </a>
 
@@ -45,7 +49,7 @@
 
 		<p class="title"> Menu </p>
 	
-		<a href="#top" oncLick='toggleMenu()'> Projects </a>
+		<a href="#projects" oncLick='toggleMenu()'> Projects </a>
 		<a href="#about" oncLick='toggleMenu()'> About </a>
 		<a href="#contact" oncLick='toggleMenu()'> Contact </a>
 
@@ -54,11 +58,20 @@
 </div>
 
 
-<div class="filler" id='top'> </div>
+<div id='background-container'>
+
+	<img class='logo' src="assets/OSyinyang1.png">
+
+</div>
+
+
+<div class="white-background">
 
 <div class="main">
 
-	<img class='logo' src="assets\OSyinyang.jpg">
+	<span class='marker' id="projects"> </span>
+
+	<h2> projects </h2>
 
 	<div class="projects">
 
@@ -104,47 +117,53 @@
 </div>
 
 
-<div class='about' id='about'>
+<div class='about'>
 
 	<div class='center'>
 
+		<span class='marker' id="about"> </span>
+
 		<h2> about </h2>
 
-		<p> I'm Oscar, I'm a graphic design student from London. </p>
-		<p> I love designing, branding and making anything creative, so please reach out if you'd like help with something! </p>
-		<p> I can also do things a little cheaper than other people might be able to... </p>
-		<p> Email me at osaharoy@gmail.com :) </p>
+		<p> I'm Oscar, I'm an Engineering student from London. </p>
+		<p> I love design, branding and anything creative, so please reach out if you'd like help with something! </p>
+		<p> Email me at osaharoy@gmail.com </p>
 
 	</div>
 
 </div>
 
 
+</div> <!-- white-background -->
+
+
 <footer>
 
-<div class="socials">
+	<div class="socials">
+		
+		<a href="https://github.com/OscarSaharoy/">
+			<img src="assets/github.png">
+		</a>
 	
-	<a href="https://github.com/OscarSaharoy/">
-		<img src="assets/github.png">
-	</a>
-
-	<a href="https://www.instagram.com/oscar_saharoy/"> 
-		<img src="assets/insta.png"> 
-	</a>
+		<a href="https://www.instagram.com/oscar_saharoy/"> 
+			<img src="assets/insta.png"> 
+		</a>
+		
+		<a href="https://www.flickr.com/photos/166271027@N06/">
+			<img src="assets/flickr.png">
+		</a>
 	
-	<a href="https://www.flickr.com/photos/166271027@N06/">
-		<img src="assets/flickr.png">
-	</a>
-
-</div>
-
-<h2 id='contact'> contact </h2>
-<p> all inquiries welcome: </p>
-<p> osaharoy@gmail.com </p>
-<p> 07803503970 </p>
-<p> site design oscar saharoy 2018 </p>
-
-<div class='filler'> </div>
+	</div>
+	
+	<span class='marker' id="contact"> </span>
+	
+	<h2 id='contact'> contact </h2>
+	<p> all inquiries welcome: </p>
+	<p> osaharoy@gmail.com </p>
+	<p> 07803503970 </p>
+	<p> site design oscar saharoy 2018 </p>
+	
+	<div class='filler'> </div>
 
 </footer>
 
