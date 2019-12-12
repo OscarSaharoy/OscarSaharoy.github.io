@@ -1,0 +1,218 @@
+/* Heron Creative 2019 */
+
+* {
+    margin: 0 0;
+    padding: 0 0;
+}
+
+:root {
+    font-size: 100%;
+    font-family: "Lato", sans-serif;
+}
+
+html {
+}
+
+.body {
+}
+
+button:focus {
+    outline:0;
+}
+
+.white-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 1;
+    transition: opacity 2.5s;
+    z-index: 12;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1.5s;
+}
+
+.background {
+    position: relative;
+    top: 0;
+    height: 100vh;
+    z-index: 9;
+    background-image: linear-gradient(to top right, #FCEAA1, white);
+}
+
+#canvas {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.background-container {
+    position: relative;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    transition: left 1s;
+    transition-timing-function: ease-out;
+}
+
+.slogan-container {
+    align-self: end;
+    display: grid;
+    margin-right: 2rem;
+}
+
+.slogan {
+    font-size: 2rem;
+    color: #111111;
+    background: rgba(255,255,255,0.75);
+    padding: 1.5rem;
+    padding-left: 2.5rem;
+    margin-right: auto;
+}
+
+.get-started {
+    margin: 2.5rem;
+    margin-left: 7rem;
+    background-color: white;
+    border: 3px solid #c8ab37;
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: Lato;
+    color: #111111;
+    height: 7rem;
+    width: 18rem;
+    align-self: end;
+}
+
+.topbar {
+    position: fixed;
+    top: 0;
+    display: grid;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: white;
+    z-index: 11;
+}
+
+.topgrid {
+    display: inline-grid;
+    justify-content: space-between;
+    grid-gap: 1vmin;
+}
+
+.hamburger {
+    justify-self: left;
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+    height: 6rem;
+    display: block;
+    z-index: 14;
+}
+
+.topname {
+    justify-self: left;
+    align-self: center;
+    grid-row: 1;
+    grid-column: 2;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 1.1rem;
+    text-decoration: none;
+    color: #c8ab37;
+}
+
+.toplogo {
+    display: block;
+    grid-row: 1;
+    grid-column: 3;
+    height: 5rem;
+    justify-self: right;
+    align-self: center;
+    margin-right: 0.5rem;
+}
+
+.lock-scroll {
+    overflow: hidden;
+}
+
+.menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 10;
+    top: 6rem;
+    left: 0;
+    background-color: #FEE998;
+    overflow-x: hidden;
+    transition: 0.22s;
+    transition-timing-function: ease-in-out;
+    display: grid;
+    justify-content: center;
+    align-content: start;
+    padding-top: 5rem;
+}
+
+.menu a {
+    padding: 1vmin 0;
+    text-decoration: none;
+    font-size: 4vmin;
+    font-weight: normal;
+    color: #2C1A00;
+    display: block;
+    transition: 0.22s;
+    letter-spacing: 0.1vmin;
+    justify-self: center;
+}
+
+.menu a:hover{
+    color: #c8ab37;
+}
+
+.footer_container { 
+    background-color: white;
+    display: grid;
+    justify-items: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding-bottom: 2vh; 
+    padding-top: 2vh;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer p {
+    color: #111111;
+    display: grid;
+    justify-content: center;
+    justify-self: center;
+}
+
+.socials {
+    width: 100%;
+    margin-top: 2vh;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template: 3rem / repeat(3, 3rem);
+    justify-items: center;
+    justify-content: center;
+    grid-auto-flow: column;
+    column-gap: 2rem;
+}
+
+.socials img {
+    display: block;
+    height: 3rem;
+    width: 3rem;
+    background-color: #111111;
+    transition: background-color 0.3s;
+}
+
+.socials img:hover {
+    background-color: #c8ab37;
+}

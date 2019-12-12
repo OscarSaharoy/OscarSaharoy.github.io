@@ -1,172 +1,230 @@
 <!DOCTYPE html>
 
-<html id="whole">
+<html>
 
 <head>
-	<title> Oscar Saharoy </title>
+	<title> Heron Creative </title>
 	
-	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<link href="css/style1.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="css/style.css">
+	<link href="css/hamburgers.css" rel="stylesheet">
 	
-	<link rel="icon" href="assets/favicon.ico">
-    
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+	<link rel="manifest" href="assets/site.webmanifest">
+	<link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="assets/favicon.ico">
+	<meta name="msapplication-TileColor" content="#00aba9">
+	<meta name="msapplication-config" content="assets/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
+	
 </head>
 
 
-<body onload="set_size()" onresize="set_size()">
+<body class="body" onload="loaded()">
 
-<script src='scripts/background_size.js'> </script>
+	<div class="fade-in">
 
+	<div class="menu">
+		<a href="#">About Us</a>
+		<a href="#">Services</a>
+		<a href="#">Portfolio</a>
+		<a href="#">Contact Us</a>
+	</div>
 
-<div class="banner">
+	<div class="topbar">
 
-	<a href="index.html" class='transparent'>
-	<img class="logo" src="assets/OSlong.png">
-	</a>
+		<div class="topgrid">
+
+		<button class="hamburger hamburger--spin" type="button">
+		 <span class="hamburger-box">
+			<span class="hamburger-inner"></span>
+		 </span>
+		</button>
+
+		<script>
+
+			var menu_open = false;
+			var hamburger = document.querySelector(".hamburger");
+			var body      = document.querySelector(".body");
+			var slider    = document.querySelector(".background-container")
+			var startlogo = document.querySelector(".startlogo")
+			
+			hamburger.addEventListener("click", function() {
+				hamburger.classList.toggle("is-active");
+				body.classList.toggle("lock-scroll");
+				(menu_open ? close_menu() : open_menu());
+				menu_open = !menu_open;
+			});
+
+			function open_menu() {
+				document.querySelector(".menu").style.width = "100%";
+			}
+
+			function close_menu() {
+				document.querySelector(".menu").style.width = "0";
+			}
+
+			function loaded() {
+				document.querySelector(".background-container").style.left = "0";
+				document.querySelector(".fade-in").style.opacity = "1";
+			}
+
+		</script>
+
+		<a href="https://www.heroncreative.co.uk" class="topname"> <p>HERON CREATIVE</p> </a>
+
+		<a href="https://www.heroncreative.co.uk" class="toplogo"> <img src="assets/flowRoot77.png" alt="logo" class="toplogo"/> </a>
+
+		</div>
+
+	</div>
+
+	<div class="background"> 
+
+		<canvas id="canvas" width="700" height="1300"> </canvas>
+
+		<script>
+
+		(function () {
+
+			var c    = document.getElementById("canvas");
+			var h    = c.offsetHeight;
+			var w    = c.offsetWidth;
+			c.height = h;
+			c.width  = w;
+			var ctx  = c.getContext("2d");
+
+			var d    = 25;
+			var ny   = Math.ceil(h/d);
+			var nx   = Math.ceil(w/d);
+
+			var th   = 0;
+			var mx   = 0;
+			var my   = 0;
+
+			function resize() {
+				h        = c.offsetHeight;
+				w        = c.offsetWidth;
+				c.height = h;
+				c.width  = w;
+				ny       = Math.ceil(h/d);
+				nx       = Math.ceil(w/d);
+			}
+
+			
+			function mouseMove(e) {
+				var posx = posy = 0;
+				if (e.pageX || e.pageY) {
+					posx = e.pageX;
+					posy = e.pageY;
+				}
+				else if (e.clientX || e.clientY)    {
+					posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+					posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+				}
+				mx = posx;
+				my = posy;
+			}
+
+			 
+			window.addEventListener('resize', resize);
+			window.addEventListener('mousemove', mouseMove);
+
+			function animate() {
+
+				ctx.clearRect(0,0,w,h);
+				ctx.fillStyle = 'rgba(200,171,55,0.5)';
+
+				var x, y, dx, dy, dm, th1, th2;
+
+				th1 = th;
+
+				for(i=0; i<ny; i++) {
+
+					th2 = th1;
+					th1 += 0.3;
+
+					for(j=0; j<nx; j++) {
+
+						x  = j*d + 5*Math.cos(th2);
+						y  = i*d + 5*Math.sin(th2);
+
+						dx = x - mx;
+						dy = y - my;
+
+						dm = Math.sqrt(dx*dx + dy*dy);
+						x += 0.75 * dx * Math.pow(2, -(0.00008*dm*dm));
+						y += 0.75 * dy * Math.pow(2, -(0.00008*dm*dm));
+
+						ctx.beginPath();
+						ctx.arc(x, y, 2.5, 0, 2 * Math.PI, false);
+						ctx.fill();
+
+						th2 += 0.3
+					}
+				}
+
+				th += 0.05;
+				requestAnimationFrame(animate);
+			}
+
+			animate();
+
+		})();
+
+		</script>
+
+		<div class="background-container">
+
+			<div class="slogan-container">
+
+			<p class="slogan"> 
+			Stunning design. Delivered. <br>
+			Communicate directly with your designer. <br>
+			All for a reasonable price.
+			</p>
+
+			<button class="get-started"> Get Started </button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<footer class="footer_container">
+
+		<p class="footer"> Email | <a href="mailto:office@heroncreative.co.uk"> office@heroncreative.co.uk </a> </p>
+		<p class="footer"> Call or Text | 07860940769 </p>
 	
-	<a href="#projects"> <p> Projects </p> </a>
-	<a href="#about"> <p> About </p> </a>
-	<a href="#contact"> <p> Contact </p> </a>
-
-</div>
-
-
-<a href="javascript:void(0)">
-<div class="hamburger" onclick="toggleMenu()">
-	<img id="menuIcon" src="assets/hamburger.png">
-</div>
-</a>
-
-<div id="menu">
-
-	<script src="scripts/menu.js"> </script>
-
-	<div class="links">
-
-		<p class="title"> Menu </p>
-	
-		<a href="#projects" oncLick='toggleMenu()'> Projects </a>
-		<a href="#about" oncLick='toggleMenu()'> About </a>
-		<a href="#contact" oncLick='toggleMenu()'> Contact </a>
-
-	</div>
-
-</div>
-
-
-<div id='background-container'>
-
-	<img class='logo' src="assets/OSyinyang1.png">
-
-</div>
-
-
-<div class="white-background">
-
-<div class="main">
-
-	<span class='marker' id="projects"> </span>
-
-	<h2> projects </h2>
-
-	<div class="projects">
-
-		<a href='#'>
-		<div class='project'>
-			<img src='assets/YEG.jpg'>
-			<h2 class='caption'> YEG Music </h2>
-		</div>
-		</a>
-
-		<a href='#'>
-		<div class='project'>
-			<img src='assets/animals1.jpg'>
-			<h2 class='caption'> Animals </h2>
-		</div>
-		</a>
-
-		<a href='#'>
-		<div class='project'>
-			<img src='assets/drainaid.jpg'>
-			<h2 class='caption'> Drain Aid </h2>
-		</div>
-		</a>
-
-		<a href='#'>
-		<div class='project'>
-			<img src='assets/bladewing_foundry.jpg'>
-			<h2 class='caption'> Bladewing Foundry </h2>
-		</div>
-		</a>
-
-		<a href='#'>
-		<div class='project'>
-			<img src='assets/impossiblecreations_short.jpg'>
-			<h2 class='caption'> Impossible Creations </h2>
-		</div>
-		</a>
-
-		<script language="JavaScript" type="text/javascript" src='scripts/hover.js'> </script>
-
-	</div>
-
-</div>
-
-
-<div class='about'>
-
-	<div class='center'>
-
-		<span class='marker' id="about"> </span>
-
-		<h2> about </h2>
-
-		<p> I'm Oscar, I'm an Engineering student from London. </p>
-		<p> I love design, branding and anything creative, so please reach out if you'd like help with something! </p>
-		<p> Email me at osaharoy@gmail.com </p>
-
-	</div>
-
-</div>
-
-
-</div> <!-- white-background -->
-
-
-<footer>
-
-	<div class="socials">
+		<div class="socials">
 		
-		<a href="https://github.com/OscarSaharoy/">
-			<img src="assets/github.png">
-		</a>
-	
-		<a href="https://www.instagram.com/oscar_saharoy/"> 
-			<img src="assets/insta.png"> 
-		</a>
+			<a href="instagram"> 
+				<img src="assets/insta.png"> 
+			</a>
+			
+			<a href="linkedin">
+				<img src="assets/linkedin.png">
+			</a>
+
+			<a href="facebook">
+				<img src="assets/facebook.png">
+			</a>
 		
-		<a href="https://www.flickr.com/photos/166271027@N06/">
-			<img src="assets/flickr.png">
-		</a>
-	
+		</div>
+
+		<p class="footer"> Site Design © Heron Creative 2019 </p>
+
+	</footer>
+
 	</div>
 	
-	<span class='marker' id="contact"> </span>
-	
-	<h2 id='contact'> contact </h2>
-	<p> all inquiries welcome: </p>
-	<p> osaharoy@gmail.com </p>
-	<p> 07803503970 </p>
-	<p> site design oscar saharoy 2018 </p>
-	
-	<div class='filler'> </div>
-
-</footer>
-
 </body>
 
 </html>
