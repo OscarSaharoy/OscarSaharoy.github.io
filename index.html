@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title> Heron Creative </title>
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+	<link href="css/style1.css" rel="stylesheet">
+
+	<link href="css/hamburgers.css" rel="stylesheet">
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+	<link rel="manifest" href="assets/site.webmanifest">
+	<link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="assets/favicon.ico">
+	<meta name="msapplication-TileColor" content="#00aba9">
+	<meta name="msapplication-config" content="assets/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
+	
+</head>
+
+
+<body class="body" onload="loaded()">
+
+	<div class="fade-in">
+
+	<div class="menu">
+		<a href="#">About Us</a>
+		<a href="#">Services</a>
+		<a href="#">Portfolio</a>
+		<a href="#">Contact Us</a>
+	</div>
+
+	<div class="topbar">
+
+		<div class="topgrid">
+
+		<button class="hamburger hamburger--spin" type="button">
+		 <span class="hamburger-box">
+			<span class="hamburger-inner"></span>
+		 </span>
+		</button>
+
+		<script>
+
+			var menu_open = false;
+			var hamburger = document.querySelector(".hamburger");
+			var body      = document.querySelector(".body");
+			var slider    = document.querySelector(".background-container")
+			var startlogo = document.querySelector(".startlogo")
+			
+			hamburger.addEventListener("click", function() {
+				hamburger.classList.toggle("is-active");
+				body.classList.toggle("lock-scroll");
+				(menu_open ? close_menu() : open_menu());
+				menu_open = !menu_open;
+			});
+
+			function open_menu() {
+				document.querySelector(".menu").style.width = "100%";
+			}
+
+			function close_menu() {
+				document.querySelector(".menu").style.width = "0";
+			}
+
+			function loaded() {
+				document.querySelector(".background-container").style.left = "0";
+				document.querySelector(".fade-in").style.opacity = "1";
+			}
+
+		</script>
+
+		<a href="https://www.heroncreative.co.uk" class="topname"> <p>HERON CREATIVE</p> </a>
+
+		<a href="https://www.heroncreative.co.uk" class="toplogo"> <img src="assets/flowRoot77.png" alt="logo" class="toplogo"/> </a>
+
+		</div>
+
+	</div>
+
+	<div class="background"> 
+
+		<canvas id="canvas" width="700" height="1300"> </canvas>
+
+		<script>
+
+		(function () {
+
+			var c    = document.getElementById("canvas");
+			var h    = c.offsetHeight;
+			var w    = c.offsetWidth;
+			c.height = h;
+			c.width  = w;
+			var ctx  = c.getContext("2d");
+
+			var d    = 25;
+			var ny   = Math.ceil(h/d);
+			var nx   = Math.ceil(w/d);
+
+			var th   = 0;
+			var mx   = 0;
+			var my   = 0;
+
+			function resize() {
+				h        = c.offsetHeight;
+				w        = c.offsetWidth;
+				c.height = h;
+				c.width  = w;
+				ny       = Math.ceil(h/d);
+				nx       = Math.ceil(w/d);
+			}
+
+			
+			function mouseMove(e) {
+				var posx = posy = 0;
+				if (e.pageX || e.pageY) {
+					posx = e.pageX;
+					posy = e.pageY;
+				}
+				else if (e.clientX || e.clientY)    {
+					posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+					posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+				}
+				mx = posx;
+				my = posy;
+			}
+
+			 
+			window.addEventListener('resize', resize);
+			window.addEventListener('mousemove', mouseMove);
+
+			function animate() {
+
+				ctx.clearRect(0,0,w,h);
+				ctx.fillStyle = 'rgba(200,171,55,0.5)';
+
+				var x, y, dx, dy, dm, th1, th2;
+
+				th1 = th;
+
+				for(i=0; i<ny; i++) {
+
+					th2 = th1;
+					th1 += 0.3;
+
+					for(j=0; j<nx; j++) {
+
+						x  = j*d + 5*Math.cos(th2);
+						y  = i*d + 5*Math.sin(th2);
+
+						dx = x - mx;
+						dy = y - my;
+
+						dm = Math.sqrt(dx*dx + dy*dy);
+						x += 0.75 * dx * Math.pow(2, -(0.00008*dm*dm));
+						y += 0.75 * dy * Math.pow(2, -(0.00008*dm*dm));
+
+						ctx.beginPath();
+						ctx.arc(x, y, 2.5, 0, 2 * Math.PI, false);
+						ctx.fill();
+
+						th2 += 0.3
+					}
+				}
+
+				th += 0.05;
+				requestAnimationFrame(animate);
+			}
+
+			animate();
+
+		})();
+
+		</script>
+
+		<div class="background-container">
+
+			<div class="slogan-container">
+
+			<p class="slogan"> 
+			Stunning design. Delivered. <br>
+			Communicate directly with your designer. <br>
+			All for a reasonable price.
+			</p>
+
+			<button class="get-started"> Get Started </button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<footer class="footer_container">
+
+		<p class="footer"> Email | <a href="mailto:office@heroncreative.co.uk"> office@heroncreative.co.uk </a> </p>
+		<p class="footer"> Call or Text | 07860940769 </p>
+	
+		<div class="socials">
+		
+			<a href="instagram"> 
+				<img src="assets/insta.png"> 
+			</a>
+			
+			<a href="linkedin">
+				<img src="assets/linkedin.png">
+			</a>
+
+			<a href="facebook">
+				<img src="assets/facebook.png">
+			</a>
+		
+		</div>
+
+		<p class="footer"> Site Design © Heron Creative 2019 </p>
+
+	</footer>
+
+	</div>
+	
+</body>
+
+</html>
