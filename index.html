@@ -72,29 +72,19 @@
 
 		<script>
 
-			var menu_open = false;
 			var hamburger = document.querySelector(".hamburger");
 			var body      = document.querySelector(".body");
+			var menu      = document.querySelector(".menu");
 			var slider    = document.querySelector(".background-container")
-			var startlogo = document.querySelector(".startlogo")
 			
 			hamburger.addEventListener("click", function() {
 				hamburger.classList.toggle("is-active");
 				body.classList.toggle("lock-scroll");
-				(menu_open ? close_menu() : open_menu());
-				menu_open = !menu_open;
+				menu.classList.toggle("menu-open");
 			});
 
-			function open_menu() {
-				document.querySelector(".menu").style.width = "100%";
-			}
-
-			function close_menu() {
-				document.querySelector(".menu").style.width = "0";
-			}
-
 			function loaded() {
-				document.querySelector(".background-container").style.left = "0";
+				document.querySelector(".background-container").style.transform = "none";
 				document.querySelector(".fade-in").style.opacity = "1";
 			}
 
@@ -270,7 +260,7 @@
 		</div>
 
 		<p class="footer"> Site Design © Heron Creative 2019 </p>
-		<p class="footer"> version 0.6 </p>
+		<p class="footer"> version 0.7 </p>
 
 	</footer>
 
