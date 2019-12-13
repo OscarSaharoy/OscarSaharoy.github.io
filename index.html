@@ -23,7 +23,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width, initial-scale=3.0">
 	<meta charset="utf-8"/>
 	
 </head>
@@ -132,7 +132,7 @@
 					posx = e.pageX;
 					posy = e.pageY;
 				}
-				else if (e.clientX || e.clientY)    {
+				if (e.clientX || e.clientY)    {
 					posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
 					posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
 				}
@@ -142,8 +142,8 @@
 
 			function mouseDown(e) {
 				if(e.button == 0) {
-					rxs.push(e.x);
-					rys.push(e.y);
+					rxs.push(e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft);
+					rys.push(e.clientY + document.body.scrollTop + document.documentElement.scrollTop);
 					rts.push(0);
 				}
 			}
@@ -228,7 +228,7 @@
 				requestAnimationFrame(animate);
 			}
 
-			animate();
+			dot.onload = animate();
 
 		})();
 
