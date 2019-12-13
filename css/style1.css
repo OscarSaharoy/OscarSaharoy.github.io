@@ -162,22 +162,20 @@ button:focus {
     width: 0;
     position: fixed;
     z-index: 10;
-    top: 6rem;
     left: 0;
-    background-color: #FEE998;
+    background-image: linear-gradient(to right, #FEE998, white);
     overflow-x: hidden;
     transition: 0.22s;
     transition-timing-function: ease-in-out;
     display: grid;
     justify-content: center;
-    align-content: start;
-    padding-top: 5rem;
+    align-content: center;
 }
 
 .menu a {
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: normal;
     color: #2C1A00;
     display: block;
@@ -185,8 +183,17 @@ button:focus {
     justify-self: center;
 }
 
-.menu a:hover{
+.menu a:hover {
     color: #c8ab37;
+}
+
+.menu .line {
+    height: 0.2rem;
+    width: 20rem;
+    background-color: #2C1A00;
+    margin: 1rem;
+    margin-bottom: 0.75rem;
+    justify-self: center;
 }
 
 .footer_container { 
@@ -194,8 +201,8 @@ button:focus {
     display: grid;
     justify-items: center;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding-bottom: 2vh; 
-    padding-top: 2vh;
+    padding-bottom: 2rem; 
+    padding-top: 2rem;
 }
 
 .footer a {
@@ -211,7 +218,7 @@ button:focus {
 
 .socials {
     width: 100%;
-    margin-top: 2vh;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     display: grid;
     grid-template: 3rem / repeat(3, 3rem);
