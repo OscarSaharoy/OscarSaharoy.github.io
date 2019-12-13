@@ -125,20 +125,6 @@
 				ny       = Math.ceil(h/d);
 				nx       = Math.ceil(w/d);
 			}
-			
-			function mouseMove(e) {
-				var posx = posy = 0;
-				if (e.pageX || e.pageY) {
-					posx = e.pageX;
-					posy = e.pageY;
-				}
-				if (e.clientX || e.clientY)    {
-					posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-					posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-				}
-				mx = posx;
-				my = posy;
-			}
 
 			function mouseDown(e) {
 				if(e.button == 0) {
@@ -150,15 +136,13 @@
 
 			 
 			window.addEventListener('resize', resize);
-			//window.addEventListener('mousemove', mouseMove);
 			window.addEventListener('mousedown', mouseDown);
 
 			function animate() {
 
 				ctx.clearRect(0,0,w,h);
 
-				//var gx, x, gy, y, dx, dy, dm, th1, th2;
-				var gx, x, gy, y, dx, dy, th1, th2, th3, dm, dr, a;
+				var gx, x, gy, y, dx, dy, th1, th2, dm, dr, a;
 
 				th1 = th;
 				th2 = th1;
@@ -184,13 +168,12 @@
 	
 								if(Math.abs(dm-dr) < 140) {
 		
-									th3 = Math.atan2(dy,dx);
 									dr  = rts[z]*5;
 	
 									a   = 30 * Math.pow( 1.1, -0.005*(dm-dr)*(dm-dr)) * Math.pow(2, -0.000005*(dr*dr));
 	
-									x  += a * Math.cos(th3);
-									y  += a * Math.sin(th3);
+									x  += a * dx/Math.sqrt(dx*dx + dy*dy);
+									y  += a * dy/Math.sqrt(dx*dx + dy*dy);
 								}
 							}
 							else {
@@ -199,13 +182,6 @@
 								rys.splice(z, 1);
 							}
 						}
-
-						//dx = x - mx;
-						//dy = y - my;
-
-						//dm = dx*dx + dy*dy;
-						//x += 0.75 * dx * Math.pow(2, -(0.00008*dm));
-						//y += 0.75 * dy * Math.pow(2, -(0.00008*dm));
 
 						ctx.drawImage(dot, x, y);
 
@@ -228,7 +204,7 @@
 				requestAnimationFrame(animate);
 			}
 
-			dot.onload = animate();
+			animate();
 
 		})();
 
@@ -274,7 +250,7 @@
 		</div>
 
 		<p class="footer"> Site Design © Heron Creative 2019 </p>
-		<p class="footer"> version 0.3 </p>
+		<p class="footer"> version 0.4 </p>
 
 	</footer>
 

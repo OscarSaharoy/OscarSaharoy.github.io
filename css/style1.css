@@ -12,7 +12,6 @@
     -webkit-text-size-adjust:100%;
 }
 
-/*
 @media
     (min-resolution: 250dpi),
     (min-resolution: 2.6dppx),
@@ -20,10 +19,9 @@
     (min--moz-device-pixel-ratio: 2.6) {
 
     :root{
-        font-size: 150%;
+        font-size: 200%;
     }
 }
-*/
 
 html {
 }
