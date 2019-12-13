@@ -19,7 +19,7 @@
     (min--moz-device-pixel-ratio: 2.6) {
 
     :root{
-        font-size: 200%;
+        font-size: 150%;
     }
 }
 
