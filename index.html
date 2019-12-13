@@ -22,8 +22,9 @@
 	<meta name="theme-color" content="#ffffff">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=3.0">
+	<meta charset="utf-8"/>
 	
 </head>
 
@@ -87,14 +88,16 @@
 
 	</div>
 
-	<div class="background"> 
+	<div class="background">
 
+		<img id="dot" src="assets/dot.png" alt="dot"/>
 		<canvas id="canvas" width="700" height="1300"> </canvas>
 
 		<script>
 
 		(function () {
 
+			var dot  = document.getElementById("dot");
 			var c    = document.getElementById("canvas");
 			var h    = c.offsetHeight;
 			var w    = c.offsetWidth;
@@ -110,6 +113,10 @@
 			var mx   = 0;
 			var my   = 0;
 
+			var rxs  = [];
+			var rys  = [];
+			var rts  = [];
+
 			function resize() {
 				h        = c.offsetHeight;
 				w        = c.offsetWidth;
@@ -118,7 +125,6 @@
 				ny       = Math.ceil(h/d);
 				nx       = Math.ceil(w/d);
 			}
-
 			
 			function mouseMove(e) {
 				var posx = posy = 0;
@@ -134,45 +140,91 @@
 				my = posy;
 			}
 
+			function mouseDown(e) {
+				if(e.button == 0) {
+					rxs.push(e.x);
+					rys.push(e.y);
+					rts.push(0);
+				}
+			}
+
 			 
 			window.addEventListener('resize', resize);
-			window.addEventListener('mousemove', mouseMove);
+			//window.addEventListener('mousemove', mouseMove);
+			window.addEventListener('mousedown', mouseDown);
 
 			function animate() {
 
 				ctx.clearRect(0,0,w,h);
-				ctx.fillStyle = 'rgba(200,171,55,0.5)';
 
-				var x, y, dx, dy, dm, th1, th2;
+				//var gx, x, gy, y, dx, dy, dm, th1, th2;
+				var gx, x, gy, y, dx, dy, th1, th2, th3, dm, dr, a;
 
 				th1 = th;
+				th2 = th1;
+				gy  = 0;
+				gx  = 0;
 
 				for(i=0; i<ny; i++) {
 
-					th2 = th1;
-					th1 += 0.3;
-
 					for(j=0; j<nx; j++) {
 
-						x  = j*d + 5*Math.cos(th2);
-						y  = i*d + 5*Math.sin(th2);
+						x  = gx + 5*Math.cos(th2);
+						y  = gy + 5*Math.sin(th2);
 
-						dx = x - mx;
-						dy = y - my;
+						for(z = 0; z < rts.length; z++) {
+	
+							if(rts[z] < 200) {
+		
+								dx = x - rxs[z];
+								dy = y - rys[z];
+								dr = rts[z]*5;
+			
+								dm = Math.sqrt(dx*dx + dy*dy);
+	
+								if(Math.abs(dm-dr) < 140) {
+		
+									th3 = Math.atan2(dy,dx);
+									dr  = rts[z]*5;
+	
+									a   = 30 * Math.pow( 1.1, -0.005*(dm-dr)*(dm-dr)) * Math.pow(2, -0.000005*(dr*dr));
+	
+									x  += a * Math.cos(th3);
+									y  += a * Math.sin(th3);
+								}
+							}
+							else {
+								rts.splice(z, 1);
+								rxs.splice(z, 1);
+								rys.splice(z, 1);
+							}
+						}
 
-						dm = Math.sqrt(dx*dx + dy*dy);
-						x += 0.75 * dx * Math.pow(2, -(0.00008*dm*dm));
-						y += 0.75 * dy * Math.pow(2, -(0.00008*dm*dm));
+						//dx = x - mx;
+						//dy = y - my;
 
-						ctx.beginPath();
-						ctx.arc(x, y, 2.5, 0, 2 * Math.PI, false);
-						ctx.fill();
+						//dm = dx*dx + dy*dy;
+						//x += 0.75 * dx * Math.pow(2, -(0.00008*dm));
+						//y += 0.75 * dy * Math.pow(2, -(0.00008*dm));
 
-						th2 += 0.3
+						ctx.drawImage(dot, x, y);
+
+						th2 += 0.3;
+						gx  += d;
 					}
+
+					gx   = 0;
+					th2  = th1;
+					gy  += d;
+					th1 += 0.3;
 				}
 
 				th += 0.05;
+
+				for(z = 0; z<rts.length; z++) {
+					rts[z]++;
+				}
+				
 				requestAnimationFrame(animate);
 			}
 

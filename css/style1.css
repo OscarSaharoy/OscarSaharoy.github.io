@@ -8,7 +8,22 @@
 :root {
     font-size: 100%;
     font-family: "Lato", sans-serif;
+    -ms-text-size-adjust:100%;
+    -webkit-text-size-adjust:100%;
 }
+
+/*
+@media
+    (min-resolution: 250dpi),
+    (min-resolution: 2.6dppx),
+    (-webkit-min-device-pixel-ratio: 2.6),
+    (min--moz-device-pixel-ratio: 2.6) {
+
+    :root{
+        font-size: 150%;
+    }
+}
+*/
 
 html {
 }
@@ -41,6 +56,11 @@ button:focus {
     height: 100vh;
     z-index: 9;
     background-image: linear-gradient(to top right, #FCEAA1, white);
+}
+
+#dot {
+    position: fixed;
+    top: -100%;
 }
 
 #canvas {
@@ -120,7 +140,6 @@ button:focus {
     grid-row: 1;
     grid-column: 2;
     font-size: 1.4rem;
-    font-weight: bold;
     letter-spacing: 1.1rem;
     text-decoration: none;
     color: #c8ab37;
@@ -158,14 +177,13 @@ button:focus {
 }
 
 .menu a {
-    padding: 1vmin 0;
+    padding: 0.5rem 0;
     text-decoration: none;
-    font-size: 4vmin;
+    font-size: 2rem;
     font-weight: normal;
     color: #2C1A00;
     display: block;
     transition: 0.22s;
-    letter-spacing: 0.1vmin;
     justify-self: center;
 }
 
