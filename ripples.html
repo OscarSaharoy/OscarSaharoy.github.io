@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<body>
+
+	<img id="dot" src="assets/dot.png" alt="dot"/>
+	<canvas id="canvas" width="1000" height="1000"> </canvas>
+
+	<script>
+
+	(function () {
+
+		var dot  = document.getElementById("dot");
+		var c    = document.getElementById("canvas");
+		var h    = c.offsetHeight;
+		var w    = c.offsetWidth;
+		c.height = h;
+		c.width  = w;
+		var ctx  = c.getContext("2d");
+
+		var d    = 12;
+		var ny   = Math.ceil(h/d);
+		var nx   = Math.ceil(w/d);
+
+		var mx   = 0;
+		var my   = 0;
+
+		var rxs  = [];
+		var rys  = [];
+		var rts  = [];
+
+		function resize() {
+			h        = c.offsetHeight;
+			w        = c.offsetWidth;
+			c.height = h;
+			c.width  = w;
+			ny       = Math.ceil(h/d);
+			nx       = Math.ceil(w/d);
+		}
+
+		
+		function mouseMove(e) {
+			var posx = posy = 0;
+			if (e.pageX || e.pageY) {
+				posx = e.pageX;
+				posy = e.pageY;
+			}
+			else if (e.clientX || e.clientY)    {
+				posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+				posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+			}
+			mx = posx;
+			my = posy;
+		}
+
+		function mouseDown(e) {
+			if(e.button == 0) {
+				rxs.push(e.x);
+				rys.push(e.y);
+				rts.push(0);
+			}
+		}
+
+		 
+		window.addEventListener('resize', resize);
+		window.addEventListener('mousemove', mouseMove);
+		window.addEventListener('mousedown', mouseDown);
+
+		function animate() {
+
+			ctx.clearRect(0,0,w,h);
+
+			var gx, x, gy, y, dx, dy, th, dm, dr, a;
+
+			gy  = 0;
+			gx  = 0;
+
+			for(i=0; i<ny; i++) {
+
+				for(j=0; j<nx; j++) {
+
+					x  = gx;
+					y  = gy;
+
+					for(z = 0; z < rts.length; z++) {
+
+						if(rts[z] < 200) {
+	
+							dx = x - rxs[z];
+							dy = y - rys[z];
+							dr = rts[z]*5;
+		
+							dm = Math.sqrt(dx*dx + dy*dy);
+
+							if(Math.abs(dm-dr) < 140) {
+	
+								th = Math.atan2(dy,dx);
+								dr = rts[z]*5;
+
+								a  = 30 * Math.pow( 1.1, -0.005*(dm-dr)*(dm-dr)) * Math.pow(2, -0.000005*(dr*dr));
+
+								x += a * Math.cos(th);
+								y += a * Math.sin(th);
+							}
+						}
+						else {
+							rts.splice(z, 1);
+							rxs.splice(z, 1);
+							rys.splice(z, 1);
+						}
+					}
+
+					ctx.drawImage(dot, x-4, y-4);
+
+					gx  += d;
+				}
+
+				gx   = 0;
+				gy  += d;
+			}
+
+			for(z = 0; z<rts.length; z++) {
+				rts[z]++;
+			}
+
+			requestAnimationFrame(animate);
+		}
+
+		animate();
+
+	})();
+
+	</script>
+
+</body>
+
+</html>
