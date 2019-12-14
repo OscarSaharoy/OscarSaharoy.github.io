@@ -162,7 +162,7 @@ button:focus {
     width: 100%;
     position: fixed;
     z-index: 10;
-    background-image: linear-gradient(to right, #FEE998, white);
+    background-image: linear-gradient(to right, #FEE998, #FFEAB8);
     overflow-x: hidden;
     display: grid;
     justify-content: center;
@@ -207,19 +207,48 @@ button:focus {
     display: grid;
     justify-items: center;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding-bottom: 2rem; 
-    padding-top: 2rem;
+    padding: 2rem;
+    padding-top: 1rem;
 }
 
-.footer a {
+.footer-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+.footer-grid h3 {
+    font-size: 1.5rem;
+    padding: 1rem;
+    padding-top: 2rem;
+    color: #c8ab37;
+}
+
+.footer_container a {
+    color: #33aacc;
     text-decoration: none;
 }
 
-.footer p {
+.footer_container p {
+    padding: 0.2rem;
+    padding-left: 2rem;
+    font-size: 1.2rem;
     color: #111111;
-    display: grid;
-    justify-content: center;
-    justify-self: center;
+}
+
+.footer_container input {
+    margin: 2rem;
+    margin-top: 0.5rem;
+    width: 25rem;
+    padding: 1rem;
+    border: 3px solid #CCCCCC;
+}
+
+.footer_container button {
+    width: 5rem;
+    padding: 1rem;
+    margin-left: -1.5rem;
+    background-color: white;
+    border: 3px solid #c8ab37;
 }
 
 .socials {
@@ -244,4 +273,11 @@ button:focus {
 
 .socials img:hover {
     background-color: #c8ab37;
+}
+
+.footer_container .bottom {
+    font-size: 0.9rem;
+    color: #666666;
+    margin: 0;
+    padding: 0;
 }

@@ -182,8 +182,8 @@
 	
 									a   = 30 * Math.pow( 1.1, -0.005*(dm-dr)*(dm-dr)) * Math.pow(2, -0.000005*(dr*dr));
 	
-									x  += a * dx/Math.sqrt(dx*dx + dy*dy);
-									y  += a * dy/Math.sqrt(dx*dx + dy*dy);
+									x  += a * dx/dm;
+									y  += a * dy/dm;
 								}
 							}
 							else {
@@ -240,8 +240,38 @@
 
 	<footer class="footer_container">
 
-		<p class="footer"> Email | <a href="mailto:office@heroncreative.co.uk"> office@heroncreative.co.uk </a> </p>
-		<p class="footer"> Call or Text | 07860940769 </p>
+		<div class="footer-grid">
+
+			<div class="contact-us">
+
+				<h3> CONTACT US </h3>
+
+				<p> <a href="mailto:office@heroncreative.co.uk"> office@heroncreative.co.uk </a> </p>
+				<p> 07860940769 </p>
+			</div>
+
+			<div class="info">
+
+				<h3> INFO </h3>
+
+				<p> Testimonials </p>
+				<p> Glossary </p>
+				<p> Cookie Policy </p>
+				<p> Privacy Policy </p>
+				<p> Terms & Conditions </p>
+				<p> Careers </p>
+				<p> Site Map </p>
+			</div>
+
+			<div class="mailing-list">
+
+				<h3> JOIN OUR MAILING LIST </h3>
+
+				<input placeholder="Email Adress"></input>
+				<button> OK </button>
+			</div>
+
+		</div>
 	
 		<div class="socials">
 		
@@ -259,8 +289,8 @@
 		
 		</div>
 
-		<p class="footer"> Site Design © Heron Creative 2019 </p>
-		<p class="footer"> version 0.7 </p>
+		<p class="bottom"> Site Design © Heron Creative 2019 </p>
+		<p class="bottom"> version 0.8 </p>
 
 	</footer>
 
