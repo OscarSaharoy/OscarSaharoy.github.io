@@ -226,19 +226,22 @@ button:focus {
 .footer-grid {
     display: grid;
     grid-template-columns: 1fr;
-    width: 100%;
+    width:100%;
 }
 
 .footer-grid .contact-us {
     grid-column: 1;
+    display: grid;
 }
 
 .footer-grid .info {
     grid-column: 1;
+    display: grid;
 }
 
 .footer-grid .mailing-list {
     grid-column: 1;
+    display: grid;
 }
 
 .footer-grid h3 {
@@ -260,47 +263,12 @@ button:focus {
     color: #111111;
 }
 
-@media only screen and (min-width: 1000px) {
-
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .footer-grid .mailing-list {
-        grid-column: 2;
-        grid-row: 1;
-        align-self: start;
-    }
-}
-
-@media only screen and (min-width: 1500px) {
-
-    .footer-grid {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .footer-grid .info {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    .footer-grid .mailing-list {
-        grid-column: 3;
-        grid-row: 1;
-        align-self: start;
-    }
-
-    .footer-grid p {
-        padding-left: 1rem;
-    }
-}
-
 .footer_container form {
     display: grid;
     grid-gap: 1rem;
-    max-width: 40rem;
     margin-left: 2rem;
     margin-bottom: 2rem;
+    grid-template-columns: 20rem auto;
 }
 
 .footer_container .email-box {
@@ -309,6 +277,7 @@ button:focus {
     border: 3px solid #CCCCCC;
     font-size: 1rem;
     font-family: Lato;
+    max-width: 20rem;
     color: #111111;
 }
 
@@ -322,6 +291,45 @@ button:focus {
     font-family: Lato;
     font-weight: bold;
     color: #111111;
+}
+
+@media only screen and (min-width: 700px) {
+
+    .footer-grid {
+        margin-left: 20rem;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+
+    .footer-grid {
+        max-width: 100rem;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-left: 0;
+    }
+
+    .footer-grid .contact-us {
+        grid-column: 1;
+        grid-row: 1;
+        justify-items: center;
+        align-content: start;
+    }
+
+    .footer-grid .info {
+        grid-column: 2;
+        grid-row: 1;
+        justify-items: center;
+    }
+
+    .footer-grid .mailing-list {
+        grid-column: 3;
+        grid-row: 1;
+        align-self: start;
+    }
+
+    .footer-grid p {
+        padding-left: 0;
+    }
 }
 
 .socials {
@@ -349,8 +357,23 @@ button:focus {
 }
 
 .footer_container .bottom {
+    margin: 0;
+    margin-top: 1rem;
+    display: grid;
+    justify-self: center;
+    justify-items: center;
+}
+
+.footer_container .socials {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 1;
+}
+
+.footer_container .bottom p {
     font-size: 0.9rem;
     color: #666666;
     margin: 0;
     padding: 0;
+    grid-column: 1;
 }

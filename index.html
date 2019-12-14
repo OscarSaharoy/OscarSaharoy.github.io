@@ -241,8 +241,8 @@
 							// calculate alpha based off distance from centre of dot
 							var alpha = ( 2.5 - Math.abs(dm) ) * 255;
 
-							// set pixel values if alpha is positive (pixel should be drawn)
-							if(alpha > 0) {
+							// set pixel values if alpha is positive and pixel is onscreen (pixel should be drawn)
+							if(alpha > 0 && ox < w && ox > 0) {
 								canvasData.data[(ox + oy*w)*4 + 0]  = 200;
 								canvasData.data[(ox + oy*w)*4 + 1]  = 171;
 								canvasData.data[(ox + oy*w)*4 + 2]  = 55;
@@ -342,25 +342,29 @@
 			</div>
 
 		</div>
+
+		<div class="bottom">
 	
-		<div class="socials">
-		
-			<a href="instagram"> 
-				<img src="assets/instagram.png"> 
-			</a>
+			<div class="socials">
 			
-			<a href="linkedin">
-				<img src="assets/linkedin.png">
-			</a>
+				<a href="instagram"> 
+					<img src="assets/instagram.png"> 
+				</a>
+				
+				<a href="linkedin">
+					<img src="assets/linkedin.png">
+				</a>
 
-			<a href="facebook">
-				<img src="assets/facebook.png">
-			</a>
-		
+				<a href="facebook">
+					<img src="assets/facebook.png">
+				</a>
+			
+			</div>
+
+			<p> Site Design © Heron Creative 2019 </p>
+			<p> version 0.14 </p>
+
 		</div>
-
-		<p class="bottom"> Site Design © Heron Creative 2019 </p>
-		<p class="bottom"> version 0.12 </p>
 
 	</footer>
 
