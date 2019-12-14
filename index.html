@@ -172,13 +172,11 @@
 		
 								dx = x - rxs[z];
 								dy = y - rys[z];
-								dr = rts[z]*5;
+								dr = rts[z] * 15;
 			
 								dm = Math.sqrt(dx*dx + dy*dy);
 	
 								if(Math.abs(dm-dr) < 140) {
-		
-									dr  = rts[z]*5;
 	
 									a   = 30 * Math.pow( 1.1, -0.005*(dm-dr)*(dm-dr)) * Math.pow(2, -0.000005*(dr*dr));
 	
@@ -267,8 +265,10 @@
 
 				<h3> JOIN OUR MAILING LIST </h3>
 
-				<input placeholder="Email Adress"></input>
-				<button> OK </button>
+				<form ACTION="mailto:office@heroncreative.com" method="POST" enctype="text/plain">
+					<input class="email-box" placeholder="Email Adress" name="email" >
+					<input class="submit-button" type="submit" name="Submit" value="Submit" >
+				</form>
 			</div>
 
 		</div>
@@ -290,7 +290,7 @@
 		</div>
 
 		<p class="bottom"> Site Design © Heron Creative 2019 </p>
-		<p class="bottom"> version 0.8 </p>
+		<p class="bottom"> version 0.9 </p>
 
 	</footer>
 

@@ -235,20 +235,33 @@ button:focus {
     color: #111111;
 }
 
-.footer_container input {
-    margin: 2rem;
-    margin-top: 0.5rem;
-    width: 25rem;
-    padding: 1rem;
-    border: 3px solid #CCCCCC;
+.footer_container form {
+    display: grid;
+    grid-gap: 1rem;
+    max-width: 40rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
 }
 
-.footer_container button {
-    width: 5rem;
+.footer_container .email-box {
+    min-width: 0;
     padding: 1rem;
-    margin-left: -1.5rem;
+    border: 3px solid #CCCCCC;
+    font-size: 1rem;
+    font-family: Lato;
+    color: #111111;
+}
+
+.footer_container .submit-button {
+    grid-column: 2;
+    width: 5rem;
+    padding: 1rem 0;
     background-color: white;
     border: 3px solid #c8ab37;
+    font-size: 1rem;
+    font-family: Lato;
+    font-weight: bold;
+    color: #111111;
 }
 
 .socials {
