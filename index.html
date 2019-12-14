@@ -1,3 +1,5 @@
+<!-- Heron Creative 2019 -->
+
 <!DOCTYPE html>
 
 <html>
@@ -114,7 +116,7 @@
 			var d    = 20;
 
 			// set canvas to correct width
-			var w, h, ny, nx;
+			var w, h, ny, nx, n, canvasData;
 			resize();
 
 			// current wave angle for background wave
@@ -125,6 +127,15 @@
 			var rys  = [];
 			var rts  = [];
 
+			// array for holding wave ripple offset data
+			var wcos = [];
+			var wsin = [];
+
+			// populate those arrays
+			for(var u = 0; u < 120; u++) {
+				wcos.push( 5*Math.cos(3.14159/60 * u) );
+				wsin.push( 5*Math.sin(3.14159/60 * u) );
+			}
 
 			function resize() {
 				w        = c.offsetWidth;  // screen width of canvas in px
@@ -137,6 +148,17 @@
 				// calculate number of dots in the x and y directions
 				ny       = Math.ceil(h/d);
 				nx       = Math.ceil(w/d);
+				n        = nx * ny;
+
+				// get array of pixel values
+				canvasData = ctx.createImageData(w, h);
+	
+				// set to all gold
+				for(var s = 0; s < w*h; s++) {
+					canvasData.data[s*4 + 0] = 200;
+					canvasData.data[s*4 + 1] = 171;
+					canvasData.data[s*4 + 2] = 55;
+				}
 			}
 
 
@@ -152,7 +174,6 @@
 				}
 			}
 
-			
 			// add listeners to trigger functions when events occur
 			window.addEventListener('resize', resize);
 			window.addEventListener('mousedown', mouseDown);
@@ -161,10 +182,9 @@
 			function animate() {
 
 				// clear screen
-				ctx.clearRect(0,0,w,h);
-
-				// get array to write pixel values to
-				var canvasData = ctx.getImageData(0, 0, w, h);
+				for(var u = 0; u < w*h; u++) {
+					canvasData.data[u*4 + 3] = 0;
+				}	
 
 				// th1 and th2 control background wave effect - set both to equal th initially
 				// each row of pixels th1 is incremented and each column th2 is incremented
@@ -172,102 +192,99 @@
 				var th2 = th1;
 
 				// grid x and grid y positions of dots in grid
-				var gy = 0;
-				var gx = 0;
+				var gy = 0.5*d;
+				var gx = 0.5*d;
 
-				for(i=0; i<ny; i++) {
+				for(var r = 0; r < n; r++) {
 
-					for(j=0; j<nx; j++) {
+					// rest position of a dot is its grid position plus the background wave effect
+					var x = gx + wcos[th2];
+					var y = gy + wsin[th2];
 
-						// rest position of a dot is its grid position plus the background wave effect
-						var x = gx + 5*Math.cos(th2);
-						var y = gy + 5*Math.sin(th2);
-
-						// for each ripple, affect the position of the dot
-						for(z = 0; z < rts.length; z++) {
+					// for each ripple, affect the position of the dot
+					for(z = 0; z < rts.length; z++) {
 	
-							// ripples only last 200 frames, after which they are removed from the memory arrays
-							if(rts[z] < 200) {
+						// ripples only last 200 frames, after which they are removed from the memory arrays
+						if(rts[z] < 200) {
 		
-								// calculate offset of dot from rest position due to ripples and add that
-								// to its current position
-								var dx = x - rxs[z];
-								var dy = y - rys[z];
-								var dr = rts[z] * 10;
+							// calculate offset of dot from rest position due to ripples and add that
+							// to its current position
+							var dx = x - rxs[z];
+							var dy = y - rys[z];
+							var dr = rts[z] * 10;
 			
-								var dm = Math.sqrt(dx*dx + dy*dy);
-	
-								// only proceed if the distance of the dot from the ripple is right for it 
-								// to feel anything
-								if(Math.abs(dm-dr) < 140) {
-	
-									// equation of ripple
-									var a = 30 * Math.pow( 1.1, -0.005*(dm-dr)*(dm-dr)) * Math.pow(2, -0.000005*(dr*dr));
-	
-									// offset dot by correct amount
-									x  += a * dx/dm;
-									y  += a * dy/dm;
-								}
-							}
-							else {
-								
-								// remove old ripple from arrays
-								rts.splice(z, 1);
-								rxs.splice(z, 1);
-								rys.splice(z, 1);
-							}
-						}
-
-						// x and y indices of centre of dot in pixel array
-						var ix = Math.floor(x);
-						var iy = Math.floor(y);
-
-						// start drawing 3 pixels up and right of center of dot
-						var oi = -3;
-						var oj = -3;
-
-						// t ranges from 0 to 49 for a 7x7 box around dot in which to draw it
-						for(var t = 0; t < 49; t++) {
-
-							// ox and oy are coords of the pixel we are currently drawing
-							var ox = ix + oi;
-							var oy = iy + oj;
-
-							// distance from centre of dot
-							var dx = ox - x;
-							var dy = oy - y;
 							var dm = Math.sqrt(dx*dx + dy*dy);
-
-							// calculate alpha based off distance from centre of dot
-							var alpha = ( 2.5 - Math.abs(dm) ) * 255;
-
-							// set pixel values if alpha is positive and pixel is onscreen (pixel should be drawn)
-							if(alpha > 0 && ox < w && ox > 0) {
-								canvasData.data[(ox + oy*w)*4 + 0]  = 200;
-								canvasData.data[(ox + oy*w)*4 + 1]  = 171;
-								canvasData.data[(ox + oy*w)*4 + 2]  = 55;
-								canvasData.data[(ox + oy*w)*4 + 3] += alpha;
-							}
-
-							// when we reach the edge of the box, go down one row and loop back to other edge
-							oj++;
-							if(oj==4) {
-								oj = -3;
-								oi++;
+	
+							// only proceed if the distance of the dot from the ripple is right for it 
+							// to feel anything
+							if(Math.abs(dm-dr) < 140) {
+	
+								// equation of ripple
+								var a = 30 * Math.pow( 1.1, -0.005*(dm-dr)*(dm-dr)) * Math.pow(2, -0.000005*(dr*dr));
+	
+								// offset dot by correct amount
+								x  += a * dx/dm;
+								y  += a * dy/dm;
 							}
 						}
-
-						th2 += 0.3;
-						gx  += d;
+						else {
+							
+							// remove old ripple from arrays
+							rts.splice(z, 1);
+							rxs.splice(z, 1);
+							rys.splice(z, 1);
+						}
 					}
 
-					gx   = 0;
-					th2  = th1;
-					gy  += d;
-					th1 += 0.3;
+					// x and y indices of centre of dot in pixel array
+					var ix = Math.floor(x);
+					var iy = Math.floor(y);
+
+					// start drawing 3 pixels up and right of center of dot
+					var oi = -3;
+					var oj = -3;
+
+					// t ranges from 0 to 49 for a 7x7 box around dot in which to draw it
+					for(var t = 0; t < 49; t++) {
+
+						// ox and oy are coords of the pixel we are currently drawing
+						var ox = ix + oi;
+						var oy = iy + oj;
+
+						// distance from centre of dot
+						var dx = ox - x;
+						var dy = oy - y;
+						var dm = dx*dx + dy*dy;
+
+						// calculate alpha based off distance from centre of dot
+						var alpha = ( 1.5 - 0.25*dm ) * 255;
+
+						// set pixel values if alpha is positive and pixel is onscreen (pixel should be drawn)
+						if(alpha > 0 && ox < w && ox > 0) {
+							canvasData.data[(ox + oy*w)*4 + 3] = alpha;
+						}
+
+						// when we reach the edge of the box, go down one row and loop back to other edge
+						oj++;
+						if(oj==4) {
+							oj = -3;
+							oi++;
+						}
+					}
+
+					th2  = (th2 + 6) % 120;
+					gx  += d;
+
+					if(gx > w) {
+						gx  = 0.5*d;
+						gy += d;
+						th1 = (th1 + 6) % 120;
+						th2 = th1;
+					}
+
 				}
 
-				th += 0.05;
+				th  = (th + 1) % 120;
 
 				// evolve age of each ripple in arrays
 				for(z = 0; z<rts.length; z++) {
@@ -362,7 +379,7 @@
 			</div>
 
 			<p> Site Design © Heron Creative 2019 </p>
-			<p> version 0.15 </p>
+			<p> version 0.16 </p>
 
 		</div>
 
