@@ -31,35 +31,42 @@
 </head>
 
 
-<body class="body" onload="loaded()">
+<body class="body">
 
 	<div class="fade-in">
 
 	<div class="menu">
-		<a href="#">What we Offer</a>
-		<a href="#">Portfolio</a>
-		<a href="#">Pricing</a>
-		<a href="#">About Us</a>
-		<a href="#">Contact Us</a>
-		
-		<span class="line"> </span>
 
-		<div class="socials">
+		<div class="white-bg">
 
-			<a href="instagram"> 
-				<img src="assets/instagram.png"> 
-			</a>
+			<h3> MENU </h3>
+
+			<span class="line"> </span>
+
+			<a href="#portfolio" class="menulink"> Portfolio </a>
+			<a href="#what-we-offer" class="menulink"> What we Offer </a>
+			<a href="#pricing" class="menulink"> Pricing </a>
+			<a href="#about-us" class="menulink"> About Us </a>
+			<a href="#contact-us" class="menulink"> Contact Us </a>
 			
-			<a href="linkedin">
-				<img src="assets/linkedin.png">
-			</a>
+			<span class="line"> </span>
 
-			<a href="facebook">
-				<img src="assets/facebook.png">
-			</a>
+			<div class="socials">
 
+				<a href="instagram"> 
+					<img src="assets/instagram.png"> 
+				</a>
+				
+				<a href="linkedin">
+					<img src="assets/linkedin.png">
+				</a>
+
+				<a href="facebook">
+					<img src="assets/facebook.png">
+				</a>
+
+			</div>
 		</div>
-
 	</div>
 
 	<div class="topbar">
@@ -71,26 +78,6 @@
 			<span class="hamburger-inner"></span>
 		 </span>
 		</button>
-
-		<script>
-
-			var hamburger = document.querySelector(".hamburger");
-			var body      = document.querySelector(".body");
-			var menu      = document.querySelector(".menu");
-			var slider    = document.querySelector(".background-container")
-			
-			hamburger.addEventListener("click", function() {
-				hamburger.classList.toggle("is-active");
-				body.classList.toggle("lock-scroll");
-				menu.classList.toggle("menu-open");
-			});
-
-			function loaded() {
-				document.querySelector(".background-container").style.transform = "none";
-				document.querySelector(".fade-in").style.opacity = "1";
-			}
-
-		</script>
 
 		<a href="https://www.heroncreative.co.uk" class="topname"> <p>HERON CREATIVE</p> </a>
 
@@ -104,9 +91,7 @@
 
 		<canvas id="canvas" width="700" height="1300"> </canvas>
 
-		<script>
-
-		(function () {
+		<script> (function () {
 
 			// canvas element
 			var c    = document.getElementById("canvas");
@@ -308,11 +293,40 @@
 			// start animation
 			animate();
 
-		})();
-
-		</script>
+		})(); </script>
 
 		<div class="background-container">
+
+			<script>
+
+				var hamburger = document.querySelector(".hamburger");
+				var body      = document.querySelector(".body");
+				var menu      = document.querySelector(".menu");
+
+				var menulinks = document.querySelectorAll(".menulink");
+
+				for(var u = 0; u < menulinks.length; ++u) {
+
+					menulinks[u].addEventListener("click", toggleMenu);
+				}
+
+				function toggleMenu() {
+
+					hamburger.classList.toggle("is-active");
+					body.classList.toggle("lock-scroll");
+					menu.classList.toggle("menu-open");
+				}
+
+				function loaded() {
+					
+					document.querySelector(".background-container").style.transform = "none";
+					document.querySelector(".fade-in").style.opacity = "1";
+				}
+				
+				hamburger.addEventListener("click", toggleMenu);
+				body.onload = loaded();
+
+			</script>
 
 			<div class="slogan-container">
 
@@ -328,6 +342,44 @@
 
 		</div>
 
+	</div>
+
+	<div id="what-we-offer">
+
+		<div class="text-container">
+
+			<h3> Logo Design & Branding </h3>
+
+			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+
+			<h3> Advertising Materials </h3>
+
+			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+
+			<h3> Social Media </h3>
+
+			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+
+		</div>
+	</div>
+
+	<div id="pricing">
+
+		<div class="text-container">
+
+			<h3> Logo Design & Branding </h3>
+
+			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+
+			<h3> Advertising Materials </h3>
+
+			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+
+			<h3> Social Media </h3>
+
+			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+
+		</div>
 	</div>
 
 	<footer class="footer_container">
@@ -385,8 +437,8 @@
 			
 			</div>
 
-			<p> Site Design © Heron Creative 2019 </p>
-			<p> version 0.17 </p>
+			<p> Web Design © Heron Creative 2019 </p>
+			<p> version 0.18 </p>
 
 		</div>
 

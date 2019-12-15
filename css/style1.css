@@ -24,6 +24,8 @@
 }
 
 html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
 }
 
 .body {
@@ -54,11 +56,6 @@ button:focus {
     height: 100vh;
     z-index: 9;
     background-image: linear-gradient(to top right, #FCEAA1, white);
-}
-
-#dot {
-    position: fixed;
-    top: -100%;
 }
 
 #canvas {
@@ -111,7 +108,7 @@ button:focus {
     top: 0;
     display: grid;
     width: 100%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.22);
     background-color: white;
     z-index: 11;
 }
@@ -162,7 +159,7 @@ button:focus {
     width: 100%;
     position: fixed;
     z-index: 10;
-    background-image: linear-gradient(to right, #FEE998, #FFEAB8);
+    background-color: rgba(255, 234, 184, 0.95);
     overflow-x: hidden;
     display: grid;
     justify-content: center;
@@ -179,8 +176,24 @@ button:focus {
     -webkit-transform: none;
 }
 
+.menu .white-bg {
+    display: grid;
+    background-color: white;
+    padding: 4rem 2rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.22);
+}
+
+.menu h3 {
+    font-size: 2rem;
+    font-weight: normal;
+    letter-spacing: 0.4rem;
+    padding: 1rem 1rem;
+    color: #c8ab37;
+    justify-self: center;
+}
+
 .menu a {
-    padding: 1rem 0;
+    padding: 1rem 1rem;
     text-decoration: none;
     font-size: 2.5rem;
     font-weight: normal;
@@ -195,12 +208,21 @@ button:focus {
 }
 
 .menu .line {
-    height: 0.2rem;
+    height: 0.15rem;
     width: 20rem;
     background-color: #2C1A00;
     margin: 1rem;
     margin-bottom: 0.75rem;
     justify-self: center;
+}
+
+.menu .socials {
+    padding: 1rem;
+    width: auto;
+}
+
+.menu .socials a {
+    padding: 0;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -210,15 +232,67 @@ button:focus {
     }
 
     .lock-scroll {
-        overflow: scroll;
+        overflow: auto;
     }
+}
+
+#what-we-offer {
+    box-shadow: 0 0 20px rgba(0,0,0,0.22);
+    display: grid;
+    padding: 3rem;
+}
+
+#what-we-offer .text-container {
+    display: grid;
+    max-width: 80rem;
+    justify-self: center;
+}
+
+#what-we-offer h3 {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+    color: #c8ab37;
+}
+
+#what-we-offer p {
+    padding-left: 1rem;
+    padding-bottom: 2rem;
+    color: #111111;
+    font-size: 1.5rem;
+}
+
+#pricing {
+    box-shadow: 0 0 20px rgba(0,0,0,0.22);
+    display: grid;
+    padding: 3rem;
+    background-color: #EED676;
+}
+
+#pricing .text-container {
+    display: grid;
+    max-width: 80rem;
+    justify-self: center;
+}
+
+#pricing h3 {
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.22);
+    font-size: 2rem;
+    padding-bottom: 1rem;
+    color: white;
+}
+
+#pricing p {
+    padding-left: 1rem;
+    padding-bottom: 2rem;
+    color: #111111;
+    font-size: 1.5rem;
 }
 
 .footer_container { 
     background-color: white;
     display: grid;
     justify-items: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.22);
     padding: 2rem;
     padding-top: 1rem;
 }
@@ -335,6 +409,7 @@ button:focus {
     justify-content: center;
     grid-auto-flow: column;
     column-gap: 2rem;
+    background-color: white;
 }
 
 .socials img {
