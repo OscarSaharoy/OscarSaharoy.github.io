@@ -161,25 +161,27 @@ button:focus {
 }
 
 .menu {
+    margin-top: 3rem;
     height: 100%;
     width: 100%;
     position: fixed;
     z-index: 10;
+    left: -100%;
     background-color: rgba(255, 234, 184, 0.95);
     overflow-x: hidden;
     display: grid;
     justify-content: center;
     align-content: center;
-    transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
+    transform: none;
+    -webkit-transform: none;
     transition: transform 0.22s linear;
     will-change: transform;
     box-shadow: 0 0 20px rgba(0,0,0,0.22);
 }
 
 .menu-open {
-    transform: none;
-    -webkit-transform: none;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
 }
 
 .menu .white-bg {
@@ -235,6 +237,7 @@ button:focus {
 
     .menu {
         width: 30rem;
+        left: -30rem;
     }
 
     .lock-scroll {
@@ -242,24 +245,40 @@ button:focus {
     }
 }
 
-#portfolio {
-    display: grid;
-    padding: 3rem;
+@media only screen and (max-height: 900px) {
+
+    .menu a {
+        font-size: 2rem;
+        padding: 0.5rem 1rem; 
+    }
+
+    .menu .line {
+        margin: 0.5rem 1rem;
+    }
 }
 
-#portfolio h2 {
-    font-size: 2.6rem;
-    font-weight: lighter;
-    padding-bottom: 2rem;
-    color: #111111;
-    letter-spacing: 1rem;
-    justify-self: center;
+#portfolio {
+    display: grid;
+    padding: 5rem;
 }
 
 #portfolio .portfolio-grid {
     display: grid;
     grid-gap: 2rem;
     grid-template-columns: 1fr 1fr;
+    max-width: 80rem;
+    width: 100%;
+    justify-self: center;
+}
+
+#portfolio .portfolio-grid h2 {
+    font-size: 2.6rem;
+    font-weight: lighter;
+    color: #111111;
+    letter-spacing: 1rem;
+    justify-self: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 #portfolio .portfolio-grid .grey {
@@ -270,7 +289,8 @@ button:focus {
 
 #what-we-offer {
     display: grid;
-    padding: 3rem;
+    padding: 5rem;
+    padding-top: 0rem;
 }
 
 #what-we-offer .text-container {
@@ -282,7 +302,7 @@ button:focus {
 #what-we-offer h2 {
     font-size: 2.6rem;
     font-weight: lighter;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     color: #111111;
     letter-spacing: 1rem;
     justify-self: center;
@@ -290,20 +310,21 @@ button:focus {
 
 #what-we-offer h3 {
     font-size: 2rem;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
     color: #c8ab37;
 }
 
 #what-we-offer p {
     padding-left: 1rem;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     color: #111111;
     font-size: 1.5rem;
+    line-height: 2.5rem;
 }
 
 #pricing {
     display: grid;
-    padding: 3rem;
+    padding: 5rem;
     background-color: #FFF7D6;
 }
 
@@ -316,23 +337,24 @@ button:focus {
 #pricing h2 {
     font-size: 2.6rem;
     font-weight: lighter;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     color: #c8ab37;
     letter-spacing: 1rem;
     justify-self: center;
+    text-align: center;
 }
 
 #pricing p {
-    padding-left: 1rem;
     padding-bottom: 2rem;
     color: #111111;
     font-size: 1.5rem;
     text-align: center;
+    line-height: 2.5rem;
 }
 
 #about-us {
     display: grid;
-    padding: 3rem;
+    padding: 5rem;
     background-color: white;
 }
 
@@ -340,7 +362,7 @@ button:focus {
     display: grid;
     max-width: 80rem;
     justify-self: center;
-    grid-gap: 2rem;
+    grid-gap: 3rem;
 }
 
 #about-us h2 {
@@ -358,6 +380,7 @@ button:focus {
     padding-bottom: 2rem;
     color: #111111;
     font-size: 1.5rem;
+    line-height: 2.5rem;
 }
 
 #about-us .left {

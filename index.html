@@ -124,11 +124,11 @@
 			var alphaindexes = [];
 
 			function resize() {
-				w        = c.offsetWidth;  // screen width of canvas in px
-				h        = c.offsetHeight; // screen height of canvas in px
+				w        = c.offsetWidth;  // get screen width of canvas in px
+				h        = c.offsetHeight; // get screen height of canvas in px
 				ar       = w/h;            // aspect ratio
 
-				// set canvas width to its screen width
+				// set canvas width to its screen width (max width = 2000px)
 				c.width  = Math.min(w, 2000);
 				c.height = c.width / ar;
 				wr       = w / c.width; // width ratio is ratio of screen size of canvas to number of pixels it has across it
@@ -351,9 +351,9 @@
 
 	<div id="portfolio">
 
-		<h2> PORTFOLIO </h2>
-
 		<div class="portfolio-grid">
+
+			<h2> PORTFOLIO </h2>
 			
 			<div class="grey"> </div>
 			<div class="grey"> </div>
@@ -485,7 +485,7 @@
 			</div>
 
 			<p> Web Design © Heron Creative 2019 </p>
-			<p> version 1.0 </p>
+			<p> version 1.1 </p>
 
 		</div>
 
