@@ -101,6 +101,12 @@ button:focus {
     height: 7rem;
     width: 18rem;
     align-self: end;
+    transition: border-color 0.12s;
+    cursor:pointer;
+}
+
+.get-started:hover{
+    border-color: #867114;
 }
 
 .topbar {
@@ -225,7 +231,7 @@ button:focus {
     padding: 0;
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1200px) {
 
     .menu {
         width: 30rem;
@@ -236,8 +242,33 @@ button:focus {
     }
 }
 
+#portfolio {
+    display: grid;
+    padding: 3rem;
+}
+
+#portfolio h2 {
+    font-size: 2.6rem;
+    font-weight: lighter;
+    padding-bottom: 2rem;
+    color: #111111;
+    letter-spacing: 1rem;
+    justify-self: center;
+}
+
+#portfolio .portfolio-grid {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+#portfolio .portfolio-grid .grey {
+    height: 20rem;
+    width: 100%;
+    background-color: #dddddd;
+}
+
 #what-we-offer {
-    box-shadow: 0 0 20px rgba(0,0,0,0.22);
     display: grid;
     padding: 3rem;
 }
@@ -245,6 +276,15 @@ button:focus {
 #what-we-offer .text-container {
     display: grid;
     max-width: 80rem;
+    justify-self: center;
+}
+
+#what-we-offer h2 {
+    font-size: 2.6rem;
+    font-weight: lighter;
+    padding-bottom: 2rem;
+    color: #111111;
+    letter-spacing: 1rem;
     justify-self: center;
 }
 
@@ -262,10 +302,9 @@ button:focus {
 }
 
 #pricing {
-    box-shadow: 0 0 20px rgba(0,0,0,0.22);
     display: grid;
     padding: 3rem;
-    background-color: #EED676;
+    background-color: #FFF7D6;
 }
 
 #pricing .text-container {
@@ -274,11 +313,13 @@ button:focus {
     justify-self: center;
 }
 
-#pricing h3 {
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.22);
-    font-size: 2rem;
-    padding-bottom: 1rem;
-    color: white;
+#pricing h2 {
+    font-size: 2.6rem;
+    font-weight: lighter;
+    padding-bottom: 2rem;
+    color: #c8ab37;
+    letter-spacing: 1rem;
+    justify-self: center;
 }
 
 #pricing p {
@@ -286,6 +327,125 @@ button:focus {
     padding-bottom: 2rem;
     color: #111111;
     font-size: 1.5rem;
+    text-align: center;
+}
+
+#about-us {
+    display: grid;
+    padding: 3rem;
+    background-color: white;
+}
+
+#about-us .text-container {
+    display: grid;
+    max-width: 80rem;
+    justify-self: center;
+    grid-gap: 2rem;
+}
+
+#about-us h2 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 1;
+    color: #111111;
+    justify-self: left;
+    font-size: 2.6rem;
+    font-weight: normal;
+}
+
+#about-us p {
+    padding-left: 1rem;
+    padding-bottom: 2rem;
+    color: #111111;
+    font-size: 1.5rem;
+}
+
+#about-us .left {
+    grid-column: 1;
+}
+
+#about-us .right {
+    grid-column: 2;
+}
+
+#contact-us {
+    display: grid;
+    padding: 3rem;
+    background-color: #FFF7D6;
+}
+
+#contact-us .text-container {
+    display: grid;
+    width: 100%;
+    max-width: 80rem;
+    justify-self: center;
+}
+
+#contact-us h2 {
+    font-size: 2.6rem;
+    padding-bottom: 2rem;
+    color: #c8ab37;
+    font-weight: normal;
+}
+
+#contact-us p {
+    padding-left: 1rem;
+    padding-bottom: 2rem;
+    color: #111111;
+    font-size: 1.5rem;
+}
+
+#contact-us form {
+    display: grid;
+    grid-gap: 1rem;
+    width: 100%;
+}
+
+#contact-us form input {
+    min-width: 0;
+    padding: 1rem;
+    border: 3px solid #CCCCCC;
+    font-size: 1rem;
+    font-family: Lato;
+    color: #111111;
+    background-color: white;
+}
+
+#contact-us form textarea {
+    height: 8rem;
+    min-width: 0;
+    padding: 1rem;
+    border: 3px solid #CCCCCC;
+    font-size: 1rem;
+    font-family: Lato;
+    color: #111111;
+    background-color: white;
+}
+
+#contact-us form .email-box {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#contact-us form .name-box {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+#contact-us form .message-box {
+    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#contact-us form .send-button {
+    grid-row: 3;
+    grid-column: 2;
+    width: 40%;
+    justify-self: right;
+    border-radius: 1rem;
+    border: 3px solid #c8ab37;
+    cursor:pointer;
 }
 
 .footer_container { 
@@ -342,7 +502,7 @@ button:focus {
     grid-gap: 1rem;
     margin-left: 2rem;
     margin-bottom: 2rem;
-    grid-template-columns: 20rem auto;
+    max-width: 45rem;
 }
 
 .footer_container .email-box {
@@ -351,26 +511,27 @@ button:focus {
     border: 3px solid #CCCCCC;
     font-size: 1rem;
     font-family: Lato;
-    max-width: 20rem;
     color: #111111;
 }
 
 .footer_container .submit-button {
     grid-column: 2;
-    width: 5rem;
+    width: 8rem;
     padding: 1rem 0;
     background-color: white;
-    border: 3px solid #c8ab37;
     font-size: 1rem;
     font-family: Lato;
     font-weight: bold;
     color: #111111;
+    border-radius: 1rem;
+    border: 3px solid #c8ab37;
+    cursor:pointer;
 }
 
 @media only screen and (min-width: 1400px) {
 
     .footer-grid {
-        max-width: 100rem;
+        max-width: 80rem;
         grid-template-columns: 1fr 1fr 1fr;
         margin-left: 0;
     }
@@ -392,6 +553,7 @@ button:focus {
         grid-column: 3;
         grid-row: 1;
         align-self: start;
+        justify-items: center;
     }
 
     .footer-grid p {

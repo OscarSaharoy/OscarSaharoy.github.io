@@ -7,7 +7,7 @@
 <head>
 	<title> Heron Creative </title>
 	
-	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap" rel="stylesheet">
 
 	<link href="css/style1.css" rel="stylesheet">
 
@@ -22,8 +22,6 @@
 	<meta name="msapplication-TileColor" content="#00aba9">
 	<meta name="msapplication-config" content="assets/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=3.0">
 	<meta charset="utf-8"/>
@@ -101,7 +99,7 @@
 			var d    = 20;
 
 			// set canvas to correct width
-			var w, h, ny, nx, n, canvasData;
+			var w, h, ar, wr, ny, nx, n, canvasData;
 			resize();
 
 			// current wave angle for background wave
@@ -128,10 +126,12 @@
 			function resize() {
 				w        = c.offsetWidth;  // screen width of canvas in px
 				h        = c.offsetHeight; // screen height of canvas in px
+				ar       = w/h;            // aspect ratio
 
 				// set canvas width to its screen width
-				c.width  = w;
-				c.height = h;
+				c.width  = Math.min(w, 2000);
+				c.height = c.width / ar;
+				wr       = w / c.width; // width ratio is ratio of screen size of canvas to number of pixels it has across it
 
 				// calculate number of dots in the x and y directions
 				ny       = Math.ceil(h/d);
@@ -156,8 +156,8 @@
 				// and sets the time since the ripple was made to 0
 
 				if(e.button == 0) {
-					rxs.push(e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft);
-					rys.push(e.clientY + document.body.scrollTop + document.documentElement.scrollTop);
+					rxs.push((e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft) / wr);
+					rys.push((e.clientY + document.body.scrollTop + document.documentElement.scrollTop) / wr);
 					rts.push(0);
 				}
 			}
@@ -322,6 +322,11 @@
 					document.querySelector(".background-container").style.transform = "none";
 					document.querySelector(".fade-in").style.opacity = "1";
 				}
+
+				function getStarted() {
+
+					document.querySelector("#contact-us").scrollIntoView();
+				}
 				
 				hamburger.addEventListener("click", toggleMenu);
 				body.onload = loaded();
@@ -336,9 +341,26 @@
 			All for a reasonable price.
 			</p>
 
-			<button class="get-started"> Get Started </button>
+			<button type="button" class="get-started" onclick="getStarted()"> Get Started </button>
 
 			</div>
+
+		</div>
+
+	</div>
+
+	<div id="portfolio">
+
+		<h2> PORTFOLIO </h2>
+
+		<div class="portfolio-grid">
+			
+			<div class="grey"> </div>
+			<div class="grey"> </div>
+			<div class="grey"> </div>
+			<div class="grey"> </div>
+			<div class="grey"> </div>
+			<div class="grey"> </div>
 
 		</div>
 
@@ -347,6 +369,8 @@
 	<div id="what-we-offer">
 
 		<div class="text-container">
+
+			<h2> WHAT WE OFFER </h2>
 
 			<h3> Logo Design & Branding </h3>
 
@@ -367,17 +391,40 @@
 
 		<div class="text-container">
 
-			<h3> Logo Design & Branding </h3>
+			<h2> PRICING </h2>
 
 			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
 
-			<h3> Advertising Materials </h3>
+		</div>
+	</div>
 
-			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+	<div id="about-us">
 
-			<h3> Social Media </h3>
+		<div class="text-container">
 
-			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+			<h2> About Us </h2>
+
+			<p class="left"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+
+			<p class="right"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+
+		</div>
+	</div>
+
+	<div id="contact-us">
+
+		<div class="text-container">
+
+			<h2> Interested in working with us? </h2>
+
+			<p> We'd love to hear from you and see how we can help. </p>
+
+			<form action="message.php"> 
+					<input class="email-box" placeholder="Email Adress" name="email">
+					<input class="name-box" placeholder="Name" name="name">
+					<textarea class="message-box" placeholder="Message" name="mesage"></textarea>
+					<input class="send-button" type="submit" name="send" value="Send">
+				</form>
 
 		</div>
 	</div>
@@ -411,7 +458,7 @@
 
 				<h3> JOIN OUR MAILING LIST </h3>
 
-				<form ACTION="mailto:office@heroncreative.com" method="POST" enctype="text/plain">
+				<form action="mailing_list.php">
 					<input class="email-box" placeholder="Email Adress" name="email" >
 					<input class="submit-button" type="submit" name="Submit" value="Submit" >
 				</form>
@@ -438,7 +485,7 @@
 			</div>
 
 			<p> Web Design © Heron Creative 2019 </p>
-			<p> version 0.18 </p>
+			<p> version 1.0 </p>
 
 		</div>
 
