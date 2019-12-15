@@ -137,6 +137,9 @@
 				wsin.push( 5*Math.sin(3.14159/60 * u) );
 			}
 
+			// stores indexes of pixels that were previously drawn to so they can be cleared later
+			var alphaindexes = [];
+
 			function resize() {
 				w        = c.offsetWidth;  // screen width of canvas in px
 				h        = c.offsetHeight; // screen height of canvas in px
@@ -182,9 +185,11 @@
 			function animate() {
 
 				// clear screen
-				for(var u = 0; u < w*h; u++) {
-					canvasData.data[u*4 + 3] = 0;
-				}	
+				for(const u of alphaindexes) {
+					canvasData.data[u] = 0;
+				}
+
+				alphaindexes = [];
 
 				// th1 and th2 control background wave effect - set both to equal th initially
 				// each row of pixels th1 is incremented and each column th2 is incremented
@@ -261,7 +266,9 @@
 
 						// set pixel values if alpha is positive and pixel is onscreen (pixel should be drawn)
 						if(alpha > 0 && ox < w && ox > 0) {
-							canvasData.data[(ox + oy*w)*4 + 3] = alpha;
+							var ind = (ox + oy*w)*4 + 3;
+							canvasData.data[ind] = alpha;
+							alphaindexes.push(ind);
 						}
 
 						// when we reach the edge of the box, go down one row and loop back to other edge
@@ -379,7 +386,7 @@
 			</div>
 
 			<p> Site Design © Heron Creative 2019 </p>
-			<p> version 0.16 </p>
+			<p> version 0.17 </p>
 
 		</div>
 
