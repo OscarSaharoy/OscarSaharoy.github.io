@@ -438,11 +438,11 @@
 					}
 					else if (xhr1.status == 400) {
 						document.querySelector(".above-message-form").innerHTML = "Please include an email adress, name and message.";
-						document.querySelector(".message-send-button").innerHTML = "Try Again";
+						document.querySelector(".message-send-button").value = "Try Again";
 					}
 					else if (xhr1.status == 500 || xhr1.status == 404) {
 						document.querySelector(".above-message-form").innerHTML = "Sorry, please try again or send us an email.";
-						document.querySelector(".message-send-button").innerHTML = "Try Again";
+						document.querySelector(".message-send-button").value = "Try Again";
 					}
 				}
 
@@ -509,11 +509,11 @@
 						else if(xhr2.status == 400) {
 				
 							document.querySelector(".below-mailing-list").innerHTML = "Please enter a valid email address.";
-							document.querySelector(".mailing-list-submit").innerHTML = "Try Again";
+							document.querySelector(".mailing-list-submit").value = "Try Again";
 						}
 						else if (xhr1.status == 500 || xhr1.status == 404) {
 							document.querySelector(".below-mailing-list").innerHTML = "Sorry, please try again or send us an 	email with your email address.";
-							document.querySelector(".mailing-list-submit").innerHTML = "Try Again";
+							document.querySelector(".mailing-list-submit").value = "Try Again";
 						}
 					}
 
