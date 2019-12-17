@@ -489,7 +489,7 @@
 							document.querySelector(".below-mailing-list").innerHTML = "It worked!";
 						}
 
-						else if(xhr.readyState == 4 && xhr.status == 400) {
+						else if(xhr.status == 400) {
 				
 							document.querySelector(".below-mailing-list").innerHTML = "Please enter a valid email address.";
 						}
