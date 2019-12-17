@@ -435,6 +435,7 @@
 				
 						document.querySelector(".message-form").style.opacity = "0.5";
 						document.querySelector(".above-message-form").innerHTML = "Thankyou for your message! We will be in contact as soon as possible.";
+						document.querySelector(".message-send-button").value = "Success";
 					}
 					else if (xhr1.status == 400) {
 						document.querySelector(".above-message-form").innerHTML = "Please include an email adress, name and message.";
@@ -505,6 +506,7 @@
 				
 							document.querySelector(".mailing-list-form").style.opacity = "0.5";
 							document.querySelector(".below-mailing-list").innerHTML = "It worked!";
+							document.querySelector(".mailing-list-submit").value = "Success";
 						}
 						else if(xhr2.status == 400) {
 				
