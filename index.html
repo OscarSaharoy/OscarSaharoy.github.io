@@ -436,7 +436,10 @@
 						document.querySelector(".message-form").style.opacity = "0.5";
 						document.querySelector(".above-message-form").innerHTML = "Thankyou for your message! We will be in contact as soon as possible.";
 					}
-					else if (xhr1.status == 500 || xhr1.status == 400 || xhr1.status == 404) {
+					else if (xhr1.status == 400) {
+						document.querySelector(".above-message-form").innerHTML = "Please include an email adress, name and message.";
+					}
+					else if (xhr1.status == 500 || xhr1.status == 404) {
 						document.querySelector(".above-message-form").innerHTML = "Sorry, please try again or send us an email.";
 					}
 				}
