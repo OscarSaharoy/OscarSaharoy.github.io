@@ -539,7 +539,7 @@ button:focus {
     color: #111111;
 }
 
-.footer_container .submit-button {
+.footer_container .mailing-list-submit {
     grid-column: 2;
     width: 8rem;
     padding: 1rem 0;
