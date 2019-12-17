@@ -467,6 +467,11 @@ button:focus {
     cursor:pointer;
 }
 
+#contact-us a {
+    color: #33aacc;
+    text-decoration: none;
+}
+
 .footer_container { 
     background-color: white;
     display: grid;

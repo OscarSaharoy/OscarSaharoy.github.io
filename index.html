@@ -419,15 +419,26 @@
 
 			<script> 
 
+				var xhr1;
+
 				function submitMessage(email, name, message) {
+				
+					xhr1 = new XMLHttpRequest();
+					xhr1.open("POST", "https://heroncreative.azurewebsites.net/api/messageFormFunction?code=x2tCxlf58gJQitTkNwFuGWio2KqLOsRGp7PmkURAebtz6JZW7bb%2FIw%3D%3D&email="+email+"&name="+name+"&message="+message, true);
+					xhr1.send();
 
+					xhr1.onreadystatechange = submitMessageConfirmation;
+				}
 
-					
-					var xhr = new XMLHttpRequest();
-					xhr.open("POST", "http://localhost:7071/api/mailingListFunction", true);
-
-					document.querySelector(".message-form").style.opacity = "0.5";
-					document.querySelector(".above-message-form").innerHTML = "Thankyou for your message. We'll get back to you as soon as possible.";
+				function submitMessageConfirmation(e) {
+					if(xhr1.readyState == 4 && xhr1.status == 200) {
+				
+						document.querySelector(".message-form").style.opacity = "0.5";
+						document.querySelector(".above-message-form").innerHTML = "Thankyou for your message! We will be in contact as soon as possible.";
+					}
+					else if (xhr1.status == 500 || xhr1.status == 400 || xhr1.status == 404) {
+						document.querySelector(".above-message-form").innerHTML = "Sorry, please try again or send us an email.";
+					}
 				}
 
 			</script>
@@ -438,6 +449,8 @@
 					<textarea id="message_box1" class="message-box" placeholder="Message" name="mesage"></textarea>
 					<input class="send-button" type="submit" name="send" value="Send">
 				</form>
+
+			<p> Or send us an email at <a href="mailto:office@heroncreative.co.uk"> office@heroncreative.co.uk </a> </p>
 
 		</div>
 	</div>
@@ -471,30 +484,28 @@
 
 				<script> 
 
-					var xhr;
+					var xhr2;
 
 					function mailingList(email) {
 					
-						xhr = new XMLHttpRequest();
-						xhr.open("POST", "https://heroncreative.azurewebsites.net/api/mailingListFunction?code=x2tCxlf58gJQitTkNwFuGWio2KqLOsRGp7PmkURAebtz6JZW7bb%2FIw%3D%3D&email="+email, true);
-						xhr.send();
+						xhr2 = new XMLHttpRequest();
+						xhr2.open("POST", "https://heroncreative.azurewebsites.net/api/mailingListFunction?code=x2tCxlf58gJQitTkNwFuGWio2KqLOsRGp7PmkURAebtz6JZW7bb%2FIw%3D%3D&email="+email, true);
+						xhr2.send();
 
-						xhr.onreadystatechange = mailingListConfirmation;
+						xhr2.onreadystatechange = mailingListConfirmation;
 					}
 
 					function mailingListConfirmation(e) {
-						if(xhr.readyState == 4 && xhr.status == 200) {
+						if(xhr2.readyState == 4 && xhr2.status == 200) {
 				
 							document.querySelector(".mailing-list-form").style.opacity = "0.5";
 							document.querySelector(".below-mailing-list").innerHTML = "It worked!";
 						}
-
-						else if(xhr.status == 400) {
+						else if(xhr2.status == 400) {
 				
 							document.querySelector(".below-mailing-list").innerHTML = "Please enter a valid email address.";
 						}
 					}
-
 
 				</script>
 
