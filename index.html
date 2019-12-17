@@ -493,10 +493,12 @@
 					var xhr2;
 
 					function mailingList(email) {
+
+						var params = {"email": email};
 					
 						xhr2 = new XMLHttpRequest();
-						xhr2.open("POST", "https://heroncreative.azurewebsites.net/api/mailingListFunction?code=EwnZ1skOTlQSET76c7Q81P69TIWZPW7KSF0Kti1GR1YH4QGfy5sQOg%3D%3D&email="+email, true);
-						xhr2.send();
+						xhr2.open("POST", "https://heroncreative.azurewebsites.net/api/mailingListFunction?code=EwnZ1skOTlQSET76c7Q81P69TIWZPW7KSF0Kti1GR1YH4QGfy5sQOg%3D%3D", true);
+						xhr2.send(JSON.stringify(params));
 
 						xhr2.onreadystatechange = mailingListConfirmation;
 					}
