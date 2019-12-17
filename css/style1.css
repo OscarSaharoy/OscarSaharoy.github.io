@@ -457,7 +457,7 @@ button:focus {
     grid-column-end: 3;
 }
 
-#contact-us form .send-button {
+#contact-us form .message-send-button {
     grid-row: 3;
     grid-column: 2;
     width: 40%;

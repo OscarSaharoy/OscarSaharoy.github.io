@@ -438,9 +438,11 @@
 					}
 					else if (xhr1.status == 400) {
 						document.querySelector(".above-message-form").innerHTML = "Please include an email adress, name and message.";
+						document.querySelector(".message-send-button").innerHTML = "Try Again";
 					}
 					else if (xhr1.status == 500 || xhr1.status == 404) {
 						document.querySelector(".above-message-form").innerHTML = "Sorry, please try again or send us an email.";
+						document.querySelector(".message-send-button").innerHTML = "Try Again";
 					}
 				}
 
@@ -450,7 +452,7 @@
 					<input id="email_box1" class="email-box" placeholder="Email Adress" name="email">
 					<input id="name_box1" class="name-box" placeholder="Name" name="name">
 					<textarea id="message_box1" class="message-box" placeholder="Message" name="mesage"></textarea>
-					<input class="send-button" type="submit" name="send" value="Send">
+					<input class="message-send-button" type="submit" name="send" value="Send">
 				</form>
 
 			<p> Or send us an email at <a href="mailto:office@heroncreative.co.uk"> office@heroncreative.co.uk </a> </p>
@@ -507,6 +509,11 @@
 						else if(xhr2.status == 400) {
 				
 							document.querySelector(".below-mailing-list").innerHTML = "Please enter a valid email address.";
+							document.querySelector(".mailing-list-submit").innerHTML = "Try Again";
+						}
+						else if (xhr1.status == 500 || xhr1.status == 404) {
+							document.querySelector(".below-mailing-list").innerHTML = "Sorry, please try again or send us an 	email with your email address.";
+							document.querySelector(".mailing-list-submit").innerHTML = "Try Again";
 						}
 					}
 
@@ -516,7 +523,7 @@
 
 				<form class="mailing-list-form" action="javascript: mailingList(email_box2.value)">
 					<input id="email_box2" class="email-box" placeholder="Email Adress" name="email-box" >
-					<input class="submit-button" type="submit" name="Submit" value="Submit" >
+					<input id="mailing-list-submit" class="submit-button" type="submit" name="Submit" value="Submit" >
 				</form>
 
 				<p class="below-mailing-list"> Stay up to date with our work :) </p>
