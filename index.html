@@ -422,10 +422,12 @@
 				var xhr1;
 
 				function submitMessage(email, name, message) {
+
+					var params = {"email": email, "name": name, "message": message};
 				
 					xhr1 = new XMLHttpRequest();
-					xhr1.open("POST", "https://heroncreative.azurewebsites.net/api/messageFormFunction?code=Z7fFYi8DLsfPPn2dBPXB2QcbNTeWW0T5CYU2OY7fkMJ%2FftGhZ%2F6bOg%3D%3D&email="+email+"&name="+name+"&message="+message, true);
-					xhr1.send();
+					xhr1.open("POST", "https://heroncreative.azurewebsites.net/api/messageFormFunction?code=Z7fFYi8DLsfPPn2dBPXB2QcbNTeWW0T5CYU2OY7fkMJ%2FftGhZ%2F6bOg%3D%3D", true);
+					xhr1.send(params);
 
 					xhr1.onreadystatechange = submitMessageConfirmation;
 				}
