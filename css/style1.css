@@ -324,6 +324,7 @@ button:focus {
     color: #111111;
     font-size: 1.5rem;
     line-height: 2.5rem;
+    text-align: justify;
 }
 
 #pricing {
@@ -383,6 +384,7 @@ button:focus {
     color: #111111;
     font-size: 1.5rem;
     line-height: 2.5rem;
+    text-align: justify;
 }
 
 #contact-us {
@@ -519,7 +521,7 @@ button:focus {
     display: grid;
     grid-gap: 1rem;
     margin-left: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     max-width: 45rem;
 }
 
@@ -571,6 +573,11 @@ button:focus {
         grid-row: 1;
         align-self: start;
         justify-items: center;
+    }
+
+    .footer-grid .mailing-list form {
+        margin-left: 0;
+        width: 100%;
     }
 
     .footer-grid p {

@@ -6,14 +6,6 @@
 
 <head>
 	<title> Heron Creative </title>
-
-	<script> (function() {
-
-		if (window.location.protocol === 'http:') {
-    	window.location = 'https://' + window.location.hostname + window.location.pathname + window.location.hash;
-		}	
-
-	})();</script>
 	
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,800&display=swap" rel="stylesheet">
 
@@ -382,7 +374,7 @@
 
 			<h3> Logo Design & Branding </h3>
 
-			<p> We offer a top-range logo designing service. We can transform your ideas into reality with an all-inclusive service which allows you to come to us with a basic outline of what you want: this could be just a name for your company/project and you could let us present you with options or you could ask us to produce something you have already imagined (even then we would provide options on colour scheme, fonts and even improved design ideas). Our Logo’s are incredibly high quality and work well with something as small as a business card or as big as a banner! <br> We design each logo so that it is personalised to you, and we do our research before producing you with a finished product to ensure that you aren’t purchasing something which is already on the market. We also have pre-designed logos so that you can get an idea of our work or if you wish to get something out on the market quickly and don’t have the time or funding to produce a completely customised product. </p>
+			<p> We offer a top-range logo designing service. We can transform your ideas into reality with an all-inclusive service which allows you to come to us with a basic outline of what you want: this could be just a name for your company/project and you could let us present you with options or you could ask us to produce something you have already imagined (even then we would provide options on colour scheme, fonts and even improved design ideas). Our Logos are incredibly high quality and work well with something as small as a business card or as big as a banner! <br> We design each logo so that it is personalised to you, and we do our research before producing you with a finished product to ensure that you aren’t purchasing something which is already on the market. We also have pre-designed logos so that you can get an idea of our work or if you wish to get something out on the market quickly and don’t have the time or funding to produce a completely customised product. </p>
 
 			<h3> Advertising Materials </h3>
 
@@ -390,9 +382,7 @@
 
 			<h3> Social Media </h3>
 
-			<p> Not sure what to do with you brand new logo and design package? Let us do all the work! You can feel free to hand over the reigns and focus on the running of your company. Our out of house marketing service will take 100% of the marketing off of your hands. We can create a social media presence entirely from scratch or merely optimise the way that your accounts are currently run. <br> There isn’t a media platform that we don’t work on! Instagram, Facebook, Twitter, LinkedIn... we even do website manage and content creation. Just let us know what your vision is for your social media’s and what your desired demographic is and let us do the rest! We can guarantee as much activity as you would like on the pages: that could be up to one post an hour! We can offer you visitation optimisation packages which will increase the amount of visitors or merely make sure that your feed looks presentable to any potential customers who stumble across your page. Whatever your needs, communicate them to us and we can make sure that they succeed.
-
- </p>
+			<p> Not sure what to do with you brand new logo and design package? Let us do all the work! You can feel free to hand over the reigns and focus on the running of your company. Our out of house marketing service will take 100% of the marketing off of your hands. We can create a social media presence entirely from scratch or merely optimise the way that your accounts are currently run. <br> There isn’t a media platform that we don’t work on! Instagram, Facebook, Twitter, LinkedIn... we even do website management and content creation. Just let us know what your vision is for your social media and what your desired demographic is and let us do the rest! We can guarantee as much activity as you would like on the pages: that could be up to one post an hour! We can offer you visitation optimisation packages which will increase the amount of visitors or merely make sure that your feed looks presentable to any potential customers who stumble across your page. Whatever your needs, communicate them to us and we can make sure that they succeed. </p>
 
 		</div>
 	</div>
@@ -425,12 +415,27 @@
 
 			<h2> Interested in working with us? </h2>
 
-			<p> We'd love to hear from you and see how we can help. </p>
+			<p class="above-message-form"> We'd love to hear from you and see how we can help. </p>
 
-			<form action="message.php"> 
-					<input class="email-box" placeholder="Email Adress" name="email">
-					<input class="name-box" placeholder="Name" name="name">
-					<textarea class="message-box" placeholder="Message" name="mesage"></textarea>
+			<script> 
+
+				function submitMessage(email, name, message) {
+
+
+					
+					var xhr = new XMLHttpRequest();
+					xhr.open("POST", "http://localhost:7071/api/mailingListFunction", true);
+
+					document.querySelector(".message-form").style.opacity = "0.5";
+					document.querySelector(".above-message-form").innerHTML = "Thankyou for your message. We'll get back to you as soon as possible.";
+				}
+
+			</script>
+
+			<form class="message-form" action="javascript: submitMessage(email_box1.value, name_box1.value, message_box1.value)">
+					<input id="email_box1" class="email-box" placeholder="Email Adress" name="email">
+					<input id="name_box1" class="name-box" placeholder="Name" name="name">
+					<textarea id="message_box1" class="message-box" placeholder="Message" name="mesage"></textarea>
 					<input class="send-button" type="submit" name="send" value="Send">
 				</form>
 
@@ -464,12 +469,43 @@
 
 			<div class="mailing-list">
 
+				<script> 
+
+					var xhr;
+
+					function mailingList(email) {
+					
+						xhr = new XMLHttpRequest();
+						xhr.open("POST", "https://heroncreative.azurewebsites.net/api/mailingListFunction?code=x2tCxlf58gJQitTkNwFuGWio2KqLOsRGp7PmkURAebtz6JZW7bb%2FIw%3D%3D&email="+email, true);
+						xhr.send();
+
+						xhr.onreadystatechange = mailingListConfirmation;
+					}
+
+					function mailingListConfirmation(e) {
+						if(xhr.readyState == 4 && xhr.status == 200) {
+				
+							document.querySelector(".mailing-list-form").style.opacity = "0.5";
+							document.querySelector(".below-mailing-list").innerHTML = "It worked!";
+						}
+
+						else if(xhr.readyState == 4 && xhr.status == 400) {
+				
+							document.querySelector(".below-mailing-list").innerHTML = "Please enter a valid email address.";
+						}
+					}
+
+
+				</script>
+
 				<h3> JOIN OUR MAILING LIST </h3>
 
-				<form action="mailing_list.php">
-					<input class="email-box" placeholder="Email Adress" name="email" >
+				<form class="mailing-list-form" action="javascript: mailingList(email_box2.value)">
+					<input id="email_box2" class="email-box" placeholder="Email Adress" name="email-box" >
 					<input class="submit-button" type="submit" name="Submit" value="Submit" >
 				</form>
+
+				<p class="below-mailing-list"> Stay up to date with our work :) </p>
 			</div>
 
 		</div>
@@ -493,7 +529,7 @@
 			</div>
 
 			<p> Web Design © Heron Creative 2019 </p>
-			<p> version 1.4 </p>
+			<p> version 1.5 </p>
 
 		</div>
 
