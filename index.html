@@ -85,7 +85,7 @@
 
 	</div>
 
-	<div class="background">
+	<div class="background" style="transform: translateY(0px);">
 
 		<canvas id="canvas" width="700" height="1300"> </canvas>
 
@@ -330,15 +330,19 @@
 					document.querySelector("#contact-us").scrollIntoView();
 				}
 
-				function scroll(e) {
+				function scroll() {
 
 					var y = window.scrollY;
 					//background.style.top = (y/2).toString()+"px";
 					background.style.transform = "translateY("+(y/2).toString()+"px)";
 					console.log(y);
+					requestAnimationFrame(scroll);
 				}
 				
-				document.addEventListener("scroll", scroll);
+				//document.addEventListener("scroll", scroll);
+
+				scroll();
+
 				hamburger.addEventListener("click", toggleMenu);
 				body.onload = loaded();
 
