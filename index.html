@@ -333,17 +333,12 @@
 				function scroll() {
 
 					var y = window.scrollY;
-					//background.style.top = (y/2).toString()+"px";
-					background.style.transform = "translateY("+(4*y/5).toString()+"px)";
-					background.style.webkitTransform = "translateY("+(4*y/5).toString()+"px)";
-					console.log(y);
-					requestAnimationFrame(scroll);
+					background.style.top = (4*y/5).toString()+"px";
+					//background.style.transform = "translateY("+(4*y/5).toString()+"px)";
+					//background.style.webkitTransform = "translateY("+(4*y/5).toString()+"px)";
 				}
 				
-				//document.addEventListener("scroll", scroll);
-
-				scroll();
-
+				document.addEventListener("scroll", scroll);
 				hamburger.addEventListener("click", toggleMenu);
 				body.onload = loaded();
 
