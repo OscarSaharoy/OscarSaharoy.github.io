@@ -92,9 +92,9 @@
 
 			<script>
 
-				var hamburger = document.querySelector(".hamburger");
-				var body      = document.querySelector(".body");
-				var menu      = document.querySelector(".menu");
+				var hamburger  = document.querySelector(".hamburger");
+				var body       = document.querySelector(".body");
+				var menu       = document.querySelector(".menu");
 
 				var menulinks = document.querySelectorAll(".menulink");
 
@@ -114,16 +114,8 @@
 
 					document.querySelector("#contact-us").scrollIntoView();
 				}
-
-				function scroll() {
-
-					var y = window.scrollY;
-					document.querySelector(".slogan-container").style.transform = "translateY("+(-y/4).toString()+"px)";
-
-				}
 				
 				hamburger.addEventListener("click", toggleMenu);
-				document.addEventListener("scroll", scroll);
 
 			</script>
 
@@ -213,8 +205,8 @@
 
 			if(e.button == 0) {
 
-				rxs.push((e.clientX) / wr);
-				rys.push((e.clientY) / wr);
+				rxs.push((e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft) / wr);
+				rys.push((e.clientY + document.body.scrollTop + document.documentElement.scrollTop) / wr);
 				rts.push(0);
 			}
 		}
@@ -351,8 +343,6 @@
 		animate();
 
 	})(); </script>
-
-	<div style="height: 100vh;"> </div>
 
 	<div id="portfolio">
 

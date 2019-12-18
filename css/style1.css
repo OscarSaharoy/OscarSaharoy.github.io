@@ -75,7 +75,7 @@ drop-in {
 }
 
 .background {
-    position: fixed;
+    position: relative;
     display: inline-block;
     top: 0;
     width: 100%;
