@@ -156,8 +156,10 @@
 				// and sets the time since the ripple was made to 0
 
 				if(e.button == 0) {
+					var adjust = parseInt(background.style.transform.slice(11,-3));
+
 					rxs.push((e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft) / wr);
-					rys.push((e.clientY + document.body.scrollTop + document.documentElement.scrollTop) / wr);
+					rys.push((e.clientY + document.body.scrollTop + document.documentElement.scrollTop - adjust) / wr);
 					rts.push(0);
 				}
 			}
@@ -299,9 +301,10 @@
 
 			<script>
 
-				var hamburger = document.querySelector(".hamburger");
-				var body      = document.querySelector(".body");
-				var menu      = document.querySelector(".menu");
+				var hamburger  = document.querySelector(".hamburger");
+				var body       = document.querySelector(".body");
+				var menu       = document.querySelector(".menu");
+				var background = document.querySelector(".background");
 
 				var menulinks = document.querySelectorAll(".menulink");
 
@@ -319,7 +322,6 @@
 
 				function loaded() {
 					
-					document.querySelector(".background-container").style.transform = "none";
 					document.querySelector(".fade-in").style.opacity = "1";
 				}
 
@@ -327,7 +329,16 @@
 
 					document.querySelector("#contact-us").scrollIntoView();
 				}
+
+				function scroll(e) {
+
+					var y = window.scrollY;
+					//background.style.top = (y/2).toString()+"px";
+					background.style.transform = "translateY("+(y/2).toString()+"px)";
+					console.log(y);
+				}
 				
+				document.addEventListener("scroll", scroll);
 				hamburger.addEventListener("click", toggleMenu);
 				body.onload = loaded();
 
@@ -344,6 +355,8 @@
 			<button type="button" class="get-started" onclick="getStarted()"> Get Started </button>
 
 			</div>
+
+		<img src="assets/arrow.png" class="scroll-arrow"/>
 
 		</div>
 

@@ -54,7 +54,7 @@ button:focus {
     position: relative;
     top: 0;
     height: 100vh;
-    z-index: 9;
+    z-index: -10;
     background-image: linear-gradient(to top right, #FCEAA1, white);
 }
 
@@ -73,9 +73,20 @@ button:focus {
     width: 100%;
     height: 100vh;
     display: grid;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+@keyframes
+slideInFromLeft {
+
+  0% {
     transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
-    transition: transform 1s ease-out;
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
 }
 
 .slogan-container {
@@ -259,12 +270,22 @@ button:focus {
     }
 }
 
+.scroll-arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    width: 3rem;
+    left: 50%;
+    margin-left: -1.5rem;
+}
+
 #portfolio {
     display: grid;
     padding: 3rem;
+    background-color: white;
 }
 
 #portfolio .portfolio-grid {
+    position: relative;
     display: grid;
     grid-gap: 2rem;
     grid-template-columns: 1fr 1fr;
