@@ -80,7 +80,6 @@ drop-in {
     top: 0;
     width: 100%;
     height: 100vh;
-    z-index: -10;
     background-image: linear-gradient(to top right, #FCEAA1, white);
 }
 
@@ -133,7 +132,8 @@ slideInFromLeft {
 .get-started {
     margin: 1.5rem;
     margin-left: 7rem;
-    background-color: rgba(255,255,255,0.75);
+    margin-bottom: 3rem;
+    background-color: rgba(255,255,255,0.9);
     border: 3px solid #c8ab37;
     font-size: 1.3rem;
     font-family: "Montserrat";
@@ -142,7 +142,8 @@ slideInFromLeft {
     width: 18rem;
     align-self: end;
     transition: border-color 0.12s;
-    cursor:pointer;
+    cursor: pointer;
+    z-index: 9;
 }
 
 .get-started:hover{
@@ -161,26 +162,53 @@ slideInFromLeft {
 
 .topgrid {
     display: inline-grid;
-    justify-content: space-between;
     grid-gap: 1vmin;
 }
 
 .hamburger {
+    display: block;
     justify-self: left;
     grid-row: 1;
     grid-column: 1;
     align-self: center;
     height: 6rem;
-    display: block;
     z-index: 14;
 }
 
-.topname {
-    padding-left: 1.75rem;
+.links-bar {
+    display: grid;
+    grid-gap: 2rem;
     align-self: center;
+    overflow-x: visible;
     grid-row: 1;
     grid-column: 2;
+}
+
+.links-bar .linkbarlink {
+    display: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #111111;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
+    transition: color 0.22s;
+}
+
+.links-bar .linkbarlink:hover {
+    color: #c8ab37;
+}
+
+.links-bar .topname {
+    grid-row: 1;
+    grid-column: 1;
+    display: block;
+    padding-left: 1rem;
+    justify-self: center;
+    align-self: center;
     font-size: 1.4rem;
+    font-weight: 500;
     letter-spacing: 1.1rem;
     text-decoration: none;
     color: #c8ab37;
@@ -190,10 +218,27 @@ slideInFromLeft {
     display: block;
     grid-row: 1;
     grid-column: 3;
+    margin: 0.5rem auto;
     height: 5rem;
     justify-self: right;
     align-self: center;
     margin-right: 0.5rem;
+}
+
+@media only screen and (min-width: 1200px) {
+
+    .links-bar {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .links-bar .linkbarlink {
+        display: block;
+    }
+
+    .hamburger {
+        display: none;
+    }
 }
 
 .lock-scroll {
@@ -308,6 +353,7 @@ slideInFromLeft {
 #portfolio {
     display: grid;
     padding: 3rem;
+    padding-top: 5rem;
     background-color: white;
 }
 
