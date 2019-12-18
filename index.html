@@ -332,15 +332,14 @@
 				function scroll() {
 
 					var y = window.scrollY;
-					//background.style.top = (4*y/5).toString()+"px";
-					background.style.transform = "translateY("+(4*y/5).toString()+"px)";
-					background.style.webkitTransform = "translateY("+(4*y/5).toString()+"px)";
+					if(y < background.clientHeight) {
+						//background.style.top = (4*y/5).toString()+"px";
+						background.style.transform = "translateY("+(4*y/5).toString()+"px)";
+						background.style.webkitTransform = "translateY("+(4*y/5).toString()+"px)";
+					}
 				}
 				
-				if( !/Android/i.test(navigator.userAgent) ) {
-					document.addEventListener("scroll", scroll);
-				}
-
+				document.addEventListener("scroll", scroll);
 				hamburger.addEventListener("click", toggleMenu);
 				body.onload = loaded();
 
