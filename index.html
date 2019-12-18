@@ -22,7 +22,7 @@
 	<meta name="msapplication-TileColor" content="#00aba9">
 	<meta name="msapplication-config" content="assets/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
-	
+
 	<meta charset="utf-8"/>
 	
 </head>
@@ -332,12 +332,15 @@
 				function scroll() {
 
 					var y = window.scrollY;
-					background.style.top = (4*y/5).toString()+"px";
-					//background.style.transform = "translateY("+(4*y/5).toString()+"px)";
-					//background.style.webkitTransform = "translateY("+(4*y/5).toString()+"px)";
+					//background.style.top = (4*y/5).toString()+"px";
+					background.style.transform = "translateY("+(4*y/5).toString()+"px)";
+					background.style.webkitTransform = "translateY("+(4*y/5).toString()+"px)";
 				}
 				
-				document.addEventListener("scroll", scroll);
+				if( !/Android/i.test(navigator.userAgent) ) {
+					document.addEventListener("scroll", scroll);
+				}
+
 				hamburger.addEventListener("click", toggleMenu);
 				body.onload = loaded();
 
