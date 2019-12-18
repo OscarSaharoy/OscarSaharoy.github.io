@@ -461,6 +461,7 @@ button:focus {
     grid-row: 3;
     grid-column: 2;
     width: 40%;
+    margin-bottom: 1rem;
     justify-self: right;
     border-radius: 1rem;
     border: 3px solid #c8ab37;
