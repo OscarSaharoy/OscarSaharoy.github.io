@@ -361,10 +361,17 @@ slideInFromLeft {
     position: relative;
     display: grid;
     grid-gap: 2rem;
-    grid-template-columns: 1fr 1fr;
     max-width: 80rem;
     width: 100%;
     justify-self: center;
+    grid-template-areas: 
+        "t"
+        "a"
+        "b"
+        "c"
+        "d"
+        "e"
+        "f";
 }
 
 #portfolio .portfolio-grid h2 {
@@ -372,16 +379,62 @@ slideInFromLeft {
     font-weight: lighter;
     color: #111111;
     padding-left: 1.5rem;
+    padding-bottom: 1rem;
     letter-spacing: 1rem;
     justify-self: center;
     grid-column-start: 1;
     grid-column-end: 3;
+    grid-area: t;
 }
 
 #portfolio .portfolio-grid .grey {
     height: 20rem;
     width: 100%;
     background-color: #dddddd;
+}
+
+#portfolio .portfolio-grid .item {
+    height: 20rem;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#portfolio .portfolio-grid .nimbus {
+    background-image: url(../assets/nimbus.png);
+    grid-area: "b";
+}
+
+#portfolio .portfolio-grid .ticker {
+    background-image: url(../assets/ticker.png);
+    grid-area: "d";
+}
+
+#portfolio .portfolio-grid .impossiblecreations {
+    background-image: url(../assets/impossiblecreations.png);
+    grid-area: "e";
+}
+
+#portfolio .portfolio-grid .winterleaf {
+    background-image: url(../assets/winterleaf.png);
+    grid-area: "c";
+}
+
+#portfolio .portfolio-grid .sunrise {
+    background-image: url(../assets/sunrise.png);
+    grid-area: "f";
+}
+
+@media only screen and (min-width: 1000px) {
+
+    #portfolio .portfolio-grid {
+        grid-template-areas: 
+            "t t"
+            "a b"
+            "c d"
+            "e f";
+    }
 }
 
 #what-we-offer {
