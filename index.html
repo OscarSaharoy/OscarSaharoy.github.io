@@ -422,6 +422,8 @@
 				var xhr1;
 
 				function submitMessage(email, name, message) {
+					
+					document.querySelector(".message-send-button").value = "Sending...";
 
 					var params = {"email": email, "name": name, "message": message};
 				
@@ -495,6 +497,8 @@
 					var xhr2;
 
 					function mailingList(email) {
+
+						document.querySelector(".mailing-list-submit").value = "Sending...";
 
 						var params = {"email": email};
 					
