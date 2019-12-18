@@ -52,6 +52,7 @@ button:focus {
 
 .background {
     position: relative;
+    display: inline-block;
     top: 0;
     height: 100vh;
     z-index: -10;
