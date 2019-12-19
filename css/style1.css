@@ -189,7 +189,7 @@ slideInFromLeft {
     font-size: 1.2rem;
     font-weight: 600;
     text-decoration: none;
-    color: #111111;
+    color: #4b4838;
     grid-row: 1;
     justify-self: center;
     align-self: center;
@@ -399,6 +399,11 @@ slideInFromLeft {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#portfolio .portfolio-grid .acorn {
+    background-image: url(../assets/acorn.png);
+    grid-area: "a";
 }
 
 #portfolio .portfolio-grid .nimbus {
