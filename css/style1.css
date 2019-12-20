@@ -1,5 +1,3 @@
-/* Heron Creative 2019 */
-
 * {
     margin: 0 0;
     padding: 0 0;
@@ -80,7 +78,7 @@ drop-in {
     top: 0;
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(to top right, #FCEAA1, white);
+    background-image: #FCEAA1;
 }
 
 #canvas {
@@ -117,30 +115,31 @@ slideInFromLeft {
     align-self: end;
     display: grid;
     margin-right: 2rem;
+    margin-left: 2rem;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 .slogan {
-    font-size: calc(3vw + 2rem);
+    font-size: calc(2vw + 2rem);
     font-weight: 800;
     color: rgba(0,0,0,0.7);
     padding: 1.5rem;
-    padding-left: 2.5rem;
+    text-align:center;
     margin-right: auto;
 }
 
 .get-started {
     margin: 1.5rem;
-    margin-left: 7rem;
     margin-bottom: 3rem;
     background-color: rgba(255,255,255,0.9);
     border: 3px solid #c8ab37;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     font-family: "Montserrat";
     color: #111111;
     height: 7rem;
     width: 18rem;
     align-self: end;
+    justify-self:center;
     transition: border-color 0.12s;
     cursor: pointer;
     z-index: 9;
@@ -558,13 +557,14 @@ slideInFromLeft {
     padding-bottom: 2rem;
     color: #c8ab37;
     font-weight: normal;
+    text-align: center;
 }
 
 #contact-us p {
-    padding-left: 1rem;
     padding-bottom: 2rem;
     color: #111111;
     font-size: 1.5rem;
+    text-align: center;
 }
 
 #contact-us form {
