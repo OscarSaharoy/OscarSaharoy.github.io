@@ -49,15 +49,15 @@
 
 			<div class="socials">
 
-				<a href="instagram"> 
+				<a href="https://www.instagram.com/heroncreativeltd/"> 
 					<img src="assets/instagram.png"> 
 				</a>
 				
-				<a href="linkedin">
+				<a href="https://www.linkedin.com/company/heron-creative/">
 					<img src="assets/linkedin.png">
 				</a>
 
-				<a href="facebook">
+				<a href="https://www.facebook.com/HeronCreativeTM/">
 					<img src="assets/facebook.png">
 				</a>
 
@@ -89,42 +89,284 @@
 
 		</div>
 
+		<script>
+
+			var hamburger  = document.querySelector(".hamburger");
+			var body       = document.querySelector(".body");
+			var menu       = document.querySelector(".menu");
+
+			var menulinks = document.querySelectorAll(".menulink");
+
+			for(var u = 0; u < menulinks.length; ++u) {
+
+				menulinks[u].addEventListener("click", toggleMenu);
+			}
+
+			function toggleMenu() {
+
+				hamburger.classList.toggle("is-active");
+				body.classList.toggle("lock-scroll");
+				menu.classList.toggle("menu-open");
+			}
+
+			function getStarted() {
+
+				document.querySelector("#contact-us").scrollIntoView();
+			}
+			
+			hamburger.addEventListener("click", toggleMenu);
+
+		</script>
+
 	</div>
+
+
+	<div class="side-text">
+
+		<span class="line"> </span>
+		<p> HERON CREATIVE 2020 </p>
+		<span class="line"> </span>
+
+	</div>
+
+
+	<div class="scroll-progress">
+
+		<p> 100% </p>
+		<span class="bar-fg"> </span>
+		<span class="bar-bg"> </span>
+		<p> 0% </p>
+
+		<script>
+
+		window.onscroll = function() {scoll_progress()};
+
+		function scoll_progress() {
+
+			var maxWidth  = document.querySelector(".bar-bg").offsetWidth;
+			var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+			var height    = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+			var scrolled  = (winScroll / height) * maxWidth;
+			document.querySelector(".bar-fg").style.transform = "scaleX(" + scrolled + ")";
+		}
+
+		</script>
+
+	</div>
+
 
 	<div class="background">
 
 		<canvas id="canvas" width="700" height="1300"> </canvas>
 
-		<div class="background-container">
+		<script> (function () {
 
-			<script>
+			// canvas element
+			var c    = document.getElementById("canvas");
+			var ctx  = c.getContext("2d");
 
-				var hamburger  = document.querySelector(".hamburger");
-				var body       = document.querySelector(".body");
-				var menu       = document.querySelector(".menu");
+			// distance between pixels
+			var d    = 20;
 
-				var menulinks = document.querySelectorAll(".menulink");
+			// set canvas to correct width
+			var w, h, ar, wr, ny, nx, n, canvasData;
+			resize();
 
-				for(var u = 0; u < menulinks.length; ++u) {
+			// current wave angle for background wave
+			var th   = 0;
 
-					menulinks[u].addEventListener("click", toggleMenu);
+			// arrays for holding ripples data
+			var rxs  = [];
+			var rys  = [];
+			var rts  = [];
+
+			// array for holding wave ripple offset data
+			var wcos = [];
+			var wsin = [];
+
+			// populate those arrays
+			for(var u = 0; u < 120; u++) {
+				wcos.push( 5*Math.cos(3.14159/60 * u) );
+				wsin.push( 5*Math.sin(3.14159/60 * u) );
+			}
+
+			// stores indexes of pixels that were previously drawn to so they can be cleared later
+			var alphaindexes = [];
+
+			function resize() {
+				w        = c.offsetWidth;  // get screen width of canvas in px
+				h        = c.offsetHeight; // get screen height of canvas in px
+				ar       = w/h;            // aspect ratio
+
+				// set canvas width to its screen width (max width = 2000px)
+				c.width  = Math.min(w, 2000);
+				c.height = c.width / ar;
+				wr       = w / c.width; // width ratio is ratio of screen size of canvas to number of pixels it has across it
+
+				// calculate number of dots in the x and y directions
+				ny       = Math.ceil(h/d);
+				nx       = Math.ceil(w/d);
+				n        = nx * ny;
+
+				// get array of pixel values
+				canvasData = ctx.createImageData(w, h);
+		
+				// set to all gold
+				for(var s = 0; s < w*h; s++) {
+					canvasData.data[s*4 + 0] = 200;
+					canvasData.data[s*4 + 1] = 171;
+					canvasData.data[s*4 + 2] = 55;
+				}
+			}
+
+
+			function mouseDown(e) {
+
+				// when the user left clicks, adds a ripple by adding its x and y coords to the respective arrays
+				// and sets the time since the ripple was made to 0
+
+				if(e.button == 0) {
+
+					rxs.push((e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft) / wr);
+					rys.push((e.clientY + document.body.scrollTop + document.documentElement.scrollTop) / wr);
+					rts.push(0);
+				}
+			}
+
+			// add listeners to trigger functions when events occur
+			window.addEventListener('resize', resize);
+			window.addEventListener('mousedown', mouseDown);
+
+
+			function animate() {
+
+				// clear screen
+				for(const u of alphaindexes) {
+					canvasData.data[u] = 0;
 				}
 
-				function toggleMenu() {
+				alphaindexes = [];
 
-					hamburger.classList.toggle("is-active");
-					body.classList.toggle("lock-scroll");
-					menu.classList.toggle("menu-open");
+				// th1 and th2 control background wave effect - set both to equal th initially
+				// each row of pixels th1 is incremented and each column th2 is incremented
+				var th1 = th;
+				var th2 = th1;
+
+				// grid x and grid y positions of dots in grid
+				var gy = 0.5*d;
+				var gx = 0.5*d;
+
+				for(var r = 0; r < n; r++) {
+
+					// rest position of a dot is its grid position plus the background wave effect
+					var x = gx + wcos[th2];
+					var y = gy + wsin[th2];
+
+					// for each ripple, affect the position of the dot
+					for(z = 0; z < rts.length; z++) {
+		
+						// ripples only last 200 frames, after which they are removed from the memory arrays
+						if(rts[z] < 200) {
+			
+							// calculate offset of dot from rest position due to ripples and add that
+							// to its current position
+							var dx = x - rxs[z];
+							var dy = y - rys[z];
+							var dr = rts[z] * 10;
+			
+							var dm = Math.sqrt(dx*dx + dy*dy);
+		
+							// only proceed if the distance of the dot from the ripple is right for it 
+							// to feel anything
+							if(Math.abs(dm-dr) < 140) {
+		
+								// equation of ripple
+								var a = 30 * Math.pow( 1.1, -0.005*(dm-dr)*(dm-dr)) * Math.pow(2, -0.000005*(dr*dr));
+		
+								// offset dot by correct amount
+								x  += a * dx/dm;
+								y  += a * dy/dm;
+							}
+						}
+						else {
+							
+							// remove old ripple from arrays
+							rts.splice(z, 1);
+							rxs.splice(z, 1);
+							rys.splice(z, 1);
+						}
+					}
+
+					// x and y indices of centre of dot in pixel array
+					var ix = Math.floor(x);
+					var iy = Math.floor(y);
+
+					// start drawing 3 pixels up and right of center of dot
+					var oi = -3;
+					var oj = -3;
+
+					// t ranges from 0 to 49 for a 7x7 box around dot in which to draw it
+					for(var t = 0; t < 49; t++) {
+
+						// ox and oy are coords of the pixel we are currently drawing
+						var ox = ix + oi;
+						var oy = iy + oj;
+
+						// distance from centre of dot
+						var dx = ox - x;
+						var dy = oy - y;
+						var dm = dx*dx + dy*dy;
+
+						// calculate alpha based off distance from centre of dot
+						var alpha = ( 1.5 - 0.25*dm ) * 255;
+
+						// set pixel values if alpha is positive and pixel is onscreen (pixel should be drawn)
+						if(alpha > 0 && ox < w && ox > 0) {
+							var ind = (ox + oy*w)*4 + 3;
+							canvasData.data[ind] = alpha;
+							alphaindexes.push(ind);
+						}
+
+						// when we reach the edge of the box, go down one row and loop back to other edge
+						oj++;
+						if(oj==4) {
+							oj = -3;
+							oi++;
+						}
+					}
+
+					th2  = (th2 + 6) % 120;
+					gx  += d;
+
+					if(gx > w) {
+						gx  = 0.5*d;
+						gy += d;
+						th1 = (th1 + 6) % 120;
+						th2 = th1;
+					}
+
 				}
 
-				function getStarted() {
+				th  = (th + 1) % 120;
 
-					document.querySelector("#contact-us").scrollIntoView();
+				// evolve age of each ripple in arrays
+				for(z = 0; z<rts.length; z++) {
+					rts[z]++;
 				}
+
+				// draw pixel data to canvas
+				ctx.putImageData(canvasData, 0, 0);
 				
-				hamburger.addEventListener("click", toggleMenu);
+				// request next frame
+				requestAnimationFrame(animate);
+			}
 
-			</script>
+			// start animation
+			animate();
+
+		})(); </script>
+
+		<div class="background-container">
 
 			<div class="slogan-container">
 
@@ -137,242 +379,32 @@
 				<button type="button" class="get-started" onclick="getStarted()"> Get Started </button>
 
 			</div>
-
-		<img src="assets/arrow.png" class="scroll-arrow"/>
-
 		</div>
-
 	</div>
 
-	<script> (function () {
-
-		// canvas element
-		var c    = document.getElementById("canvas");
-		var ctx  = c.getContext("2d");
-
-		// distance between pixels
-		var d    = 20;
-
-		// set canvas to correct width
-		var w, h, ar, wr, ny, nx, n, canvasData;
-		resize();
-
-		// current wave angle for background wave
-		var th   = 0;
-
-		// arrays for holding ripples data
-		var rxs  = [];
-		var rys  = [];
-		var rts  = [];
-
-		// array for holding wave ripple offset data
-		var wcos = [];
-		var wsin = [];
-
-		// populate those arrays
-		for(var u = 0; u < 120; u++) {
-			wcos.push( 5*Math.cos(3.14159/60 * u) );
-			wsin.push( 5*Math.sin(3.14159/60 * u) );
-		}
-
-		// stores indexes of pixels that were previously drawn to so they can be cleared later
-		var alphaindexes = [];
-
-		function resize() {
-			w        = c.offsetWidth;  // get screen width of canvas in px
-			h        = c.offsetHeight; // get screen height of canvas in px
-			ar       = w/h;            // aspect ratio
-
-			// set canvas width to its screen width (max width = 2000px)
-			c.width  = Math.min(w, 2000);
-			c.height = c.width / ar;
-			wr       = w / c.width; // width ratio is ratio of screen size of canvas to number of pixels it has across it
-
-			// calculate number of dots in the x and y directions
-			ny       = Math.ceil(h/d);
-			nx       = Math.ceil(w/d);
-			n        = nx * ny;
-
-			// get array of pixel values
-			canvasData = ctx.createImageData(w, h);
-	
-			// set to all gold
-			for(var s = 0; s < w*h; s++) {
-				canvasData.data[s*4 + 0] = 200;
-				canvasData.data[s*4 + 1] = 171;
-				canvasData.data[s*4 + 2] = 55;
-			}
-		}
-
-
-		function mouseDown(e) {
-
-			// when the user left clicks, adds a ripple by adding its x and y coords to the respective arrays
-			// and sets the time since the ripple was made to 0
-
-			if(e.button == 0) {
-
-				rxs.push((e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft) / wr);
-				rys.push((e.clientY + document.body.scrollTop + document.documentElement.scrollTop) / wr);
-				rts.push(0);
-			}
-		}
-
-		// add listeners to trigger functions when events occur
-		window.addEventListener('resize', resize);
-		window.addEventListener('mousedown', mouseDown);
-
-
-		function animate() {
-
-			// clear screen
-			for(const u of alphaindexes) {
-				canvasData.data[u] = 0;
-			}
-
-			alphaindexes = [];
-
-			// th1 and th2 control background wave effect - set both to equal th initially
-			// each row of pixels th1 is incremented and each column th2 is incremented
-			var th1 = th;
-			var th2 = th1;
-
-			// grid x and grid y positions of dots in grid
-			var gy = 0.5*d;
-			var gx = 0.5*d;
-
-			for(var r = 0; r < n; r++) {
-
-				// rest position of a dot is its grid position plus the background wave effect
-				var x = gx + wcos[th2];
-				var y = gy + wsin[th2];
-
-				// for each ripple, affect the position of the dot
-				for(z = 0; z < rts.length; z++) {
-	
-					// ripples only last 200 frames, after which they are removed from the memory arrays
-					if(rts[z] < 200) {
-		
-						// calculate offset of dot from rest position due to ripples and add that
-						// to its current position
-						var dx = x - rxs[z];
-						var dy = y - rys[z];
-						var dr = rts[z] * 10;
-		
-						var dm = Math.sqrt(dx*dx + dy*dy);
-	
-						// only proceed if the distance of the dot from the ripple is right for it 
-						// to feel anything
-						if(Math.abs(dm-dr) < 140) {
-	
-							// equation of ripple
-							var a = 30 * Math.pow( 1.1, -0.005*(dm-dr)*(dm-dr)) * Math.pow(2, -0.000005*(dr*dr));
-	
-							// offset dot by correct amount
-							x  += a * dx/dm;
-							y  += a * dy/dm;
-						}
-					}
-					else {
-						
-						// remove old ripple from arrays
-						rts.splice(z, 1);
-						rxs.splice(z, 1);
-						rys.splice(z, 1);
-					}
-				}
-
-				// x and y indices of centre of dot in pixel array
-				var ix = Math.floor(x);
-				var iy = Math.floor(y);
-
-				// start drawing 3 pixels up and right of center of dot
-				var oi = -3;
-				var oj = -3;
-
-				// t ranges from 0 to 49 for a 7x7 box around dot in which to draw it
-				for(var t = 0; t < 49; t++) {
-
-					// ox and oy are coords of the pixel we are currently drawing
-					var ox = ix + oi;
-					var oy = iy + oj;
-
-					// distance from centre of dot
-					var dx = ox - x;
-					var dy = oy - y;
-					var dm = dx*dx + dy*dy;
-
-					// calculate alpha based off distance from centre of dot
-					var alpha = ( 1.5 - 0.25*dm ) * 255;
-
-					// set pixel values if alpha is positive and pixel is onscreen (pixel should be drawn)
-					if(alpha > 0 && ox < w && ox > 0) {
-						var ind = (ox + oy*w)*4 + 3;
-						canvasData.data[ind] = alpha;
-						alphaindexes.push(ind);
-					}
-
-					// when we reach the edge of the box, go down one row and loop back to other edge
-					oj++;
-					if(oj==4) {
-						oj = -3;
-						oi++;
-					}
-				}
-
-				th2  = (th2 + 6) % 120;
-				gx  += d;
-
-				if(gx > w) {
-					gx  = 0.5*d;
-					gy += d;
-					th1 = (th1 + 6) % 120;
-					th2 = th1;
-				}
-
-			}
-
-			th  = (th + 1) % 120;
-
-			// evolve age of each ripple in arrays
-			for(z = 0; z<rts.length; z++) {
-				rts[z]++;
-			}
-
-			// draw pixel data to canvas
-			ctx.putImageData(canvasData, 0, 0);
-			
-			// request next frame
-			requestAnimationFrame(animate);
-		}
-
-		// start animation
-		animate();
-
-	})(); </script>
 
 	<div id="portfolio">
 
-		<div class="portfolio-grid">
+		<h2> Portfolio </h2>
 
-			<h2> PORTFOLIO </h2>
+		<div class="portfolio-grid">
 			
-			<div class="item acorn"> </div>
+			<div class="item impossiblecreations"> </div>
 			<div class="item nimbus"> </div>
 			<div class="item winterleaf"> </div>
-			<div class="item ticker"> </div>
-			<div class="item impossiblecreations"> </div>
+			<div class="item mackerel"> </div>
+			<div class="item BIHomes"> </div>
 			<div class="item sunrise"> </div>
 
 		</div>
-
 	</div>
+
 
 	<div id="what-we-offer">
 
 		<div class="text-container">
 
-			<h2> WHAT WE OFFER </h2>
+			<h2> What we Offer </h2>
 
 			<h3> Logo Design & Branding </h3>
 
@@ -389,6 +421,80 @@
 		</div>
 	</div>
 
+
+	<div id="testimonials">
+
+		<div class="quotes-grid" id="quotes-grid">
+
+			<img src="assets/arrowcircle.png" class="left arrow" onclick="scroll_left()" id="left-arrow">
+
+			<div class="quote">
+				<p class="text"> "Excellent, creative and quick. Very good to work with." </p>
+				<p class="name"> - Selden Group, past client </p>
+			</div>
+
+			<div class="quote offscreen">
+				<p class="text"> "This was an absolutely perfect job. It was exactly what I needed, it was completed quickly and expertly and communication was fast. It couldn't have been better." </p>
+				<p class="name"> - Pacific Indigo, past client </p>
+			</div>
+
+			<div class="quote offscreen">
+				<p class="text"> "Very easy to work with. I recommend this studio!" </p>
+				<p class="name"> - DocuKnight, past client </p>
+			</div>
+
+			<img src="assets/arrowcircle.png" class="right arrow" onclick="scroll_right()" id="right-arrow">
+
+			<script>
+
+				var quotes = document.querySelectorAll(".quote");
+
+				var quote_number = 0;
+
+				function update_quotes() {
+
+					for(var i = 0; i < quotes.length; ++i) {
+
+						if(i < quote_number) {
+							quotes[i].style.transform = "translateX(-100vw)";
+						}
+						else if(i == quote_number) {
+							quotes[i].style.transform = "";
+						}
+						else if(i > quote_number) {
+							quotes[i].style.transform = "translateX(100vw)";
+						}
+					}
+
+					document.getElementById("left-arrow").style.visibility  = quote_number == 0               ? "hidden" : "visible";
+					document.getElementById("right-arrow").style.visibility = quote_number == quotes.length-1 ? "hidden" : "visible";
+				}
+
+				function scroll_left() {
+
+					if(quote_number > 0 ) {
+						--quote_number;
+						update_quotes();
+					}
+				}
+
+				function scroll_right() {
+
+					if(quote_number < quotes.length-1 ) {
+						++quote_number;
+						update_quotes();
+					}
+				}
+
+				update_quotes();
+
+			</script>
+
+		</div>
+	</div>
+
+	<!--
+
 	<div id="pricing">
 
 		<div class="text-container">
@@ -399,6 +505,8 @@
 
 		</div>
 	</div>
+
+	-->
 
 	<div id="about-us">
 
@@ -415,7 +523,7 @@
 
 		<div class="text-container">
 
-			<h2> Interested In Working With Us? </h2>
+			<h2> Interested in Working with us? </h2>
 
 			<p class="above-message-form"> We'd love to hear from you and see how we can help. </p>
 
@@ -462,7 +570,7 @@
 					<input class="message-send-button" type="submit" name="send" value="Send">
 				</form>
 
-			<p> Or Send Us An Email At: <a href="mailto:office@heroncreative.co.uk"> office@heroncreative.co.uk </a> </p>
+			<p> Or send us an email at <a href="mailto:office@heroncreative.co.uk"> office@heroncreative.co.uk </a> </p>
 
 		</div>
 	</div>
@@ -471,96 +579,31 @@
 
 		<div class="footer-grid">
 
-			<div class="contact-us">
+			<h3> CONTACT US </h3>
 
-				<h3> CONTACT US </h3>
+			<p> <a href="mailto:office@heroncreative.co.uk"> office@heroncreative.co.uk </a> </p>
+			<p> 07860940769 </p>
 
-				<p> <a href="mailto:office@heroncreative.co.uk"> office@heroncreative.co.uk </a> </p>
-				<p> 07860940769 </p>
-			</div>
-
-			<div class="info">
-
-				<h3> INFO </h3>
-
-				<p> Testimonials </p>
-				<p> Pricing </p>
-				<p> Cookie Policy </p>
-				<p> Privacy Policy </p>
-				<p> Site Map </p>
-			</div>
-
-			<div class="mailing-list">
-
-				<script> 
-
-					var xhr2;
-
-					function mailingList(email) {
-
-						document.querySelector(".mailing-list-submit").value = "Sending...";
-
-						var params = {"email": email};
-					
-						xhr2 = new XMLHttpRequest();
-						xhr2.open("POST", "https://heroncreative.azurewebsites.net/api/mailingListFunction?code=EwnZ1skOTlQSET76c7Q81P69TIWZPW7KSF0Kti1GR1YH4QGfy5sQOg%3D%3D", true);
-						xhr2.send(JSON.stringify(params));
-
-						xhr2.onreadystatechange = mailingListConfirmation;
-					}
-
-					function mailingListConfirmation(e) {
-						if(xhr2.readyState == 4 && xhr2.status == 200) {
-				
-							document.querySelector(".mailing-list-form").style.opacity = "0.5";
-							document.querySelector(".below-mailing-list").innerHTML = "It worked!";
-							document.querySelector(".mailing-list-submit").value = "Success";
-						}
-						else if(xhr2.status == 400) {
-				
-							document.querySelector(".below-mailing-list").innerHTML = "Please enter a valid email address.";
-							document.querySelector(".mailing-list-submit").value = "Try Again";
-						}
-						else if (xhr2.status == 500 || xhr2.status == 404) {
-							document.querySelector(".below-mailing-list").innerHTML = "Sorry, please try again or send us an 	email with your email address.";
-							document.querySelector(".mailing-list-submit").value = "Try Again";
-						}
-					}
-
-				</script>
-
-				<h3> JOIN OUR MAILING LIST </h3>
-
-				<form class="mailing-list-form" action="javascript: mailingList(email_box2.value)">
-					<input id="email_box2" class="email-box" placeholder="Email Adress" name="email-box" >
-					<input id="mailing-list-submit" class="mailing-list-submit" type="submit" name="Submit" value="Submit" >
-				</form>
-
-				<p class="below-mailing-list"> Stay up to date with our work and any seasonal promotions :) </p>
-			</div>
-
-		</div>
-
-		<div class="bottom">
+			<p> Site Map </p>
 	
 			<div class="socials">
 			
-				<a href="instagram"> 
+				<a href="https://www.instagram.com/heroncreativeltd/"> 
 					<img src="assets/instagram.png"> 
 				</a>
 				
-				<a href="linkedin">
+				<a href="https://www.linkedin.com/company/heron-creative/">
 					<img src="assets/linkedin.png">
 				</a>
 
-				<a href="facebook">
+				<a href="https://www.facebook.com/HeronCreativeTM/">
 					<img src="assets/facebook.png">
 				</a>
 			
 			</div>
 
-			<p> Web Design © Heron Creative 2019 </p>
-			<p> version 1.6 </p>
+			<p class="small"> Web Design © Heron Creative 2020 </p>
+			<p class="small"> version 2.0 </p>
 
 		</div>
 
