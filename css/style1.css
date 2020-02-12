@@ -4,21 +4,10 @@
 }
 
 :root {
-    font-size: 100%;
+    font-size: 0.5em;
     font-family: "Montserrat", sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-}
-
-@media
-    (min-resolution: 250dpi),
-    (min-resolution: 2.6dppx),
-    (-webkit-min-device-pixel-ratio: 2.6),
-    (min--moz-device-pixel-ratio: 2.6) {
-
-    :root{
-        font-size: 150%;
-    }
 }
 
 html {
@@ -26,6 +15,49 @@ html {
     scroll-padding-top: 6rem;
     overflow-x: hidden;
     height: 100%;
+}
+
+
+@media (min-width: 24em) {
+    :root {
+        font-size: 0.5em;
+    }
+}
+
+@media (min-width: 36em) {
+    :root {
+        font-size: 0.7em;
+    }
+}
+
+@media (min-width: 48em) {
+    :root {
+        font-size: 0.9em; 
+    }
+}
+
+@media (min-width: 64em) {
+    :root {
+        font-size: 1.1em;
+    }
+}
+
+@media (min-width: 85em) {
+    :root {
+        font-size: 1.3em;
+    }
+}
+
+@media (min-width: 120em) {
+    :root {
+        font-size: 1.4em;
+    }
+}
+
+@media (min-width: 160em) {
+    :root {
+        font-size: 1.6em;
+    }
 }
 
 .body {
@@ -267,6 +299,12 @@ slideInFromLeft {
     box-shadow: 0;
 }
 
+.menu h2 {
+    font-size: 4.5rem;
+    color: #2c2c2c;
+    justify-self: center;
+}
+
 .menu h3 {
     font-size: 2rem;
     font-weight: normal;
@@ -307,30 +345,6 @@ slideInFromLeft {
 
 .menu .socials a {
     padding: 0;
-}
-
-@media only screen and (min-width: 1200px) {
-
-    .menu {
-        width: 30rem;
-        left: -30rem;
-    }
-
-    .lock-scroll {
-        overflow: auto;
-    }
-}
-
-@media only screen and (max-height: 900px) {
-
-    .menu a {
-        font-size: 2rem;
-        padding: 0.5rem 1rem; 
-    }
-
-    .menu .line {
-        margin: 0.5rem 1rem;
-    }
 }
 
 .side-text {
@@ -401,6 +415,7 @@ slideInFromLeft {
     grid-row: 1;
     grid-column: 2;
     transform-origin: center right;
+    transform: none;
 }
 
 #portfolio {
@@ -443,6 +458,14 @@ slideInFromLeft {
     }
 }
 
+@media only screen and
+    (max-width: 300px) {
+
+    #portfolio h2 {
+        font-size: 2rem;
+    }
+}
+
 #portfolio .portfolio-grid .item {
     height: 20rem;
     width: 100%;
@@ -472,8 +495,8 @@ slideInFromLeft {
     grid-area: "d";
 }
 
-#portfolio .portfolio-grid .impossiblecreations {
-    background-image: url(../assets/impossiblecreations.png);
+#portfolio .portfolio-grid .ebonylyte {
+    background-image: url(../assets/ebonylyte.png);
     grid-area: "a";
 }
 
@@ -534,9 +557,92 @@ slideInFromLeft {
 #what-we-offer p {
     padding-bottom: 3rem;
     color: #111111;
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 2.5rem;
     text-align: justify;
+}
+
+#what-we-offer img {
+    width: 100%;
+    padding-bottom: 3rem;
+}
+
+#what-we-offer .double-img {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-bottom: 5rem;
+    align-items: center;
+}
+
+#what-we-offer .double-img h3 {
+    font-size: 4rem;
+    color: #2c2c2c;
+    font-weight: 800;
+    grid-column: 1;
+    padding: 0;
+    margin: 0;
+    padding-right: 3.5rem;
+    align-self: center;
+}
+
+#what-we-offer .double-img img {
+    padding: 0;
+    margin: 0;
+    display: block;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+}
+
+#what-we-offer .double-img .img-1 {
+    transform: translateX(-2rem) translateY(1rem);
+    z-index: 1;
+}
+
+#what-we-offer .double-img .img-2 {
+    transform: translateX(0) translateY(-1rem);
+    z-index: 0;
+    filter: grayscale(100%);
+}
+
+
+#what-we-offer .double-img-left {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-bottom: 5rem;
+    align-items: center;
+}
+
+#what-we-offer .double-img-left h3 {
+    font-size: 4rem;
+    color: #2c2c2c;
+    font-weight: 800;
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0;
+    margin: 0;
+    padding-left: 5rem;
+    align-self: center;
+}
+
+#what-we-offer .double-img-left img {
+    padding: 0;
+    margin: 0;
+    display: block;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+}
+
+#what-we-offer .double-img-left .img-1 {
+    transform: translateX(0rem) translateY(1rem);
+    z-index: 1;
+}
+
+#what-we-offer .double-img-left .img-2 {
+    transform: translateX(2rem) translateY(-1rem);
+    z-index: 0;
+    filter: grayscale(100%);
 }
 
 #testimonials {

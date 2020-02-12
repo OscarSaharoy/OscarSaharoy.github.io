@@ -36,7 +36,7 @@
 
 		<div class="white-bg">
 
-			<h3> MENU </h3>
+			<h2> Menu </h2>
 
 			<span class="line"> </span>
 
@@ -89,34 +89,7 @@
 
 		</div>
 
-		<script>
-
-			var hamburger  = document.querySelector(".hamburger");
-			var body       = document.querySelector(".body");
-			var menu       = document.querySelector(".menu");
-
-			var menulinks = document.querySelectorAll(".menulink");
-
-			for(var u = 0; u < menulinks.length; ++u) {
-
-				menulinks[u].addEventListener("click", toggleMenu);
-			}
-
-			function toggleMenu() {
-
-				hamburger.classList.toggle("is-active");
-				body.classList.toggle("lock-scroll");
-				menu.classList.toggle("menu-open");
-			}
-
-			function getStarted() {
-
-				document.querySelector("#contact-us").scrollIntoView();
-			}
-			
-			hamburger.addEventListener("click", toggleMenu);
-
-		</script>
+		<script src="js/menu.js"> </script>
 
 	</div>
 
@@ -137,20 +110,7 @@
 		<span class="bar-bg"> </span>
 		<p> 0% </p>
 
-		<script>
-
-		window.onscroll = function() {scoll_progress()};
-
-		function scoll_progress() {
-
-			var maxWidth  = document.querySelector(".bar-bg").offsetWidth;
-			var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-			var height    = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-			var scrolled  = (winScroll / height) * maxWidth;
-			document.querySelector(".bar-fg").style.transform = "scaleX(" + scrolled + ")";
-		}
-
-		</script>
+		<script src="js/scrollprogress.js"> </script>
 
 	</div>
 
@@ -159,212 +119,7 @@
 
 		<canvas id="canvas" width="700" height="1300"> </canvas>
 
-		<script> (function () {
-
-			// canvas element
-			var c    = document.getElementById("canvas");
-			var ctx  = c.getContext("2d");
-
-			// distance between pixels
-			var d    = 20;
-
-			// set canvas to correct width
-			var w, h, ar, wr, ny, nx, n, canvasData;
-			resize();
-
-			// current wave angle for background wave
-			var th   = 0;
-
-			// arrays for holding ripples data
-			var rxs  = [];
-			var rys  = [];
-			var rts  = [];
-
-			// array for holding wave ripple offset data
-			var wcos = [];
-			var wsin = [];
-
-			// populate those arrays
-			for(var u = 0; u < 120; u++) {
-				wcos.push( 5*Math.cos(3.14159/60 * u) );
-				wsin.push( 5*Math.sin(3.14159/60 * u) );
-			}
-
-			// stores indexes of pixels that were previously drawn to so they can be cleared later
-			var alphaindexes = [];
-
-			function resize() {
-				w        = c.offsetWidth;  // get screen width of canvas in px
-				h        = c.offsetHeight; // get screen height of canvas in px
-				ar       = w/h;            // aspect ratio
-
-				// set canvas width to its screen width (max width = 2000px)
-				c.width  = Math.min(w, 2000);
-				c.height = c.width / ar;
-				wr       = w / c.width; // width ratio is ratio of screen size of canvas to number of pixels it has across it
-
-				// calculate number of dots in the x and y directions
-				ny       = Math.ceil(h/d);
-				nx       = Math.ceil(w/d);
-				n        = nx * ny;
-
-				// get array of pixel values
-				canvasData = ctx.createImageData(w, h);
-		
-				// set to all gold
-				for(var s = 0; s < w*h; s++) {
-					canvasData.data[s*4 + 0] = 200;
-					canvasData.data[s*4 + 1] = 171;
-					canvasData.data[s*4 + 2] = 55;
-				}
-			}
-
-
-			function mouseDown(e) {
-
-				// when the user left clicks, adds a ripple by adding its x and y coords to the respective arrays
-				// and sets the time since the ripple was made to 0
-
-				if(e.button == 0) {
-
-					rxs.push((e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft) / wr);
-					rys.push((e.clientY + document.body.scrollTop + document.documentElement.scrollTop) / wr);
-					rts.push(0);
-				}
-			}
-
-			// add listeners to trigger functions when events occur
-			window.addEventListener('resize', resize);
-			window.addEventListener('mousedown', mouseDown);
-
-
-			function animate() {
-
-				// clear screen
-				for(const u of alphaindexes) {
-					canvasData.data[u] = 0;
-				}
-
-				alphaindexes = [];
-
-				// th1 and th2 control background wave effect - set both to equal th initially
-				// each row of pixels th1 is incremented and each column th2 is incremented
-				var th1 = th;
-				var th2 = th1;
-
-				// grid x and grid y positions of dots in grid
-				var gy = 0.5*d;
-				var gx = 0.5*d;
-
-				for(var r = 0; r < n; r++) {
-
-					// rest position of a dot is its grid position plus the background wave effect
-					var x = gx + wcos[th2];
-					var y = gy + wsin[th2];
-
-					// for each ripple, affect the position of the dot
-					for(z = 0; z < rts.length; z++) {
-		
-						// ripples only last 200 frames, after which they are removed from the memory arrays
-						if(rts[z] < 200) {
-			
-							// calculate offset of dot from rest position due to ripples and add that
-							// to its current position
-							var dx = x - rxs[z];
-							var dy = y - rys[z];
-							var dr = rts[z] * 10;
-			
-							var dm = Math.sqrt(dx*dx + dy*dy);
-		
-							// only proceed if the distance of the dot from the ripple is right for it 
-							// to feel anything
-							if(Math.abs(dm-dr) < 140) {
-		
-								// equation of ripple
-								var a = 30 * Math.pow( 1.1, -0.005*(dm-dr)*(dm-dr)) * Math.pow(2, -0.000005*(dr*dr));
-		
-								// offset dot by correct amount
-								x  += a * dx/dm;
-								y  += a * dy/dm;
-							}
-						}
-						else {
-							
-							// remove old ripple from arrays
-							rts.splice(z, 1);
-							rxs.splice(z, 1);
-							rys.splice(z, 1);
-						}
-					}
-
-					// x and y indices of centre of dot in pixel array
-					var ix = Math.floor(x);
-					var iy = Math.floor(y);
-
-					// start drawing 3 pixels up and right of center of dot
-					var oi = -3;
-					var oj = -3;
-
-					// t ranges from 0 to 49 for a 7x7 box around dot in which to draw it
-					for(var t = 0; t < 49; t++) {
-
-						// ox and oy are coords of the pixel we are currently drawing
-						var ox = ix + oi;
-						var oy = iy + oj;
-
-						// distance from centre of dot
-						var dx = ox - x;
-						var dy = oy - y;
-						var dm = dx*dx + dy*dy;
-
-						// calculate alpha based off distance from centre of dot
-						var alpha = ( 1.5 - 0.25*dm ) * 255;
-
-						// set pixel values if alpha is positive and pixel is onscreen (pixel should be drawn)
-						if(alpha > 0 && ox < w && ox > 0) {
-							var ind = (ox + oy*w)*4 + 3;
-							canvasData.data[ind] = alpha;
-							alphaindexes.push(ind);
-						}
-
-						// when we reach the edge of the box, go down one row and loop back to other edge
-						oj++;
-						if(oj==4) {
-							oj = -3;
-							oi++;
-						}
-					}
-
-					th2  = (th2 + 6) % 120;
-					gx  += d;
-
-					if(gx > w) {
-						gx  = 0.5*d;
-						gy += d;
-						th1 = (th1 + 6) % 120;
-						th2 = th1;
-					}
-
-				}
-
-				th  = (th + 1) % 120;
-
-				// evolve age of each ripple in arrays
-				for(z = 0; z<rts.length; z++) {
-					rts[z]++;
-				}
-
-				// draw pixel data to canvas
-				ctx.putImageData(canvasData, 0, 0);
-				
-				// request next frame
-				requestAnimationFrame(animate);
-			}
-
-			// start animation
-			animate();
-
-		})(); </script>
+		<script src="js/canvas.js"> </script>
 
 		<div class="background-container">
 
@@ -389,7 +144,7 @@
 
 		<div class="portfolio-grid">
 			
-			<div class="item impossiblecreations"> </div>
+			<div class="item ebonylyte"> </div>
 			<div class="item nimbus"> </div>
 			<div class="item winterleaf"> </div>
 			<div class="item mackerel"> </div>
@@ -409,14 +164,32 @@
 			<h3> Logo Design & Branding </h3>
 
 			<p> We offer a top-range logo designing service. We can transform your ideas into reality with an all-inclusive service which allows you to come to us with a basic outline of what you want: this could be just a name for your company/project and you could let us present you with options or you could ask us to produce something you have already imagined (even then we would provide options on colour scheme, fonts and even improved design ideas). Our Logos are incredibly high quality and work well with something as small as a business card or as big as a banner! <br> We design each logo so that it is personalised to you, and we do our research before producing you with a finished product to ensure that you aren’t purchasing something which is already on the market. We also have pre-designed logos so that you can get an idea of our work or if you wish to get something out on the market quickly and don’t have the time or funding to produce a completely customised product. </p>
+			
+			<div class="double-img">
+				<h3> Working with you, not against you. </h3>
+				<img src="assets/looking.jpg" class="img-2"/>
+				<img src="assets/looking.jpg" class="img-1"/>
+			</div>
 
 			<h3> Advertising Materials </h3>
 
 			<p> On top of our logo services we also offer an advertising materials service. This package includes business card design, leaflets, banners, marketing merchandise design, letter headers and so much more! We can help you put your new logo and branding absolutely everywhere, so that you’re hard to miss and even harder to say no to! <br> You can let us do the designing and forward the finished product onto you so that you can take the rest of the product completion into your own hands or you can hand over the entire task to us! We work with trusted partners which will ensure that we can produce a perfectly compatible product: just let us know what you want and we will work closely with our partners to produce the pieces you would like; whatever that may be.  </p>
 
+			<div class="double-img-left">
+				<h3> Creativity whenever and however you need it. </h3>
+				<img src="assets/office.jpg" class="img-2"/>
+				<img src="assets/office.jpg" class="img-1"/>
+			</div>
+
 			<h3> Social Media </h3>
 
 			<p> Not sure what to do with you brand new logo and design package? Let us do all the work! You can feel free to hand over the reigns and focus on the running of your company. Our out of house marketing service will take 100% of the marketing off of your hands. We can create a social media presence entirely from scratch or merely optimise the way that your accounts are currently run. <br> There isn’t a media platform that we don’t work on! Instagram, Facebook, Twitter, LinkedIn... we even do website management and content creation. Just let us know what your vision is for your social media and what your desired demographic is and let us do the rest! We can guarantee as much activity as you would like on the pages: that could be up to one post an hour! We can offer you visitation optimisation packages which will increase the amount of visitors or merely make sure that your feed looks presentable to any potential customers who stumble across your page. Whatever your needs, communicate them to us and we can make sure that they succeed. </p>
+
+			<div class="double-img">
+				<h3> Makeover your brand. </h3>
+				<img src="assets/brushes.jpg" class="img-2"/>
+				<img src="assets/brushes.jpg" class="img-1"/>
+			</div>
 
 		</div>
 	</div>
@@ -445,68 +218,10 @@
 
 			<img src="assets/arrowcircle.png" class="right arrow" onclick="scroll_right()" id="right-arrow">
 
-			<script>
-
-				var quotes = document.querySelectorAll(".quote");
-
-				var quote_number = 0;
-
-				function update_quotes() {
-
-					for(var i = 0; i < quotes.length; ++i) {
-
-						if(i < quote_number) {
-							quotes[i].style.transform = "translateX(-100vw)";
-						}
-						else if(i == quote_number) {
-							quotes[i].style.transform = "";
-						}
-						else if(i > quote_number) {
-							quotes[i].style.transform = "translateX(100vw)";
-						}
-					}
-
-					document.getElementById("left-arrow").style.visibility  = quote_number == 0               ? "hidden" : "visible";
-					document.getElementById("right-arrow").style.visibility = quote_number == quotes.length-1 ? "hidden" : "visible";
-				}
-
-				function scroll_left() {
-
-					if(quote_number > 0 ) {
-						--quote_number;
-						update_quotes();
-					}
-				}
-
-				function scroll_right() {
-
-					if(quote_number < quotes.length-1 ) {
-						++quote_number;
-						update_quotes();
-					}
-				}
-
-				update_quotes();
-
-			</script>
+			<script src="js/quotes.js"> </script>
 
 		</div>
 	</div>
-
-	<!--
-
-	<div id="pricing">
-
-		<div class="text-container">
-
-			<h2> PRICING </h2>
-
-			<p> We hate paying for things as much as you do. That's why we agree on one price from the start and stick to it. We aren't a huge design house with loads of employees, so you might find we can deliver results at a lower price than much of the competition. </p>
-
-		</div>
-	</div>
-
-	-->
 
 	<div id="about-us">
 
@@ -527,41 +242,7 @@
 
 			<p class="above-message-form"> We'd love to hear from you and see how we can help. </p>
 
-			<script> 
-
-				var xhr1;
-
-				function submitMessage(email, name, message) {
-					
-					document.querySelector(".message-send-button").value = "Sending...";
-
-					var params = {"email": email, "name": name, "message": message};
-				
-					xhr1 = new XMLHttpRequest();
-					xhr1.open("POST", "https://heroncreative.azurewebsites.net/api/messageFormFunction?code=Z7fFYi8DLsfPPn2dBPXB2QcbNTeWW0T5CYU2OY7fkMJ%2FftGhZ%2F6bOg%3D%3D", true);
-					xhr1.send(JSON.stringify(params));
-
-					xhr1.onreadystatechange = submitMessageConfirmation;
-				}
-
-				function submitMessageConfirmation(e) {
-					if(xhr1.readyState == 4 && xhr1.status == 200) {
-				
-						document.querySelector(".message-form").style.opacity = "0.5";
-						document.querySelector(".above-message-form").innerHTML = "Thankyou for your message! We will be in contact as soon as possible.";
-						document.querySelector(".message-send-button").value = "Success";
-					}
-					else if (xhr1.status == 400) {
-						document.querySelector(".above-message-form").innerHTML = "Please include an email adress, name and message.";
-						document.querySelector(".message-send-button").value = "Try Again";
-					}
-					else if (xhr1.status == 500 || xhr1.status == 404) {
-						document.querySelector(".above-message-form").innerHTML = "Sorry, please try again or send us an email.";
-						document.querySelector(".message-send-button").value = "Try Again";
-					}
-				}
-
-			</script>
+			<script src="js/form.js"> </script>
 
 			<form class="message-form" action="javascript: submitMessage(email_box1.value, name_box1.value, message_box1.value)">
 					<input id="email_box1" class="email-box" placeholder="Email Adress" name="email">
@@ -603,7 +284,7 @@
 			</div>
 
 			<p class="small"> Web Design © Heron Creative 2020 </p>
-			<p class="small"> version 2.0 </p>
+			<p class="small"> version 2.2 </p>
 
 		</div>
 
