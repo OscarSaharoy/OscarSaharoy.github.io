@@ -1,10 +1,13 @@
 * {
     margin: 0 0;
     padding: 0 0;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 :root {
-    font-size: 0.5em;
+    --main-font-size: 0.7em;
+    font-size: var(--main-font-size);
     font-family: "Montserrat", sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -17,49 +20,6 @@ html {
     height: 100%;
 }
 
-
-@media (min-width: 24em) {
-    :root {
-        font-size: 0.5em;
-    }
-}
-
-@media (min-width: 36em) {
-    :root {
-        font-size: 0.7em;
-    }
-}
-
-@media (min-width: 48em) {
-    :root {
-        font-size: 0.9em; 
-    }
-}
-
-@media (min-width: 64em) {
-    :root {
-        font-size: 1.1em;
-    }
-}
-
-@media (min-width: 85em) {
-    :root {
-        font-size: 1.3em;
-    }
-}
-
-@media (min-width: 120em) {
-    :root {
-        font-size: 1.4em;
-    }
-}
-
-@media (min-width: 160em) {
-    :root {
-        font-size: 1.6em;
-    }
-}
-
 .body {
     height: 100%;
 }
@@ -70,6 +30,8 @@ button:focus {
 
 .fade-in {
     animation: 1s linear 0s 1 fade-in;
+    display: grid;
+    max-width: 100vw;
 }
 
 @keyframes 
@@ -137,6 +99,8 @@ slideInFromLeft {
 }
 
 .slogan-container {
+    width: 100%;
+    max-width: calc(100vw - 4rem);
     align-self: end;
     display: grid;
     margin-right: 2rem;
@@ -157,11 +121,11 @@ slideInFromLeft {
     margin-bottom: 3rem;
     background-color: rgba(255,255,255,0.9);
     border: 3px solid #c8ab37;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     font-family: "Montserrat";
     color: #111111;
-    height: 7rem;
-    width: 18rem;
+    height: 5rem;
+    width: 15rem;
     align-self: end;
     justify-self:center;
     transition: border-color 0.12s;
@@ -451,7 +415,7 @@ slideInFromLeft {
 }
 
 @media only screen and
-    (max-width: 850px) {
+    (max-width: 80rem) {
 
     #portfolio h2 {
         font-size: 4rem;
@@ -469,10 +433,10 @@ slideInFromLeft {
 #portfolio .portfolio-grid .item {
     height: 20rem;
     width: 100%;
+    max-width: calc(100vw - 7rem);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    cursor: pointer;
     transition: transform 0.3s;
 }
 
@@ -510,7 +474,7 @@ slideInFromLeft {
     grid-area: "f";
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 80rem) {
 
     #portfolio .portfolio-grid {
         grid-template-areas:
@@ -521,9 +485,9 @@ slideInFromLeft {
 }
 
 #what-we-offer {
+    width: calc(100vw - 9rem);
     display: grid;
-    padding: 5rem;
-    padding-top: 2rem;
+    margin: 2rem 4rem 0 4rem;
     background-color: white;
 }
 
@@ -557,7 +521,7 @@ slideInFromLeft {
 #what-we-offer p {
     padding-bottom: 3rem;
     color: #111111;
-    font-size: 1rem;
+    font-size: 1.4rem;
     line-height: 2.5rem;
     text-align: justify;
 }
@@ -586,12 +550,14 @@ slideInFromLeft {
 }
 
 #what-we-offer .double-img img {
-    padding: 0;
+    padding: 0 0 3rem 0;
     margin: 0;
     display: block;
     grid-column: 2;
     grid-row: 1;
     align-self: center;
+    justify-self: center;
+    max-width: 40rem;
 }
 
 #what-we-offer .double-img .img-1 {
@@ -605,6 +571,22 @@ slideInFromLeft {
     filter: grayscale(100%);
 }
 
+@media only screen and
+    (max-width: 60rem) {
+
+    #what-we-offer .double-img {
+        grid-template-columns: 100%;
+    }
+
+    #what-we-offer .double-img img {
+        grid-column: 1;
+    }
+
+    #what-we-offer .double-img h3 {
+        grid-row: 2;
+        padding: 0;
+    }
+}
 
 #what-we-offer .double-img-left {
     display: grid;
@@ -626,12 +608,14 @@ slideInFromLeft {
 }
 
 #what-we-offer .double-img-left img {
-    padding: 0;
+    padding: 0 0 3rem 0;
     margin: 0;
     display: block;
     grid-column: 1;
     grid-row: 1;
     align-self: center;
+    justify-self: center;
+    max-width: 40rem;
 }
 
 #what-we-offer .double-img-left .img-1 {
@@ -645,6 +629,20 @@ slideInFromLeft {
     filter: grayscale(100%);
 }
 
+@media only screen and
+    (max-width: 60rem) {
+
+    #what-we-offer .double-img-left {
+        grid-template-columns: 100%;
+    }
+
+    #what-we-offer .double-img-left h3 {
+        grid-row: 2;
+        grid-column: 1;
+        padding: 0;
+    }
+}
+
 #testimonials {
     background-color: #FFF7D6;
     display: grid;
@@ -652,7 +650,7 @@ slideInFromLeft {
 
 #testimonials .quotes-grid {
     justify-self: center;
-    padding: 4rem 3rem;
+    padding: 4rem 0;
     display: grid;
     justify-content: stretch;
     width: calc(100% - 6rem);
@@ -752,7 +750,6 @@ slideInFromLeft {
 #contact-us h2 {
     font-size: 7rem;
     padding-bottom: 2rem;  
-    color: #c8ab37;
     color: #2c2c2c;
 }
 
@@ -844,9 +841,9 @@ footer {
 }
 
 .footer-grid h3 {
-    font-weight: 600;
-    font-size: 1.5rem;
-    color: #c8ab37;
+    font-weight: 800;
+    font-size: 2rem;
+    color: #2c2c2c;
     text-align: center;
     padding-bottom: 0.3rem;
 }
@@ -907,4 +904,29 @@ footer {
 .footer_container .socials {
     grid-row: 2;
     grid-column: 1;
+}
+
+
+.description {
+    display: grid;
+    padding: 3rem;
+    padding-top: 8rem;
+    justify-self: center;
+}
+
+.description h2 {
+    font-size: 3rem; 
+    color: #2c2c2c;
+}
+
+.description h3 {
+    font-size: 1.2rem; 
+    color: #c8ab37;
+    font-weight: 400;
+    letter-spacing: 1.1rem;
+    padding-bottom: 2rem;
+}
+
+.description p {
+    font-size: 1.2rem;
 }
