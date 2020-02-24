@@ -427,8 +427,7 @@ slideInFromLeft {
     z-index: 1;
 }
 
-@media only screen and
-    (max-width: 50rem) {
+@media only screen and (max-width: 50rem) {
 
     #portfolio h2 {
         font-size: 4rem;
@@ -781,8 +780,7 @@ slideInFromLeft {
     color: #2c2c2c;
 }
 
-@media only screen and
-    (max-width: 850px) {
+@media only screen and (max-width: 50rem) {
 
     #contact-us h2 {
         font-size: 4rem;
@@ -842,12 +840,39 @@ slideInFromLeft {
 #contact-us form .message-send-button {
     grid-row: 3;
     grid-column: 2;
-    width: 40%;
+    width: 10rem;
     margin-bottom: 1rem;
     justify-self: right;
     border-radius: 1rem;
     border: 3px solid #c8ab37;
     cursor:pointer;
+}
+
+@media only screen and (max-width: 40rem) {
+
+
+    #contact-us form .email-box {
+        grid-row: 1;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    #contact-us form .name-box {
+        grid-row: 2;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    #contact-us form .message-box {
+        grid-row: 3;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    #contact-us form .message-send-button {
+        grid-row: 4;
+        grid-column: 2;
+    }
 }
 
 #contact-us a {
