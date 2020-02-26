@@ -29,7 +29,7 @@ html {
 
     :root {
 
-        font-size: 200%;
+        font-size: 150%;
     }
 
 }
@@ -693,8 +693,8 @@ slideInFromLeft {
 }
 
 #testimonials .right {
-    transform: rotateZ(180deg);
     justify-self: right;
+    transform: rotateZ(180deg);
 }
 
 #testimonials .quote {
@@ -704,6 +704,25 @@ slideInFromLeft {
     justify-content: center;
     grid-gap: 1rem;
     transition: transform 0.5s;
+}
+
+@media (max-width: 50rem) {
+
+    #testimonials .arrow {
+        grid-row: 2;
+        grid-column: 1;
+        justify-self: center;
+        transform: translateX(-3rem);
+    }
+
+    #testimonials .right {
+        justify-self: center;
+        transform: translateX(3rem) rotateZ(180deg);
+    }
+
+    #testimonials .quote {
+        grid-column: 1;
+    }
 }
 
 #testimonials .quote p {
@@ -949,7 +968,7 @@ footer {
 
 .description {
     display: grid;
-    padding: 3rem;
+    padding: 4rem;
     padding-top: 8rem;
     justify-self: center;
 }
