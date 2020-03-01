@@ -579,10 +579,9 @@ slideInFromLeft {
     filter: grayscale(100%);
 }
 
-@media only screen and (min-width: 60rem) and
-    (max-resolution: 150dpi),
-    (max-resolution: 1.6dppx),
-    (-webkit-max-device-pixel-ratio: 1.6) {
+@media only screen and (min-width: 60rem) and (max-resolution: 250dpi),
+                       (min-width: 60rem) and (max-resolution: 2.6dppx),
+                       (min-width: 60rem) and (-webkit-max-device-pixel-ratio: 2.6) {
 
     #what-we-offer .double-img {
         grid-template-columns: 50% 50%;
@@ -598,10 +597,9 @@ slideInFromLeft {
     }
 }
 
-@media only screen and (min-width: 90rem) and
-    (min-resolution: 250dpi),
-    (min-resolution: 2.6dppx),
-    (-webkit-min-device-pixel-ratio: 2.6) {
+@media only screen and (min-width: 90rem) and (min-resolution: 250dpi),
+                       (min-width: 90rem) and (min-resolution: 2.6dppx),
+                       (min-width: 90rem) and (-webkit-min-device-pixel-ratio: 2.6) {
 
     #what-we-offer .double-img {
         grid-template-columns: 50% 50%;
