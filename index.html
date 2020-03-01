@@ -151,7 +151,7 @@
 			<div class="portfolio-grid">
 				
 				<a href="ebonylyte.html"> <div class="item ebonylyte"> </div> </a>
-				<a href="ebonylyte.html"> <div class="item nimbus"> </div> </a>
+				<a href="sizingtests.html"> <div class="item nimbus"> </div> </a>
 				<a href="ebonylyte.html"> <div class="item winterleaf"> </div> </a>
 				<a href="ebonylyte.html"> <div class="item mackerel"> </div> </a>
 				<a href="ebonylyte.html"> <div class="item BIHomes"> </div> </a>
@@ -210,21 +210,25 @@
 
 			<div class="quote">
 				<p class="text"> "Excellent, creative and quick. Very good to work with." </p>
+				<p class="stars"> ★ ★ ★ ★ ★  </p>
 				<p class="name"> - Selden Group, past client </p>
 			</div>
 
 			<div class="quote offscreen">
 				<p class="text"> "This was an absolutely perfect job. It was exactly what I needed, it was completed quickly and expertly and communication was fast. It couldn't have been better." </p>
+				<p class="stars"> ★ ★ ★ ★ ★  </p>
 				<p class="name"> - Pacific Indigo, past client </p>
 			</div>
 
 			<div class="quote offscreen">
 				<p class="text"> "Very easy to work with. I recommend this studio!" </p>
+				<p class="stars"> ★ ★ ★ ★ ★  </p>
 				<p class="name"> - DocuKnight, past client </p>
 			</div>
 
 			<div class="quote offscreen">
 				<p class="text"> "Excellent work. Very responsive and easy to work with. I will definitely use this studio again." </p>
+				<p class="stars"> ★ ★ ★ ★ ★  </p>
 				<p class="name"> - Across the Line, past client </p>
 			</div>
 
@@ -296,8 +300,29 @@
 			</div>
 
 			<p class="small"> Web Design © Heron Creative 2020 </p>
-			<p class="small"> version 1.2.4 </p>
+			<p class="small"> version 1.2.6 </p>
 
+		</div>
+
+		<div style="background-color: rgba(255,255,255,0.3); padding-top: 2rem;">
+
+			<h2> width in rem = </h2> <h2 class="rem">  </h2>
+
+			<script>
+
+				function run() {
+					var height = window.innerWidth;
+					var root   = document.documentElement;
+					var rem    = parseFloat(window.getComputedStyle(root).getPropertyValue("font-size"));
+					var p      = document.querySelector(".rem");
+
+					p.innerHTML = height/rem;
+				}
+
+				window.addEventListener("DOMContentLoaded", run);
+				window.addEventListener("resize", run);
+
+			</script>
 		</div>
 
 	</footer>

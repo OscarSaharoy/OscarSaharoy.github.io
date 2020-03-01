@@ -104,10 +104,10 @@
 			var y = gy + wsin[th2];
 
 			// for each ripple, affect the position of the dot
-			for(z = 0; z < rts.length; z++) {
+			for(var z = 0; z < rts.length; z++) {
 
-				// ripples only last 200 frames, after which they are removed from the memory arrays
-				if(rts[z] < 200) {
+				// ripples only last 90 frames, after which they are removed from the memory arrays
+				if(rts[z] < 90) {
 	
 					// calculate offset of dot from rest position due to ripples and add that
 					// to its current position
@@ -119,10 +119,12 @@
 
 					// only proceed if the distance of the dot from the ripple is right for it 
 					// to feel anything
-					if(Math.abs(dm-dr) < 140) {
+					if(Math.abs(dm-dr) < 81.65) {
+
+						var dc = dm-dr
 
 						// equation of ripple
-						var a = 30 * Math.pow( 1.1, -0.005*(dm-dr)*(dm-dr)) * Math.pow(2, -0.000005*(dr*dr));
+						var a = (30 - 0.009*dc*dc + 0.000000675*dc*dc*dc*dc)*(1 - dm/900);
 
 						// offset dot by correct amount
 						x  += a * dx/dm;

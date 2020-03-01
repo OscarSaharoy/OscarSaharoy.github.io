@@ -1,0 +1,42 @@
+<!-- Heron Creative 2020 -->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title> Sizing Tests </title>
+
+	<link href="css/style1.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+	<div style="background-color: rgba(255,255,255,0.3); position: fixed;">
+
+		<h2> width in rem = </h2>
+		<h3 class="rem">  </h3>
+
+		<script>
+
+			function run() {
+				var height = window.innerWidth;
+				var root   = document.documentElement;
+				var rem    = parseFloat(window.getComputedStyle(root).getPropertyValue("font-size"));
+				var p      = document.querySelector(".rem");
+
+				p.innerHTML = height/rem;
+			}
+
+			window.addEventListener("DOMContentLoaded", run);
+			window.addEventListener("resize", run);
+
+		</script>
+
+	</div>
+
+</body>
+
+</html>
