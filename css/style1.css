@@ -6,7 +6,8 @@
 }
 
 :root {
-    -font-size: 0.9em;
+    --font-multiplier: 1;
+    font-size: 0.9em;
     font-family: "Montserrat", sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -23,8 +24,7 @@ html {
 @media 
     (min-resolution: 250dpi),
     (min-resolution: 2.6dppx),
-    (-webkit-min-device-pixel-ratio: 2.6),
-    (min--moz-device-pixel-ratio: 2.6) {
+    (-webkit-min-device-pixel-ratio: 2.6) {
 
     :root {
 
@@ -93,6 +93,7 @@ drop-in {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    font-size: 1em;
 }
 
 .background-container {
@@ -579,16 +580,27 @@ slideInFromLeft {
     filter: grayscale(100%);
 }
 
-@media only screen and
-    (max-width: 40rem) {
+@media only screen and (min-width: 60rem) and (max-resolution: 250dpi),
+                       (min-width: 60rem) and (max-resolution: 2.6dppx),
+                       (min-width: 60rem) and (-webkit-max-device-pixel-ratio: 2.6) {
+
+    #what-we-offer .double-img {
+        grid-template-columns: 50% 50%;
+    }
+
+    #what-we-offer .double-img img {
+        grid-column: 2;
+        grid-row: 1;
+    }
 
     #what-we-offer .double-img h3 {
-        font-size: 3rem;
+        grid-row: 1;
     }
 }
 
-@media only screen and
-    (min-width: 60rem) {
+@media only screen and (min-width: 90rem) and (min-resolution: 250dpi),
+                       (min-width: 90rem) and (min-resolution: 2.6dppx),
+                       (min-width: 90rem) and (-webkit-min-device-pixel-ratio: 2.6) {
 
     #what-we-offer .double-img {
         grid-template-columns: 50% 50%;
@@ -646,16 +658,7 @@ slideInFromLeft {
     filter: grayscale(100%);
 }
 
-@media only screen and
-    (max-width: 40rem) {
-
-    #what-we-offer .double-img-left h3 {
-        font-size: 3rem;
-    }
-}
-
-@media only screen and
-    (max-width: 60rem) {
+@media only screen and (max-width: 60rem) {
 
     #what-we-offer .double-img-left {
         grid-template-columns: 100%;
