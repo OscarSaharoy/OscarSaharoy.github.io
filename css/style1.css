@@ -619,7 +619,7 @@ slideInFromLeft {
 #what-we-offer .double-img-left {
     max-width: calc(100vw - 8rem);
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 100%;
     margin-bottom: 5rem;
     align-items: center;
 }
@@ -628,8 +628,8 @@ slideInFromLeft {
     font-size: 4rem;
     color: #2c2c2c;
     font-weight: 800;
-    grid-column: 2;
-    grid-row: 1;
+    grid-column: 1;
+    grid-row: 2;
     padding: 0;
     margin: 0;
     padding-left: 5rem;
@@ -658,16 +658,31 @@ slideInFromLeft {
     filter: grayscale(100%);
 }
 
-@media only screen and (max-width: 60rem) {
+@media only screen and (min-width: 60rem) and (max-resolution: 250dpi),
+                       (min-width: 60rem) and (max-resolution: 2.6dppx),
+                       (min-width: 60rem) and (-webkit-max-device-pixel-ratio: 2.6) {
 
     #what-we-offer .double-img-left {
-        grid-template-columns: 100%;
+        grid-template-columns: 50% 50%;
     }
 
     #what-we-offer .double-img-left h3 {
-        grid-row: 2;
-        grid-column: 1;
-        padding: 0;
+        grid-row: 1;
+        grid-column: 2;
+    }
+}
+
+@media only screen and (min-width: 90rem) and (min-resolution: 250dpi),
+                       (min-width: 90rem) and (min-resolution: 2.6dppx),
+                       (min-width: 90rem) and (-webkit-min-device-pixel-ratio: 2.6) {
+
+    #what-we-offer .double-img-left {
+        grid-template-columns: 50% 50%;
+    }
+
+    #what-we-offer .double-img-left h3 {
+        grid-row: 1;
+        grid-column: 2;
     }
 }
 
@@ -963,9 +978,10 @@ footer {
 
 .description {
     display: grid;
-    padding: 4rem;
-    padding-top: 8rem;
+    padding: 8rem 4rem 2rem 4rem;
     justify-self: center;
+    width: 100%;
+    max-width: 80rem;
 }
 
 .description h2 {
@@ -983,4 +999,66 @@ footer {
 
 .description p {
     font-size: 1.2rem;
+}
+
+.images {
+    display: grid;
+    width: 100%;
+    height: 80rem;
+    margin: 3rem;
+    max-width: 80rem;
+    grid-gap: 1rem;
+    justify-items: center;
+    justify-self: center;
+    grid-template-areas: 
+    "a a b b"
+    "a a b b"
+    "c c b b"
+    "d e e e"
+    "d e e e";
+}
+
+.images .item {
+    height: 100%;
+    width: 100%;
+    background-color: grey;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.images .a {
+    grid-area: a;
+}
+
+.images .b {
+    grid-area: b;
+}
+
+.images .c {
+    grid-area: c;
+}
+
+.images .d {
+    grid-area: d;
+}
+
+.images .e {
+    grid-area: e;
+}
+
+.images .cards {
+    background-image: url(../assets/ebonylytecards.jpg);
+}
+
+.images .bottle {
+    background-image: url(../assets/ebonylytebottle.jpg);
+}
+
+.images .sign {
+    background-image: url(../assets/ebonylytesign.jpg);
+}
+
+.images .pen {
+    background-image: url(../assets/ebonylytepen.jpg);
 }

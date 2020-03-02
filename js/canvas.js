@@ -121,10 +121,11 @@
 					// to feel anything
 					if(Math.abs(dm-dr) < 81.65) {
 
-						var dc = dm-dr
+						var dc  = dm-dr*dm-dr
+						var dc2 = dc*dc
 
 						// equation of ripple
-						var a = (30 - 0.009*dc*dc + 0.000000675*dc*dc*dc*dc)*(1 - dm/900);
+						var a = (30 - 0.009*dc2 + 0.000000675*dc2*dc2)*(1 - dm/900);
 
 						// offset dot by correct amount
 						x  += a * dx/dm;
