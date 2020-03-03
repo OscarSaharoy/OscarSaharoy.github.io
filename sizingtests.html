@@ -14,27 +14,38 @@
 
 <body>
 
-	<div style="background-color: rgba(255,255,255,0.3); position: fixed;">
+	<div style="background-color: rgba(255,255,255,0.3); padding-top: 2rem;">
 
-		<h2> width in rem = </h2>
-		<h3 class="rem">  </h3>
+		<h2> width in px = </h2> <h2 class="px">  </h2>
+		<h2> width in rem = </h2> <h2 class="rem">  </h2>
+		<h2> width in em = </h2> <h2 class="em">  </h2>
+		<h2> 1 rem = </h2> <h2 class="onerem">  </h2>
+		<h2> 1 em = </h2> <h2 class="oneem">  </h2>
 
 		<script>
 
 			function run() {
-				var height = window.innerWidth;
+				var width  = window.innerWidth;
 				var root   = document.documentElement;
 				var rem    = parseFloat(window.getComputedStyle(root).getPropertyValue("font-size"));
-				var p      = document.querySelector(".rem");
+				var em     = 14.4;
+				var ppx    = document.querySelector(".px");
+				var prem   = document.querySelector(".rem");
+				var pem    = document.querySelector(".em");
+				var onerem = document.querySelector(".onerem");
+				var oneem  = document.querySelector(".oneem");
 
-				p.innerHTML = height/rem;
+				ppx.innerHTML    = width;
+				prem.innerHTML   = width/rem;
+				pem.innerHTML    = width/em;
+				onerem.innerHTML = rem;
+				oneem.innerHTML  = em;
 			}
 
 			window.addEventListener("DOMContentLoaded", run);
 			window.addEventListener("resize", run);
 
 		</script>
-
 	</div>
 
 </body>

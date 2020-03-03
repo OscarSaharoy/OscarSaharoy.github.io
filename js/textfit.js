@@ -5,7 +5,7 @@ function textfit() {
 	var rem   = parseFloat(getComputedStyle(document.documentElement).fontSize);
 
 	var ids   = ["portfolio-title", "what-we-offer-title", "about-us-title", "contact-us-title"];
-	var ars   = [0.186, 0.126, 0.15, 0.1];
+	var ars   = [0.186, 0.12, 0.15, 0.1];
 
 
 	for(var i = 0; i < ids.length; ++i) {

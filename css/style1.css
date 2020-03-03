@@ -621,6 +621,7 @@ slideInFromLeft {
     display: grid;
     grid-template-columns: 100%;
     margin-bottom: 5rem;
+    grid-gap: 0 5rem;
     align-items: center;
 }
 
@@ -632,8 +633,8 @@ slideInFromLeft {
     grid-row: 2;
     padding: 0;
     margin: 0;
-    padding-left: 5rem;
     align-self: center;
+    justify-self: center;
 }
 
 #what-we-offer .double-img-left img {
@@ -1061,4 +1062,8 @@ footer {
 
 .images .pen {
     background-image: url(../assets/ebonylytepen.jpg);
+}
+
+.images .tag {
+    background-image: url(../assets/ebonylytetag.jpg);    
 }

@@ -45,7 +45,7 @@
 			<span class="line"> </span>
 
 			<a href="#portfolio" class="menulink"> Portfolio </a>
-			<a href="#what-we-offer" class="menulink"> What we Offer </a>
+			<a href="#what-we-offer" class="menulink"> What We Offer </a>
 			<a href="#about-us" class="menulink"> About Us </a>
 			<a href="#contact-us" class="menulink"> Contact Us </a>
 			
@@ -84,7 +84,7 @@
 			<a href="https://www.heroncreative.co.uk" class="topname"> <p>HERON CREATIVE</p> </a>
 
 			<a href="#portfolio" class="linkbarlink"> Portfolio </a>
-			<a href="#what-we-offer" class="linkbarlink"> What we Offer </a>
+			<a href="#what-we-offer" class="linkbarlink"> What We Offer </a>
 			<a href="#about-us" class="linkbarlink"> About Us </a>
 			<a href="#contact-us" class="linkbarlink"> Contact Us </a>
 		</div>
@@ -166,7 +166,7 @@
 
 		<div class="text-container">
 
-			<h2 id="what-we-offer-title"> What we Offer </h2>
+			<h2 id="what-we-offer-title"> What We Offer </h2>
 
 			<h3> Logo Design & Branding </h3>
 
@@ -300,42 +300,8 @@
 			</div>
 
 			<p class="small"> Web Design © Heron Creative 2020 </p>
-			<p class="small"> version 1.2.7 </p>
+			<p class="small"> version 1.2.8 </p>
 
-		</div>
-
-		<div style="background-color: rgba(255,255,255,0.3); padding-top: 2rem;">
-
-			<h2> width in px = </h2> <h2 class="px">  </h2>
-			<h2> width in rem = </h2> <h2 class="rem">  </h2>
-			<h2> width in em = </h2> <h2 class="em">  </h2>
-			<h2> 1 rem = </h2> <h2 class="onerem">  </h2>
-			<h2> 1 em = </h2> <h2 class="oneem">  </h2>
-
-			<script>
-
-				function run() {
-					var width  = window.innerWidth;
-					var root   = document.documentElement;
-					var rem    = parseFloat(window.getComputedStyle(root).getPropertyValue("font-size"));
-					var em     = 14.4;
-					var ppx    = document.querySelector(".px");
-					var prem   = document.querySelector(".rem");
-					var pem    = document.querySelector(".em");
-					var onerem = document.querySelector(".onerem");
-					var oneem  = document.querySelector(".oneem");
-
-					ppx.innerHTML    = width;
-					prem.innerHTML   = width/rem;
-					pem.innerHTML    = width/em;
-					onerem.innerHTML = rem;
-					oneem.innerHTML  = em;
-				}
-
-				window.addEventListener("DOMContentLoaded", run);
-				window.addEventListener("resize", run);
-
-			</script>
 		</div>
 
 	</footer>
