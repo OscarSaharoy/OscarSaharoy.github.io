@@ -1067,3 +1067,36 @@ footer {
 .images .tag {
     background-image: url(../assets/ebonylytetag.jpg);    
 }
+
+.back {
+    display: grid;
+    width: 100%;
+    padding: 2rem 4rem 4rem 4rem;
+    max-width: 80rem;
+    justify-items: left;
+    justify-self: center;
+}
+
+.back a {
+    display: grid;
+    grid-gap: 1.2rem;
+    text-decoration: none;
+    transition: transform 0.22s;
+}
+
+.back a:hover {
+    transform: translateX(-1rem);
+}
+
+.back img {
+    height: 3rem;
+    opacity: 0.85;
+    align-self: center;
+}
+
+.back h3 {
+    grid-row: 1;
+    grid-column: 2;
+    font-size: 3rem;
+    color: #2c2c2c;
+}
