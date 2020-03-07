@@ -21,14 +21,17 @@ html {
     position: relative;
 }
 
-@media 
-    (min-resolution: 250dpi),
-    (min-resolution: 2.6dppx),
-    (-webkit-min-device-pixel-ratio: 2.6) {
+@media only screen and (max-width: 70em) {
 
     :root {
+        font-size: 0.7em;
+    }
+}
 
-        font-size: 1.5em;
+@media only screen and (max-width: 30em) {
+
+    :root {
+        font-size: 0.5em;
     }
 
 }
@@ -230,7 +233,7 @@ slideInFromLeft {
     margin-right: 0.5rem;
 }
 
-@media only screen and (min-width: 75rem) {
+@media only screen and (min-width: 75em) {
 
     .links-bar {
         grid-column-start: 1;
@@ -483,7 +486,7 @@ slideInFromLeft {
     grid-area: "f";
 }
 
-@media only screen and (min-width: 80rem) {
+@media only screen and (min-width: 80em) {
 
     #portfolio .portfolio-grid {
         grid-template-areas:
@@ -580,27 +583,7 @@ slideInFromLeft {
     filter: grayscale(100%);
 }
 
-@media only screen and (min-width: 60rem) and (max-resolution: 250dpi),
-                       (min-width: 60rem) and (max-resolution: 2.6dppx),
-                       (min-width: 60rem) and (-webkit-max-device-pixel-ratio: 2.6) {
-
-    #what-we-offer .double-img {
-        grid-template-columns: 50% 50%;
-    }
-
-    #what-we-offer .double-img img {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    #what-we-offer .double-img h3 {
-        grid-row: 1;
-    }
-}
-
-@media only screen and (min-width: 90rem) and (min-resolution: 250dpi),
-                       (min-width: 90rem) and (min-resolution: 2.6dppx),
-                       (min-width: 90rem) and (-webkit-min-device-pixel-ratio: 2.6) {
+@media only screen and (min-width: 60em) {
 
     #what-we-offer .double-img {
         grid-template-columns: 50% 50%;
@@ -659,23 +642,7 @@ slideInFromLeft {
     filter: grayscale(100%);
 }
 
-@media only screen and (min-width: 60rem) and (max-resolution: 250dpi),
-                       (min-width: 60rem) and (max-resolution: 2.6dppx),
-                       (min-width: 60rem) and (-webkit-max-device-pixel-ratio: 2.6) {
-
-    #what-we-offer .double-img-left {
-        grid-template-columns: 50% 50%;
-    }
-
-    #what-we-offer .double-img-left h3 {
-        grid-row: 1;
-        grid-column: 2;
-    }
-}
-
-@media only screen and (min-width: 90rem) and (min-resolution: 250dpi),
-                       (min-width: 90rem) and (min-resolution: 2.6dppx),
-                       (min-width: 90rem) and (-webkit-min-device-pixel-ratio: 2.6) {
+@media only screen and (min-width: 60em) {
 
     #what-we-offer .double-img-left {
         grid-template-columns: 50% 50%;
@@ -729,7 +696,7 @@ slideInFromLeft {
     transition: transform 0.5s;
 }
 
-@media (max-width: 50rem) {
+@media (max-width: 50em) {
 
     #testimonials .arrow {
         grid-row: 2;
@@ -874,8 +841,7 @@ slideInFromLeft {
     cursor:pointer;
 }
 
-@media only screen and (max-width: 40rem) {
-
+@media only screen and (max-width: 40em) {
 
     #contact-us form .email-box {
         grid-row: 1;
