@@ -122,10 +122,9 @@ slideInFromLeft {
 .slogan-container {
     width: 100%;
     max-width: calc(100vw - 4rem);
-    align-self: end;
+    align-self: center;
     display: grid;
-    margin-right: 2rem;
-    margin-left: 2rem;
+    margin: 6rem 2rem 0 2rem;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
