@@ -219,6 +219,7 @@ slideInFromLeft {
     letter-spacing: 1.1rem;
     text-decoration: none;
     color: #c8ab37;
+    white-space: nowrap;
 }
 
 .toplogo {
@@ -354,7 +355,7 @@ slideInFromLeft {
 .side-text p {
 
     font-family: Montserrat, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
     grid-row: 1;
     color: #2c2c2c;
@@ -374,7 +375,7 @@ slideInFromLeft {
 .scroll-progress p {
 
     font-family: Montserrat, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
     grid-row: 1;
     color: #2c2c2c;
@@ -384,7 +385,7 @@ slideInFromLeft {
 
     align-self: center;
     width: 15rem;
-    height: 0.8rem;
+    height: 0.7rem;
     background-color: transparent;
     border: 2px solid #2c2c2c;
     grid-row: 1;
@@ -396,7 +397,7 @@ slideInFromLeft {
     align-self: center;
     justify-self: right;
     width: 1px;
-    height: calc(0.8rem - 1px);
+    height: calc(0.7rem - 1px);
     background-color: #2c2c2c;
     grid-row: 1;
     grid-column: 2;
@@ -991,46 +992,6 @@ footer {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.images .a {
-    grid-area: a;
-}
-
-.images .b {
-    grid-area: b;
-}
-
-.images .c {
-    grid-area: c;
-}
-
-.images .d {
-    grid-area: d;
-}
-
-.images .e {
-    grid-area: e;
-}
-
-.images .cards {
-    background-image: url(../assets/ebonylytecards.jpg);
-}
-
-.images .bottle {
-    background-image: url(../assets/ebonylytebottle.jpg);
-}
-
-.images .sign {
-    background-image: url(../assets/ebonylytesign.jpg);
-}
-
-.images .pen {
-    background-image: url(../assets/ebonylytepen.jpg);
-}
-
-.images .tag {
-    background-image: url(../assets/ebonylytetag.jpg);    
 }
 
 .back {
