@@ -169,7 +169,6 @@ slideInFromLeft {
 
 .topgrid {
     display: inline-grid;
-    grid-gap: 1vmin;
 }
 
 .hamburger {
@@ -211,7 +210,6 @@ slideInFromLeft {
     grid-row: 1;
     grid-column: 1;
     display: block;
-    padding-left: 1rem;
     justify-self: center;
     align-self: center;
     font-size: 1.4rem;
@@ -423,7 +421,7 @@ slideInFromLeft {
     display: grid;
     width: 100%;
     max-width: 80rem;
-    grid-gap: 2rem;
+    grid-gap: 1rem;
     justify-self: center;
     grid-template-areas: 
         "a"
