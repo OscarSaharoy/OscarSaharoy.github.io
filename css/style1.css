@@ -454,37 +454,7 @@ slideInFromLeft {
     transform: scale(1.05);
 }
 
-#portfolio .portfolio-grid .BIHomes {
-    background-image: url(../assets/BIHomes.png);
-    grid-area: "e";
-}
-
-#portfolio .portfolio-grid .nimbus {
-    background-image: url(../assets/nimbus.png);
-    grid-area: "b";
-}
-
-#portfolio .portfolio-grid .mackerel {
-    background-image: url(../assets/mackerel.png);
-    grid-area: "d";
-}
-
-#portfolio .portfolio-grid .ebonylyte {
-    background-image: url(../assets/ebonylyte.png);
-    grid-area: "a";
-}
-
-#portfolio .portfolio-grid .winterleaf {
-    background-image: url(../assets/winterleaf.png);
-    grid-area: "c";
-}
-
-#portfolio .portfolio-grid .sunrise {
-    background-image: url(../assets/sunrise.png);
-    grid-area: "f";
-}
-
-@media only screen and (min-width: 80em) {
+@media only screen and (min-width: 60em) {
 
     #portfolio .portfolio-grid {
         grid-template-areas:

@@ -35,8 +35,8 @@
 	var alphaindexes = [];
 
 	function resize() {
-		w        = c.offsetWidth;  // get screen width of canvas in px
-		h        = c.offsetHeight; // get screen height of canvas in px
+		w        = Math.max(document.documentElement.clientWidth, window.innerWidth); // get screen width of canvas in px
+		h        = Math.max(document.documentElement.clientHeight, window.innerHeight); // get screen height of canvas in px
 		ar       = w/h;            // aspect ratio
 
 		// set canvas width to its screen width (max width = 2000px)
