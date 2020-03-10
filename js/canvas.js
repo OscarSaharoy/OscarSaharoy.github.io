@@ -10,7 +10,7 @@
 	var d    = 20;
 
 	// set canvas to correct width
-	var w, h, ar, wr, ny, nx, n, canvasData;
+	var dpr, w, h, ar, wr, ny, nx, n, canvasData;
 	resize();
 
 	// current wave angle for background wave
@@ -35,8 +35,10 @@
 	var alphaindexes = [];
 
 	function resize() {
-		w        = Math.max(document.documentElement.clientWidth, window.innerWidth); // get screen width of canvas in px
-		h        = Math.max(document.documentElement.clientHeight, window.innerHeight); // get screen height of canvas in px
+		dpr      = Math.min(window.devicePixelRatio || 1, 1.75); // get dpr
+
+		w        = parseInt(dpr * Math.max(document.documentElement.clientWidth, window.innerWidth)); // get screen width of canvas in px
+		h        = parseInt(dpr * Math.max(document.documentElement.clientHeight, window.innerHeight)); // get screen height of canvas in px
 		ar       = w/h;            // aspect ratio
 
 		// set canvas width to its screen width (max width = 2000px)
@@ -66,17 +68,15 @@
 		// when the user left clicks, adds a ripple by adding its x and y coords to the respective arrays
 		// and sets the time since the ripple was made to 0
 
-		if(e.button == 0) {
-
-			rxs.push((e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft) / wr);
-			rys.push((e.clientY + document.body.scrollTop + document.documentElement.scrollTop) / wr);
-			rts.push(0);
-		}
+		rxs.push(dpr * (e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft) / wr);
+		rys.push(dpr * (e.clientY + document.body.scrollTop + document.documentElement.scrollTop) / wr);
+		rts.push(0);
 	}
 
 	// add listeners to trigger functions when events occur
 	window.addEventListener('resize', resize);
 	window.addEventListener('mousedown', mouseDown);
+	window.addEventListener('touchstart', mouseDown);
 
 
 	function animate() {
