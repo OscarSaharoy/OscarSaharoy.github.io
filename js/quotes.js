@@ -12,7 +12,7 @@ function update_quotes() {
 			quotes[i].style.transform = "translateX(-100vw)";
 		}
 		else if(i == quote_number) {
-			quotes[i].style.transform = "";
+			quotes[i].style.transform = "translateX(0)";
 		}
 		else if(i > quote_number) {
 			quotes[i].style.transform = "translateX(100vw)";

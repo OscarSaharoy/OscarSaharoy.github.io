@@ -11,19 +11,20 @@ function appear() {
 			var div        = appear_divs[i];
 			var rect       = div.getBoundingClientRect();
 			var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
-			var onscreen   = rect.top - viewHeight <= 0;
+			var onscreen   = (rect.top - viewHeight) <= 0;
+
 
 			if(onscreen) {
 				div.classList.remove("appear");
 				div.classList.add("slide-up-fade");
 
 				appear_divs.splice(i, 1);
+				--i;
 			}
 		}
 	}
 
 	document.addEventListener("scroll", updateAppear);
-	updateAppear();
 }
 
 document.addEventListener("DOMContentLoaded", appear);
