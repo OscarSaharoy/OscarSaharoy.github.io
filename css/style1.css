@@ -154,6 +154,15 @@ slideInFromLeft {
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
+.tip {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #3c3c3c;
+    opacity: 0.2;
+    padding: 1.5rem;
+    text-align:center;
+}
+
 .slogan {
     font-size: calc(2vw + 2rem);
     font-weight: 800;
@@ -752,6 +761,11 @@ slideInFromLeft {
     font-size: 1.5rem;
     line-height: 2.5rem;
     text-align: justify;
+}
+
+#about-us a {
+    color: #33aacc;
+    text-decoration: none;
 }
 
 #contact-us {

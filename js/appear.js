@@ -25,6 +25,7 @@ function appear() {
 	}
 
 	document.addEventListener("scroll", updateAppear);
+	updateAppear();
 }
 
 document.addEventListener("DOMContentLoaded", appear);
