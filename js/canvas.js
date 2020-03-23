@@ -76,7 +76,7 @@
 	// add listeners to trigger functions when events occur
 	window.addEventListener('resize', resize);
 	window.addEventListener('mousedown', mouseDown);
-	c.addEventListener('touchstart', mouseDown, false);
+	document.addEventListener('touchstart', mouseDown, false);
 
 
 	function animate() {
