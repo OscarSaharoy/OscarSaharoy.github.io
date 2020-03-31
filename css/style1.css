@@ -136,7 +136,6 @@ slideInFromLeft {
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 1em;
-    cursor: pointer;
 }
 
 .background-container {
@@ -144,7 +143,6 @@ slideInFromLeft {
     width: 100%;
     height: 100vh;
     display: grid;
-    cursor: pointer;
 }
 
 .slogan-container {
@@ -154,7 +152,6 @@ slideInFromLeft {
     display: grid;
     margin: 6rem 2rem 0 2rem;
     animation: 1s ease-out 0s 1 slideInFromLeft;
-    cursor: pointer;
 }
 
 .tip {

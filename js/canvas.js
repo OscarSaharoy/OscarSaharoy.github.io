@@ -6,7 +6,7 @@
 	var c    = document.getElementById("canvas");
 	var ctx  = c.getContext("2d");
 
-	// distance between pixels
+	// distance between dots
 	var d    = 20;
 
 	// set canvas to correct width
