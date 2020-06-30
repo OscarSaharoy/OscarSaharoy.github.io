@@ -29,7 +29,7 @@ var mousePosX      = 0;
 var mousePosY      = 0;
 
 // data variables
-var dataPoints     = [new Point(-2.0, -0.5), new Point(-0.8, 0.2), new Point(0, -0.3), new Point(0.6, 0.5), new Point(2.0, 1.5)];//[];
+var dataPoints     = [new Point(-2.0, -0.5), new Point(-0.8, 0.2), new Point(0, -0.3), new Point(0.6, 0.5), new Point(2.5, 1.2)];//[];
 var closeDataPoint = -1;
 
 // initial function values
