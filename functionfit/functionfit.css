@@ -1,0 +1,168 @@
+
+* {
+    margin: 0 0;
+    padding: 0 0;
+    box-sizing: border-box;
+	display: grid;
+	outline: none;
+}
+
+html {
+    font-family: "Comfortaa", sans-serif;
+}
+
+head {
+	display: none;
+}
+
+body {
+	width: 100%;
+	background-image: linear-gradient(to bottom right, #44EBF8, #30F35E);
+	margin: 3rem 0;
+}
+
+.central {
+	width: 100%;
+	max-width: 60rem;
+	justify-self: center;
+	background: white;
+	padding: 4rem;
+	grid-gap: 2rem;
+	border-radius: 3rem;
+	box-shadow: 8px 8px 14px 0 rgba(0, 0, 0, 0.5);
+}
+
+.title-box {
+	width: 100%;
+	justify-content: center;
+	padding-bottom: 1rem;
+}
+
+h2 {
+	text-align: center;
+	font-size: 3rem;
+}
+
+h3 {
+	text-align: center;
+}
+
+.graph-box {
+	display: block;
+}
+
+.graph-box canvas {
+	width: 100%;
+	height: 35rem;
+	margin-top: 2rem;
+}
+
+.button-box h3 {
+	margin-bottom: 1rem;
+}
+
+ol {
+	grid-gap: 1.5rem;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	padding-bottom: 1.5rem;
+}
+
+ol button {
+	font-family: "Comfortaa", sans-serif;
+	font-size: 1rem;
+	grid-row: 1;
+	padding: 2rem 0.5rem;
+	background: white;
+	border: 3px solid #30F35E;
+	border-radius: 1rem;
+	align-content: center;
+	cursor: pointer;
+}
+
+ol button:hover {
+	border: 3px solid #44EBF8;
+}
+
+ol button:active {
+	border: 3px solid #1CC243;
+}
+
+.options {
+	display: none;
+	align-items: center;
+	justify-self: center;
+	justify-items: left;
+	grid-gap: 1rem;
+}
+
+.options h3 {
+	grid-column: 1;
+	margin-bottom: 0;
+}
+
+.options input {
+	grid-column: 2;
+	padding: 0.5rem;
+	border: 3px solid #30F35E;
+	border-radius: 1rem;
+	text-align: center;
+	width: 5rem;
+	justify-self: left;
+	font-family: "Comfortaa", sans-serif;
+	font-size: 1rem;
+}
+
+.options input:hover {
+	border: 3px solid #44EBF8;	
+}
+
+.function-box {
+	display: none;
+}
+
+#mathcanvas {
+	justify-self: center;
+	width: 100%;
+	height: 4rem;
+}
+
+.codes {
+	padding-top: 2rem;
+	grid-template-columns: 5rem 1fr;
+	grid-gap: 1rem 2rem;
+	padding-bottom: 1rem;
+}
+
+.codes textarea {
+	grid-column: 2;
+	padding: 1rem;
+	border: 3px solid #30F35E;
+	border-radius: 1rem;
+}
+
+.codes textarea:hover {
+	border: 3px solid #44EBF8;
+}
+
+.codes h4 {
+	grid-column: 1;
+	text-align: right;
+	align-self: center;
+}
+
+.function-box span {
+	padding-top: 1rem;
+}
+
+a {
+	text-decoration: none;
+	color: #30F35E;
+}
+
+a:hover {
+	color: #44EBF8;
+}
+
+a:visited {
+	color: #30F35E;
+}
