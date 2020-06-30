@@ -66,7 +66,7 @@ function wheel(event) {
 
 	// move viewport corners towards or away from cursor
 	var viewportCornerDeltas = [viewportCorners[0] - centerX, viewportCorners[1] - centerY, viewportCorners[2] - centerX, viewportCorners[3] - centerY];
-	var scale   = 1 + event.deltaY / 200;
+	var scale   = 1 + event.deltaY / 400;
 	viewportCorners = [centerX + viewportCornerDeltas[0] * scale, centerY + viewportCornerDeltas[1] * scale, centerX + viewportCornerDeltas[2] * scale, centerY + viewportCornerDeltas[3] * scale];
 
 	// calculate which gridlines to draw
